@@ -76,7 +76,7 @@ const CategoriesBar: FC<Props> = ({
                         <div
                           className={`mt-1 w-auto flex items-center justify-between px-2   hover:bg-white`}
                         >
-                          <h2 className="whitespace-nowrap text-base hover:text-primary">
+                          <h2 className="whitespace-nowrap text-sm hover:text-primary">
                             {subSubCat?.name}
                           </h2>
                         </div>
