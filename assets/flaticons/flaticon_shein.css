@@ -1,0 +1,146 @@
+@font-face {
+    font-family: "flaticon_shein";
+    src: url("./flaticon_shein.ttf?57bc63d4780dbf4661003f4f7a2b67db") format("truetype"),
+url("./flaticon_shein.woff?57bc63d4780dbf4661003f4f7a2b67db") format("woff"),
+url("./flaticon_shein.woff2?57bc63d4780dbf4661003f4f7a2b67db") format("woff2"),
+url("./flaticon_shein.eot?57bc63d4780dbf4661003f4f7a2b67db#iefix") format("embedded-opentype"),
+url("./flaticon_shein.svg?57bc63d4780dbf4661003f4f7a2b67db#flaticon_shein") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+    font-family: flaticon_shein !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.flaticon-plus:before {
+    content: "\f101";
+}
+.flaticon-contact:before {
+    content: "\f102";
+}
+.flaticon-logout:before {
+    content: "\f103";
+}
+.flaticon-location:before {
+    content: "\f104";
+}
+.flaticon-plus-1:before {
+    content: "\f105";
+}
+.flaticon-heart:before {
+    content: "\f106";
+}
+.flaticon-twitter:before {
+    content: "\f107";
+}
+.flaticon-close:before {
+    content: "\f108";
+}
+.flaticon-chat:before {
+    content: "\f109";
+}
+.flaticon-card:before {
+    content: "\f10a";
+}
+.flaticon-camera:before {
+    content: "\f10b";
+}
+.flaticon-youtube:before {
+    content: "\f10c";
+}
+.flaticon-bag-fill:before {
+    content: "\f10d";
+}
+.flaticon-arrow-down:before {
+    content: "\f10e";
+}
+.flaticon-arrow:before {
+    content: "\f10f";
+}
+.flaticon-address:before {
+    content: "\f110";
+}
+.flaticon-user-fill:before {
+    content: "\f111";
+}
+.flaticon-star:before {
+    content: "\f112";
+}
+.flaticon-share:before {
+    content: "\f113";
+}
+.flaticon-play:before {
+    content: "\f114";
+}
+.flaticon-pinterest:before {
+    content: "\f115";
+}
+.flaticon-minus:before {
+    content: "\f116";
+}
+.flaticon-left-arrow:before {
+    content: "\f117";
+}
+.flaticon-instagram:before {
+    content: "\f118";
+}
+.flaticon-facebook:before {
+    content: "\f119";
+}
+.flaticon-delivery-status-3:before {
+    content: "\f11a";
+}
+.flaticon-contact-1:before {
+    content: "\f11b";
+}
+.flaticon-bag:before {
+    content: "\f11c";
+}
+.flaticon-protection:before {
+    content: "\f11d";
+}
+.flaticon-reload:before {
+    content: "\f11e";
+}
+.flaticon-search:before {
+    content: "\f11f";
+}
+.flaticon-heart-fill:before {
+    content: "\f120";
+}
+.flaticon-timing:before {
+    content: "\f121";
+}
+.flaticon-measure:before {
+    content: "\f122";
+}
+.flaticon-heart-1:before {
+    content: "\f123";
+}
+.flaticon-express-delivery:before {
+    content: "\f124";
+}
+.flaticon-shipped:before {
+    content: "\f125";
+}
+.flaticon-trending-topic:before {
+    content: "\f126";
+}
+.flaticon-accessories:before {
+    content: "\f127";
+}
+.flaticon-return-box:before {
+    content: "\f128";
+}
+.flaticon-fast-delivery:before {
+    content: "\f129";
+}
+.flaticon-free-delivery:before {
+    content: "\f12a";
+}

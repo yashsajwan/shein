@@ -1,0 +1,34 @@
+[debug] [2023-09-22T09:27:24.998Z] ----------------------------------------------------------------------
+[debug] [2023-09-22T09:27:25.000Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\ashis\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2023-09-22T09:27:25.001Z] CLI Version:   11.27.0
+[debug] [2023-09-22T09:27:25.001Z] Platform:      win32
+[debug] [2023-09-22T09:27:25.001Z] Node Version:  v18.16.0
+[debug] [2023-09-22T09:27:25.002Z] Time:          Fri Sep 22 2023 14:57:25 GMT+0530 (India Standard Time)
+[debug] [2023-09-22T09:27:25.003Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-09-22T09:27:25.091Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-09-22T09:27:25.092Z] > authorizing via signed-in user (ayush.rawat@buildwithinnovation.com)
+[debug] [2023-09-22T09:27:25.092Z] [iam] checking project bwi-shein for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-09-22T09:27:25.095Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/bwi-shein:testIamPermissions [none]
+[debug] [2023-09-22T09:27:25.095Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/bwi-shein:testIamPermissions x-goog-quota-user=projects/bwi-shein
+[debug] [2023-09-22T09:27:25.095Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/bwi-shein:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-09-22T09:27:26.750Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/bwi-shein:testIamPermissions 200
+[debug] [2023-09-22T09:27:26.750Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/bwi-shein:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-09-22T09:27:26.752Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/bwi-shein [none]
+[debug] [2023-09-22T09:27:27.473Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/bwi-shein 200
+[debug] [2023-09-22T09:27:27.473Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/bwi-shein {"projectId":"bwi-shein","projectNumber":"876688672852","displayName":"Shein Style Store","name":"projects/bwi-shein","resources":{"hostingSite":"bwi-shein","storageBucket":"bwi-shein.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_b8ad8913-d34d-44df-8889-4bb96392abba"}
+[debug] [2023-09-22T09:27:34.697Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/bwi-shein/sites pageToken=&pageSize=10
+[debug] [2023-09-22T09:27:36.044Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/bwi-shein/sites 200
+[debug] [2023-09-22T09:27:36.045Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/bwi-shein/sites {"sites":[{"name":"projects/bwi-shein/sites/bwi-shein","defaultUrl":"https://bwi-shein.web.app","type":"DEFAULT_SITE"},{"name":"projects/bwi-shein/sites/bwi-shein-admin","defaultUrl":"https://bwi-shein-admin.web.app","type":"USER_SITE"}]}
+[debug] [2023-09-22T09:27:36.046Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/bwi-shein/sites 
+[debug] [2023-09-22T09:27:37.151Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/bwi-shein/sites 200
+[debug] [2023-09-22T09:27:37.151Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/bwi-shein/sites {"sites":[{"name":"projects/bwi-shein/sites/bwi-shein","defaultUrl":"https://bwi-shein.web.app","type":"DEFAULT_SITE"},{"name":"projects/bwi-shein/sites/bwi-shein-admin","defaultUrl":"https://bwi-shein-admin.web.app","type":"USER_SITE"}]}
+[debug] [2023-09-22T09:27:37.152Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/bwi-shein/webApps/-/config [none]
+[debug] [2023-09-22T09:27:37.767Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/bwi-shein/webApps/-/config 200
+[debug] [2023-09-22T09:27:37.768Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/bwi-shein/webApps/-/config {"projectId":"bwi-shein","appId":"1:876688672852:web:330ceb480d0aa9739d85c1","storageBucket":"bwi-shein.appspot.com","locationId":"us-central","apiKey":"AIzaSyAocXtMQCtr_u_fZvJ2Nee7VBwRPD0Dg-U","authDomain":"bwi-shein.firebaseapp.com","messagingSenderId":"876688672852","measurementId":"G-1KDLLJZXQ9"}
+[debug] [2023-09-22T09:28:44.695Z] TypeError: Cannot read properties of null (reading 'endsWith')
+    at ɵcodegenPublicDirectory (C:\Users\ashis\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\next\index.js:206:56)
+    at async prepareFrameworks (C:\Users\ashis\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\index.js:287:13)
+    at async deploy (C:\Users\ashis\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\index.js:53:13)
+[error] 
+[error] Error: An unexpected error has occurred.
