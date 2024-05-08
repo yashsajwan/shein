@@ -229,7 +229,7 @@ function SideMenuLogin({ isOpen, onClose, setShowLogin }) {
   };
 
   return (
-    <div className="h-[100vh] w-[100vw] bg-[rgba(0,0,0,0.5)] fixed top-0 left-0 z-50">
+    <div className="h-[100vh] w-[100vw] bg-[rgba(0,0,0,0.5)] backdrop-blur-sm fixed top-0 left-0 z-50">
       <div
         className={`fixed  ${
           matches ? "left-0" : "right-0"
