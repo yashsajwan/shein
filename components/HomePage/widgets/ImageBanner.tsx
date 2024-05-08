@@ -245,9 +245,10 @@ const ImageBanner = ({ section, myKey = `` }) => {
               style={{ aspectRatio: "auto" }}
               className={`flex-1 ${
                 imagesArr.length === 2 ? "sm:h-[25rem] h-[10rem]" : "h-auto"
-              } object-fit `}
+              } object-cover `}
             />
           </Link>
+          
         ))}
       </div>
     </div>

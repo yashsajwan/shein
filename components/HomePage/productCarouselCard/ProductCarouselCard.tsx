@@ -161,14 +161,14 @@ const ProductCarouselCard = ({ product, id }) => {
           <div className="flex  overflow-hidden truncate w-full text-xs font-medium text-primary capitalize mb-1">
             <h2 className="">{""}</h2> {/* to be checked */}
           </div>
-          <div className="flex    w-full text-base font-bold mb-3 ">
+          <div className="flex    w-full text-base mb-3 ">
             <h2 className="truncate">
               {product?.prodName || "Calcium Magnesium Zinc"}{" "}
             </h2>
           </div>
           <div className="flex items-center gap-2">
             <div className="text-ellipsis overflow-hidden ... truncate text-center ">
-              <p className="text-ellipsis overflow-hidden ... truncate text-center  text-primary font-bold">
+              <p className="text-ellipsis overflow-hidden ... truncate text-center text-2xl  text-primary font-bold">
                 {constant.currency} {product?.discountedPrice.toFixed(2)}
               </p>
             </div>
@@ -177,7 +177,7 @@ const ProductCarouselCard = ({ product, id }) => {
               price: product?.prodPrice,
             }) && (
               <div className="text-ellipsis overflow-hidden ... truncate text-center ">
-                <p className="text-ellipsis overflow-hidden ... truncate text-center  line-through text-xs text-gray-500 font-semibold">
+                <p className="text-ellipsis overflow-hidden ... truncate text-center  line-through text-lg text-gray-500 font-semibold">
                   {constant.currency} {product?.prodPrice}
                 </p>
               </div>
