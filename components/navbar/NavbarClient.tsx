@@ -101,15 +101,33 @@ const NavbarClient = ({ cookie }: any) => {
     }
   }
 
+  // async function handleLogout() {
+  //   signOut(auth)
+  //     .then(async () => {
+  //       await axios.get(`/api/logout`);
+  //       await queryClient.setQueryData(["userData"], null);
+  //       toast.success("Logged out");
+  //       router.push("/");
+  //     })
+  //     .catch((error) => {
+  //       toast.error("cannot Logout at the moment");
+  //     });
+  // }
+
   async function handleLogout() {
     signOut(auth)
       .then(async () => {
-        await axios.get(`/api/logout`);
-        await queryClient.setQueryData(["userData"], null);
         toast.success("Logged out");
-        router.push("/");
+        await axios.post(`${process.env.NEXT_PUBLIC_API_DOMAIN}/api/logout`);
+        // await axios.get(`/api/logout`);
+        await queryClient.invalidateQueries({ queryKey: ["userData"] });
+
+        // Sign-out successful.
+        router.replace("/");
+        await queryClient.refetchQueries({ queryKey: ["userData"] });
       })
       .catch((error) => {
+        // An error happened.
         toast.error("cannot Logout at the moment");
       });
   }
