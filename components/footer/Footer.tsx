@@ -17,6 +17,7 @@ import FlatIcon from "../flatIcon/flatIcon";
 import appStoreImg from "../../images/Group 34287.svg";
 import playStoreImg from "../../images/Group 34288.svg";
 import facebookImg from "../../images/facebook (2) 1.svg";
+import whatsappImg from "../../images/whatsapp.svg";
 import instagram from "../../images/instagram (3) 1.svg";
 import pinterest from "../../images/pinterest (1) 1.svg";
 import twitter from "../../images/twitter 2.svg";
@@ -25,7 +26,7 @@ import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import { db } from "../../config/firebase-config";
 import { addDoc, collection } from "firebase/firestore";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import blacklogo from "../../images/logo (4).svg";
 import Loader from "../loader/Loader";
 
@@ -85,35 +86,33 @@ const pyamentModeImages = [
   { image: paytmImg },
 ];
 const Footer = () => {
-  const [email, setEmail] = useState("")
-  const [loading,setLoading]=useState(false)
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const onSubscribeSumbitHandler = async () => {
-    setLoading(true)
+    setLoading(true);
     const data = {
       email: email,
       createdAt: new Date(),
-    }
+    };
     // console.log("data");
     try {
-    if (email) {
-      console.log("submitted");
-      await addDoc(collection(db, "newsletter"), data)
-      setLoading(false)
-      toast.success("Subscribed !")
-      setEmail("")
-      
-    } else {
-    setLoading(false)
-      toast.error("Please enter email!")
-    } 
+      if (email) {
+        console.log("submitted");
+        await addDoc(collection(db, "newsletter"), data);
+        setLoading(false);
+        toast.success("Subscribed !");
+        setEmail("");
+      } else {
+        setLoading(false);
+        toast.error("Please enter email!");
+      }
     } catch (error) {
-    setLoading(false)
-    toast.error("Something went wrong!")
+      setLoading(false);
+      toast.error("Something went wrong!");
       console.log(error);
     }
-  }
-
+  };
 
   const { data: storeData } = useQuery({
     queryKey: ["storeDetails"],
@@ -121,7 +120,6 @@ const Footer = () => {
     keepPreviousData: true,
   });
   // console.log(storeData,"storeData");
-
 
   return (
     <>
@@ -163,9 +161,7 @@ const Footer = () => {
                       <div>
                         <FlatIcon className="flaticon-address text-2xl font-bold text-white " />
                       </div>
-                      <p>
-                        {storeData?.storeAddress?.address}
-                      </p>
+                      <p>{storeData?.storeAddress?.address}</p>
                     </div>
                   )}
                   {storeData?.storePhone && (
@@ -173,9 +169,7 @@ const Footer = () => {
                       <div>
                         <FlatIcon className="flaticon-contact text-2xl font-bold text-white" />
                       </div>
-                      <p>
-                        {storeData?.storePhone}
-                      </p>
+                      <p>{storeData?.storePhone}</p>
                     </div>
                   )}
                   {storeData?.storeEmail && (
@@ -189,117 +183,136 @@ const Footer = () => {
                       <p className="line-clamp-1">{storeData?.storeEmail}</p>
                     </a>
                   )}
-                  <div className="text-white text-base font-semibold cursor-pointer">
-                    <span>Follow us on social media get</span>{" "}
-                    <span className="text-primary">1000 Bonus </span>Points *
-                    <span></span>
-                  </div>
-                  <div className="flex gap-4">
-                    <Link
-                      href={storeData ? storeData?.facebookUrl : ""}
-                      target="_blank"
-                    >
-                      <div>
-                        <Image src={facebookImg} alt="" />
-                      </div>
-                    </Link>
-                    <Link
-                      href={storeData ? storeData?.instagramUrl : ""}
-                      target="_blank"
-                    >
-                      <div>
-                        <Image src={instagram} alt="" />
-                      </div>
-                    </Link>
-                    <div className="cursor-pointer">
-                      <Image src={pinterest} alt="" />
-                    </div>
-
-                    <Link
-                      href={storeData ? storeData?.twitterUrl : ""}
-                      target="_blank"
-                    >
-                      <div>
-                        <Image src={twitter} alt="" />
-                      </div>
-                    </Link>
-                  </div>
                 </div>
               </div>
-
 
               <div className="lg:w-[30%]   bg-black  flex items-center   ">
-            <div className="  h-fit flex flex-col gap-6 sm:gap-8 lg:gap-8  ">
-              <div className="w-full flex sm:justify-center">
-              <div className="sm:w-[180px] w-[150px]  ">
-            <Image
-                  src={blacklogo}
-                  alt="logo"
-                  width={1000}
-                  height={1000}
-                  className="w-full h-full object-full "
-                />
-                </div>
-                </div>
-              <h1 className=' text-white lg:text-3xl sm:text-xl text-xl font-bold lg:text-center sm:text-center '>NEWSLETTER</h1>
-              <div className="flex flex-col text-white  gap-6 sm:gap-8 lg:gap-16">
-                <p className='  font-semibold  md:text-base sm:text-sm text-xs lg:text-center sm:text-center'>Join now and get 10% off on your next purchase and Be the first to know about new collections and exclusive offers. </p>
-                <div className='flex p-1 bg-white rounded-md w-[100%] mx-auto justify-between  email-container  items-center '>
-                  <div className="w-[70%]">
-                    <input value={email} onChange={(e) => setEmail(e.target.value)}
-                      type='email'
-                      className='w-[100%] outline-0 py-3 sm:px-3 px-1 rounded-md text-black' placeholder='Your email address' />
+                <div className="  h-fit flex flex-col gap-6 sm:gap-8 lg:gap-8  ">
+                  <div className="w-full flex sm:justify-center">
+                    <div className="sm:w-[180px] w-[150px]  ">
+                      <Image
+                        src={blacklogo}
+                        alt="logo"
+                        width={1000}
+                        height={1000}
+                        className="w-full h-full object-full "
+                      />
+                    </div>
                   </div>
-                 
-                
-<div onClick={() => onSubscribeSumbitHandler()} className="  xl:w-[30%] w-[40%] h-fit  py-3 bg-primary text-white xl:text-base md:text-sm text-xs font-semibold cursor-pointer rounded-md ">
-<button className=" w-full text-center  " style={{ height: "100%", position: "relative" }}>
-{loading && (
-                  <div
-                    style={{
-                      position: "absolute",
-                      top: "50%",
-                      left: "50%",
-                      transform: "translate(-50%, -50%)",
-                    }}
-                  >
-                    <Loader />
+                  <div className="flex flex-col text-white  gap-6 sm:gap-8 lg:gap-16">
+                    <p className="  font-semibold  md:text-xl sm:text-xl text-3xl mx-5 lg:text-center sm:text-center">
+                      Signup now & get 10 % discount your first order**{" "}
+                    </p>
+                    <div className="flex p-1 bg-white rounded-md w-[100%] mx-auto justify-between  email-container  items-center ">
+                      <div className="w-[70%]">
+                        <input
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          type="email"
+                          className="w-[100%] outline-0 py-3 sm:px-3 px-1 rounded-md text-black"
+                          placeholder="Your email address"
+                        />
+                      </div>
+
+                      <div
+                        onClick={() => onSubscribeSumbitHandler()}
+                        className="  xl:w-[30%] w-[40%] h-fit  py-3 bg-primary text-white xl:text-base md:text-sm text-xs font-semibold cursor-pointer rounded-md "
+                      >
+                        <button
+                          className=" w-full text-center  "
+                          style={{ height: "100%", position: "relative" }}
+                        >
+                          {loading && (
+                            <div
+                              style={{
+                                position: "absolute",
+                                top: "50%",
+                                left: "50%",
+                                transform: "translate(-50%, -50%)",
+                              }}
+                            >
+                              <Loader />
+                            </div>
+                          )}
+                          {!loading && "SUBSCRIBE"}
+                        </button>
+                      </div>
+                    </div>
+                    <div className="flex justify-center items-center md:text-2xl sm:text-xl text-lg font-semibold text-white mb-3">
+                      <h2 className="mr-5">Customer Support</h2>
+                      <Link href={""} target="_blank">
+                        <div>
+                          <Image
+                            src={whatsappImg}
+                            width={35}
+                            height={35}
+                            alt=""
+                          />
+                        </div>
+                      </Link>
+                    </div>
                   </div>
-                )}
-                {!loading && "SUBSCRIBE"}
-</button>
-</div>
                 </div>
               </div>
             </div>
-          </div>
-            </div>
 
-
-
-            
             <div className=" sm:py-[28px] py-[20px] ">
-              <div className=" flex lg:flex-row md:flex-col sm:flex-row  w-full xl:gap-x-8 gap-x-4">
-              </div>
+              <div className=" flex lg:flex-row md:flex-col sm:flex-row  w-full xl:gap-x-8 gap-x-4"></div>
               <div className="px-body">
-              {/* <div className="flex  md:items-center md:flex-row flex-col gap-y-4 justify-between gap-x-3"> */}
+                {/* <div className="flex  md:items-center md:flex-row flex-col gap-y-4 justify-between gap-x-3"> */}
 
-                <div className="flex  md:items-center md:flex-row flex-col gap-y-4 justify-between gap-x-3">
+                <div className="flex  md:items-center md:flex-row flex-col gap-y-4 justify-center gap-x-3">
                   <div className="flex flex-col">
                     <div className=" md:text-2xl sm:text-xl text-lg font-semibold text-white mb-3">
-                      <h2>We Accept</h2>
+                      <h2>
+                        Follow us on social media get{" "}
+                        <span className="text-primary">1000 Bonus </span>{" "}
+                        points*
+                      </h2>
                     </div>
-                    <div className="flex items-center lg:flex-nowrap flex-wrap md:gap-x-6 gap-x-4 gap-y-2 cursor-pointer">
-                      {pyamentModeImages.map((item: any, idx: number) => {
+                    <div className="flex items-center justify-center lg:flex-nowrap flex-wrap md:gap-x-6 gap-x-4 gap-y-2 cursor-pointer">
+                      {/* {pyamentModeImages.map((item: any, idx: number) => {
                         return (
                           <div key={idx}>
                             <Image src={item.image} alt="" />
                           </div>
                         );
-                      })}
+                      })} */}
+
+                      <Link
+                      className="px-3"
+                        href={storeData ? storeData?.facebookUrl : ""}
+                        target="_blank"
+                      >
+                        <div>
+                          <Image src={facebookImg} alt="" />
+                        </div>
+                      </Link>
+                      <Link
+                       className="px-3"
+                        href={storeData ? storeData?.instagramUrl : ""}
+                        target="_blank"
+                      >
+                        <div>
+                          <Image src={instagram} alt="" />
+                        </div>
+                      </Link>
+                      <div className="cursor-pointer">
+                        <Image src={pinterest} alt="" />
+                      </div>
+
+                      <Link
+                       className="px-3"
+                        href={storeData ? storeData?.twitterUrl : ""}
+                        target="_blank"
+                      >
+                        <div>
+                          <Image src={twitter} alt="" />
+                        </div>
+                      </Link>
                     </div>
                   </div>
-                  <div className="flex flex-col">
+                  {/* <div className="flex flex-col">
                     <div className=" md:text-2xl sm:text-xl text-lg font-semibold text-white mb-3 md:text-end">
                       <h2>Delivery Partners</h2>
                     </div>
@@ -312,10 +325,9 @@ const Footer = () => {
                         );
                       })}
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
-
             </div>
             <div className="  h-fit">
               <div className="flex      w-full">
