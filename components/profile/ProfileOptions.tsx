@@ -96,7 +96,7 @@ const ProfileOptions = ({ cookie, setSelectedTab, selectedTab }) => {
   async function uploadTask(userPic: any) {
     await uploadImage(userPic);
   }
-  
+
   useEffect(() => {
     setIsClient(true);
     // console.log(userData,"DATA AFTER RELOAD");
@@ -163,6 +163,23 @@ const ProfileOptions = ({ cookie, setSelectedTab, selectedTab }) => {
           </div>
           <h4 className={` font-semibold text-sm `}>Profile Info</h4>
         </div>
+
+
+        <div
+          onClick={() => setSelectedTab(6)}
+          className={`flex gap-3 items-center border-b border-b-[#EEF0F5]  py-4 px-6 cursor-pointer hover:text-primary  ${
+            selectedTab === 6 ? "text-primary" : "text-secondary"
+          }`}
+        >
+          <div>
+            <FlatIcon
+              icon={"flaticon-bag  font-normal text-2xl hover:text-primary "}
+            />
+          </div>
+          <h4 className=" font-semibold text-sm ">My Account</h4>
+        </div>
+
+
         {/* </Link> */}
         <Link href={"/wishlist"}>
           <div className="flex gap-3 items-center  border-b border-b-[#EEF0F5]  py-4 px-6 cursor-pointer hover:text-primary  text-secondary">
@@ -192,6 +209,8 @@ const ProfileOptions = ({ cookie, setSelectedTab, selectedTab }) => {
           </div>
           <h4 className=" font-semibold text-sm ">My Order</h4>
         </div>
+
+
         {/* </Link> */}
         <div
           onClick={() => setSelectedTab(3)}
@@ -207,7 +226,7 @@ const ProfileOptions = ({ cookie, setSelectedTab, selectedTab }) => {
         <div
           onClick={() => setSelectedTab(4)}
           className={`flex gap-3 items-center border-b border-b-[#EEF0F5]  py-4 px-6 cursor-pointer  hover:text-primary ${
-            selectedTab === 3 ? "text-primary" : "text-secondary"
+            selectedTab === 4 ? "text-primary" : "text-secondary"
           }`}
         >
           <div>

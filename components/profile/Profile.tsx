@@ -14,6 +14,7 @@ import EditProfile from "./EditProfile";
 import OrderPage from "../orderPage/OrderPage";
 import HelpAndSupport from "../helpAndSupport/HelpAndSupport";
 import Addresses from "../addresses/Addresses";
+import Account from '../account/Account';
 import OrderDetailsPage from "../orderPage/OrderDetailsPage";
 import Points from "./Points";
 
@@ -120,6 +121,8 @@ const Profile = ({ cookie }) => {
           {selectedTab === 4 && <Points  cookie={cookie}/>}
 
           {selectedTab === 5 && <HelpAndSupport />}
+
+          {selectedTab === 6 && <Account cookie={cookie}/>}
         </div>
       </div>
     </div>
