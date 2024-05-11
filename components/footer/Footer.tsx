@@ -20,7 +20,10 @@ import facebookImg from "../../images/facebook (2) 1.svg";
 import whatsappImg from "../../images/whatsapp.svg";
 import instagram from "../../images/instagram (3) 1.svg";
 import pinterest from "../../images/pinterest (1) 1.svg";
-import twitter from "../../images/twitter 2.svg";
+import twitter from "../../images/twitter.svg";
+import youtube from "../../images/youtube.svg";
+import snapchat from "../../images/snapchat.svg";
+import quora from "../../images/quora.svg";
 import { getStoreDetails } from "../../utils/databaseService";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
@@ -45,28 +48,48 @@ const DUMMY_DATA = [
   //   ],
   // },
   {
-    heading: "HELP & SUPPORT",
+    heading: "SHEIN STYLE INFO",
     subLinks: [
-      { name: "FAQS", href: "faqs" },
-      { name: "Happy Customers", href: "happy-customers" },
-      { name: "Brand Feedback", href: "brand-feedback" },
-      { name: "Track Order", href: "track-order" },
-      { name: "Size Guide", href: "size-guide" },
-      { name: "Loyalty Program", href: "loyality-program" },
-      { name: "Store Locations", href: "store-locations" },
+      { name: "About Us", href: "faqs" },
+      { name: "Store Locater", href: "happy-customers" },
+      { name: "Influencer Collab Hub", href: "brand-feedback" },
     ],
   },
   {
-    heading: "OUR SERVICE",
+    heading: "HELP & SUPPORT",
     subLinks: [
-      { name: "Return and Exchange", href: "return-and-exchange" },
-      { name: "Privacy Policy", href: "privacy-policy" },
-      { name: "Terms & Conditions", href: "terms-and-conditions" },
-      { name: "Shipping Terms", href: "shipping-terms" },
-      { name: "Cookies Policy", href: "cookies-policy" },
-      { name: "Accessibility", href: "accessbility" },
+      { name: "FAQ's", href: "faqs" },
+      { name: "Size Guide", href: "size-guide" },
+      { name: "Track your Order", href: "track-order" },
+      { name: "Join SHEINXY Points", href: "happy-customers" },
+      { name: "Refer and Earn", href: "loyality-program" },
+      { name: "Site Map", href: "store-locations" },
+      // { name: "Happy Customers", href: "happy-customers" },
+      // { name: "Brand Feedback", href: "brand-feedback" },
+      // { name: "Loyalty Program", href: "loyality-program" },
+      // { name: "Store Locations", href: "store-locations" },
     ],
   },
+  {
+    heading: "OUR POLICIES",
+    subLinks: [
+      { name: "Shipping Policy", href: "shipping-terms" },
+      { name: "Return & Exchange", href: "return-and-exchange" },
+      { name: "Terms & Conditions", href: "terms-and-conditions" },
+      { name: "Privacy & Cookies Policy", href: "privacy-policy" },
+    ],
+  },
+  // {
+  //   heading: "OUR POLICIES",
+  //   subLinks: [
+  //     { name: "Return and Exchange", href: "return-and-exchange" },
+  //     { name: "Privacy Policy", href: "privacy-policy" },
+  //     { name: "Terms & Conditions", href: "terms-and-conditions" },
+  //     { name: "Shipping Terms", href: "shipping-terms" },
+  //     { name: "Cookies Policy", href: "cookies-policy" },
+  //     { name: "Accessibility", href: "accessbility" },
+  //   ],
+  // },
 ];
 
 const images = [
@@ -126,6 +149,10 @@ const Footer = () => {
       <div>
         <div className="flex lg:flex-row flex-col flex-col-reverse bg-black">
           <div className="lg:w-[100%]  w-[100%]  ">
+            <h3 className="w-[100%] sm:pt-10 pt-5 px-body relative font-bold md:text-xl text-base text-white ">
+              We are SHEIN Style Store
+              <div className="bg-primary   absolute bottom-[-12px] p-[1px] w-[55px] h-[2px]"></div>
+            </h3>
             <div className=" w-[100%] sm:pt-10 pt-5 px-body lg:flex sm:flex-row grid sm:grid-cols-2 grid-cols-1 flex-col xl:gap-x-5 gap-x-4 gap-y-4">
               {/* <div className="grid  lg:w-[65%] w-[100%] xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 xl:gap-x-5 gap-x-4 gap-y-4 sm:mb-[60px] mb-[40px]  "> */}
               {DUMMY_DATA.map((item: any, idx: number) => {
@@ -133,7 +160,7 @@ const Footer = () => {
                   <div className="lg:w-[20%]  flex flex-col gap-4   " key={idx}>
                     <h3 className=" relative font-bold md:text-xl text-base text-white ">
                       {item.heading}
-                      <div className="bg-primary   absolute bottom-[-12px] p-[1px] w-[55px] h-[2px]"></div>
+                      {/* <div className="bg-primary   absolute bottom-[-12px] p-[1px] w-[55px] h-[2px]"></div> */}
                     </h3>
                     <div className="flex flex-col gap-4 mt-4 cursor-pointer">
                       {item.subLinks.map((item: any, idx: number) => {
@@ -150,7 +177,7 @@ const Footer = () => {
                   </div>
                 );
               })}
-              <div className="lg:w-[30%]   flex flex-col gap-4    ">
+              {/* <div className="lg:w-[30%]   flex flex-col gap-4    ">
                 <h3 className=" relative font-bold md:text-xl text-base text-white ">
                   OUR OFFICE
                   <div className="bg-primary   absolute bottom-[-12px] p-[1px] w-[55px] h-[2px]"></div>
@@ -184,7 +211,7 @@ const Footer = () => {
                     </a>
                   )}
                 </div>
-              </div>
+              </div> */}
 
               <div className="lg:w-[30%]   bg-black  flex items-center   ">
                 <div className="  h-fit flex flex-col gap-6 sm:gap-8 lg:gap-8  ">
@@ -199,8 +226,8 @@ const Footer = () => {
                       />
                     </div>
                   </div>
-                  <div className="flex flex-col text-white  gap-6 sm:gap-8 lg:gap-16">
-                    <p className="  font-semibold  md:text-xl sm:text-xl text-3xl mx-5 lg:text-center sm:text-center">
+                  <div className="flex flex-col text-white  gap-6 sm:gap-8 lg:gap-10">
+                    <p className="  font-semibold sm:text-xl text-lg md:mx-5 lg:text-center sm:text-center">
                       Signup now & get 10 % discount your first order**{" "}
                     </p>
                     <div className="flex p-1 bg-white rounded-md w-[100%] mx-auto justify-between  email-container  items-center ">
@@ -240,7 +267,10 @@ const Footer = () => {
                     </div>
                     <div className="flex justify-center items-center md:text-2xl sm:text-xl text-lg font-semibold text-white mb-3">
                       <h2 className="mr-5">Customer Support</h2>
-                      <Link href={""} target="_blank">
+                      <Link
+                        href={storeData ? storeData?.externalContact?.link : ""}
+                        target="_blank"
+                      >
                         <div>
                           <Image
                             src={whatsappImg}
@@ -280,8 +310,12 @@ const Footer = () => {
                       })} */}
 
                       <Link
-                      className="px-3"
-                        href={storeData ? storeData?.facebookUrl : ""}
+                        className="px-3"
+                        href={
+                          storeData
+                            ? storeData?.facebookUrl
+                            : "https://www.facebook.com/ootdsheinindias/"
+                        }
                         target="_blank"
                       >
                         <div>
@@ -289,25 +323,104 @@ const Footer = () => {
                         </div>
                       </Link>
                       <Link
-                       className="px-3"
-                        href={storeData ? storeData?.instagramUrl : ""}
+                        className="px-3"
+                        href={
+                          storeData
+                            ? storeData?.instagramUrl
+                            : "https://www.instagram.com/ootdsheinindia?igsh=MTVzNnAyMjJ0aThpdw%3D%3D&utm_source=qr"
+                        }
                         target="_blank"
                       >
                         <div>
                           <Image src={instagram} alt="" />
                         </div>
                       </Link>
-                      <div className="cursor-pointer">
-                        <Image src={pinterest} alt="" />
-                      </div>
 
                       <Link
-                       className="px-3"
-                        href={storeData ? storeData?.twitterUrl : ""}
+                        className="px-3"
+                        href={
+                          "https://in.pinterest.com/OOTDSHEININDIA/?invite_code=5635d8fa76bd4165aeee9a226f64206f&sender=1097119296632599009"
+                        }
+                        target="_blank"
+                      >
+                        <div className="cursor-pointer">
+                          <Image src={pinterest} alt="" />
+                        </div>
+                      </Link>
+
+                      <Link
+                        className="px-3"
+                        href={
+                          storeData
+                            ? storeData?.twitterUrl
+                            : "https://twitter.com/OOTDSHEININDIA"
+                        }
                         target="_blank"
                       >
                         <div>
-                          <Image src={twitter} alt="" />
+                          <Image
+                            className="bg-white rounded-md"
+                            src={twitter}
+                            alt=""
+                            width={30}
+                            height={30}
+                          />
+                        </div>
+                      </Link>
+
+                      <Link
+                        className="px-3"
+                        href={
+                          storeData
+                            ? storeData?.youtubeUrl
+                            : "https://www.youtube.com/channel/UC-wwq3jrMDQ0mpz1LwCniNw"
+                        }
+                        target="_blank"
+                      >
+                        <div>
+                          <Image
+                            className=" bg-white rounded-md"
+                            src={youtube}
+                            alt=""
+                            width={30}
+                            height={30}
+                          />
+                        </div>
+                      </Link>
+
+                      <Link
+                        className="px-3"
+                        href={
+                          "https://www.snapchat.com/add/ootdsheinindias?share_id=-wTCfKde5nl&locale=en-GB"
+                        }
+                        target="_blank"
+                      >
+                        <div>
+                          <Image
+                            className="bg-white rounded-md"
+                            src={snapchat}
+                            alt=""
+                            width={30}
+                            height={30}
+                          />
+                        </div>
+                      </Link>
+
+                      <Link
+                        className="px-3"
+                        href={
+                          "https://www.quora.com/profile/OOTDSHEININDIA?ch=10&oid=2570461730&share=47998cb5&srid=3GaM2C&target_type=user"
+                        }
+                        target="_blank"
+                      >
+                        <div>
+                          <Image
+                            className="bg-[#b0271e] rounded-md"
+                            src={quora}
+                            alt=""
+                            width={30}
+                            height={30}
+                          />
                         </div>
                       </Link>
                     </div>
