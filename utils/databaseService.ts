@@ -908,6 +908,26 @@ export async function fetchPrivacyData() {
     }
 }
 
+export async function fetchAboutData() {
+    const docRef = doc(db, "pages", "about");
+    const docSnap = await getDoc(docRef);
+    // console.log(docSnap,"docSnap");
+
+    try {
+        if (docSnap.exists()) {
+            const data = docSnap.data()
+            //  console.log("privacydata" ,data);
+
+            return data
+        } else {
+            console.log("No such document!");
+            // return false
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export const fetchStorLocations = async () => {
     const res = await getDocs(collection(db, "branches")).then((snaoShot) => {
         if (snaoShot.docs.length === 0) return [];

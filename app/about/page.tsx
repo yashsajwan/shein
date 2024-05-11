@@ -1,9 +1,19 @@
 import React from 'react'
+import About from '../../components/ourService/About'
+import getQueryClient from '../../utils/getQueryClient';
+import { dehydrate } from '@tanstack/react-query';
+import Hydrate from '../../utils/hydrate.client';
+import { fetchAboutData } from '../../utils/databaseService';
 
-const AboutPage = () => {
+const AboutPage = async() => {
+  const queryClient = getQueryClient();
+  await queryClient.prefetchQuery(["about"], fetchAboutData);
+  const dehydratedState = dehydrate(queryClient);
   return (
-    <div>page</div>
+    <Hydrate state={dehydratedState}>
+      <About/>
+      </Hydrate>
   )
 }
 
-export default AboutPage
+export default AboutPage;
