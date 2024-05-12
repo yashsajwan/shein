@@ -61,7 +61,7 @@ const DUMMY_DATA = [
       { name: "FAQ's", href: "faqs" },
       { name: "Size Guide", href: "size-guide" },
       { name: "Track your Order", href: "track-order" },
-      { name: "Join SHEINXY Points", href: "happy-customers" },
+      { name: "Join SHEINXY Points", href: "bonus-points" },
       { name: "Refer and Earn", href: "loyality-program" },
       { name: "Site Map", href: "store-locations" },
       // { name: "Happy Customers", href: "happy-customers" },
