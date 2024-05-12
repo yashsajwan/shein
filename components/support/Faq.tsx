@@ -10,7 +10,7 @@ const Faq = () => {
   const [tab, setTab] = useState("1");
   return (
     <div className="px-body lg:my-5">
-      <div className="grid grid-cols-4">
+      <div className="flex flex-col md:grid md:grid-cols-4">
         <div className="flex flex-col">
           <button
             onClick={() => setTab("1")}
@@ -45,7 +45,7 @@ const Faq = () => {
             PAYMENTS RELATED
           </button>
         </div>
-        <div className=" grid col-span-3">
+        <div className=" md:grid md:col-span-3">
           {tab == "1" && (
             <>
               <Faq1 />

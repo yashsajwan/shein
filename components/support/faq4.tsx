@@ -7,7 +7,7 @@ const Faq4 = () => {
         <strong>1 What all payments methods accepted ?</strong>
       </p>
       <p>The payment options we support are:</p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>Credit Card</li>
         <li>Debit Card</li>
         <li>Net Banking</li>
@@ -29,7 +29,7 @@ const Faq4 = () => {
         In case there is a failure in payment, please retry and keep the
         following things in mind:
       </p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>
           Please confirm if the information you’ve provided is correct i.e.
           account details, billing address, and password (for Net Banking); and
@@ -49,7 +49,7 @@ const Faq4 = () => {
           do ?
         </strong>
       </p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>
           We ensure that an Order ID is confirmed only once our bank receives
           the payment from your bank. Sometimes, due to unforeseen reasons, the

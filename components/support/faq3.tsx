@@ -6,7 +6,7 @@ const Faq3 = () => {
       <p className="mt-2 mb-1">
         <strong> 1 How do i use SSS Points ?</strong>
       </p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>
           You can check how many SSS Points you have in your account once you
           login. Select My Account and click on ‘SSS Points’ from the list. You
@@ -41,7 +41,7 @@ const Faq3 = () => {
       <p className="mt-2 mb-1">
         <strong>2 What are the SSS Points ?</strong>
       </p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>
           Loyalty Points is our membership program where you earn the points on
           each purchase on offline store and at the online website. The rate of
@@ -53,7 +53,7 @@ const Faq3 = () => {
       <p className="mt-2 mb-1">
         <strong>3 What are the SSS Money ?</strong>
       </p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>
           Credit points are your account wallet balance amount which is the
           actual amount of the product when returned and refund claimed in
@@ -64,7 +64,7 @@ const Faq3 = () => {
       <p className="mt-2 mb-1">
         <strong>4 Do these points have an expiry?</strong>
       </p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>
           While the credit points do not have any expiry, the loyalty points
           come with an expiry which you can check from the My account page by
@@ -78,7 +78,7 @@ const Faq3 = () => {
       <p className="mt-2 mb-1">
         <strong>5 How can i use points or vouchers to make purchase?</strong>
       </p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>
           While placing the order, on your checkout page you’ll find the option
           to “Apply coupons “. There you can select any given coupon. On the
@@ -91,7 +91,7 @@ const Faq3 = () => {
       <p className="mt-2 mb-1">
         <strong>6 My voucher code is not working ? What should i do ?</strong>
       </p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>
           While placing the order, on your checkout page you’ll find the option
           to “Apply coupons “. There you can select any given coupon. On the

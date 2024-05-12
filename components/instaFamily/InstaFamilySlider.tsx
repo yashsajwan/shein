@@ -19,7 +19,7 @@ const InstaFamilySlider = () => {
     queryKey: ["instagram-section"],
     queryFn: () => fetchInstagramVideosData(),
   });
-  console.log(instagramData,"instagram-section");
+  console.log(instagramData, "instagram-section");
 
   const settings = {
     dots: false,
@@ -114,7 +114,10 @@ const InstaFamilySlider = () => {
                 <Image src={instagram} alt="" />
               </div> */}
               {/* <FlatIcon className="flaticon-instagram  sm:text-5xl text-3xl" /> */}
-              <h1 className="sm:text-3xl text-xl font-bold">
+              <h1 className="sm:text-3xl text-xl font-bold flex justify-center items-center">
+                <div className="sm:w-fit sm:h-full h-8 w-8 px-3 ">
+                  <Image src={instagram2} alt="" />
+                </div>
                 INSTAGRAM FAMILY
               </h1>
             </div>

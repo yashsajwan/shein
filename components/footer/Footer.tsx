@@ -310,7 +310,6 @@ const Footer = () => {
                       })} */}
 
                       <Link
-                        className="px-3"
                         href={
                           storeData
                             ? storeData?.facebookUrl
@@ -323,7 +322,6 @@ const Footer = () => {
                         </div>
                       </Link>
                       <Link
-                        className="px-3"
                         href={
                           storeData
                             ? storeData?.instagramUrl
@@ -337,7 +335,6 @@ const Footer = () => {
                       </Link>
 
                       <Link
-                        className="px-3"
                         href={
                           "https://in.pinterest.com/OOTDSHEININDIA/?invite_code=5635d8fa76bd4165aeee9a226f64206f&sender=1097119296632599009"
                         }
@@ -349,7 +346,6 @@ const Footer = () => {
                       </Link>
 
                       <Link
-                        className="px-3"
                         href={
                           storeData
                             ? storeData?.twitterUrl
@@ -369,7 +365,6 @@ const Footer = () => {
                       </Link>
 
                       <Link
-                        className="px-3"
                         href={
                           storeData
                             ? storeData?.youtubeUrl
@@ -389,7 +384,7 @@ const Footer = () => {
                       </Link>
 
                       <Link
-                        className="px-3"
+                        className=""
                         href={
                           "https://www.snapchat.com/add/ootdsheinindias?share_id=-wTCfKde5nl&locale=en-GB"
                         }
@@ -407,7 +402,6 @@ const Footer = () => {
                       </Link>
 
                       <Link
-                        className="px-3"
                         href={
                           "https://www.quora.com/profile/OOTDSHEININDIA?ch=10&oid=2570461730&share=47998cb5&srid=3GaM2C&target_type=user"
                         }

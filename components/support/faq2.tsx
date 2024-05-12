@@ -6,7 +6,7 @@ const Faq2 = () => {
       <p className="mt-2 mb-1">
         <strong> 1 What is your Exchange policy?</strong>
       </p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>
           You can apply for an exchange for your order within 7 days after an
           order has been delivered. We have a reverse pick up facility for most
@@ -52,7 +52,7 @@ const Faq2 = () => {
           be credited back?
         </strong>
       </p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>
           No. These are charges applicable each time an order is placed and are
           non-refundable.
@@ -64,7 +64,7 @@ const Faq2 = () => {
           3 My product has been picked up but I have not got my refund yet.
         </strong>
       </p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>
           If it has been 24-48 hours since the order has been picked by our
           courier partner and if the refund isn't reflecting as SSS money,
@@ -76,7 +76,7 @@ const Faq2 = () => {
       <p className="mt-2 mb-1">
         <strong>4 How do I create a exchange request?</strong>
       </p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>
           To initiate an exchange please go to My Account. Once your order is
           delivered you'll find a exchange button next to your order. Click the
@@ -94,7 +94,7 @@ const Faq2 = () => {
           up?
         </strong>
       </p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>
           Once we receive this request, someone from the courier partner's team
           will arrive at the address for a pickup within 3 business days. Please
@@ -106,7 +106,7 @@ const Faq2 = () => {
       <p className="mt-2 mb-1">
         <strong>6 When will I get my exchanged product delivered?</strong>
       </p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>
           Your exchange product will be shipped from our warehouse after the
           returned product has been picked from your end. Orders in India, once
@@ -120,7 +120,7 @@ const Faq2 = () => {
       <p className="mt-2 mb-1">
         <strong>7 Where should I self-ship the returns?</strong>
       </p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>
           In case your pincode is non-serviceable for a reverse pick up, you’ll
           have courier the product(s) to the following address:
@@ -214,7 +214,7 @@ const Faq2 = () => {
         satisfying, you can return it as long as the following conditions are
         met:
       </p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>
           Product is unused, unwashed and in original condition. You are welcome
           to try on a product but please take adequate measure to preserve its

@@ -6,7 +6,7 @@ const Faq1 = () => {
       <p className="mt-2 mb-1">
         <strong> 1 How do i know my orders is confirmed ?</strong>
       </p>
-      <ul>
+      <ul className="list-disc ml-5" >
         <li>
           Once you successfully place your order, you will receive a
           confirmation email & SMS/WhatsApp with details of your order and your
@@ -21,7 +21,7 @@ const Faq1 = () => {
       <p className="mt-2 mb-1">
         <strong>2 How i can check the status of my order?</strong>
       </p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>
           ‘My Orders' page would provide you with complete information of your
           order including the order status, payment status and tracking details.
@@ -31,7 +31,7 @@ const Faq1 = () => {
       <p className="mt-2 mb-1">
         <strong>3 Do you deliver in my location?</strong>
       </p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>
           ‘The delivery in your pincode and estimate time of delivery can be
           checked on our order page by entering the pincode in ‘Check Delivery
@@ -43,7 +43,7 @@ const Faq1 = () => {
       <p className="mt-2 mb-1">
         <strong>4 Can i add item after placing the order ?</strong>
       </p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>
           Unfortunately, once the order is placed, you won’t be able to add more
           items to it. You can place a new order for the items you missed out on
@@ -54,7 +54,7 @@ const Faq1 = () => {
       <p className="mt-2 mb-1">
         <strong>5 How long will it take for my order to reach me?</strong>
       </p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>
           Orders in India, once shipped, are typically delivered in 2-3 business
           days in metros, and 7- 10 business days for the rest of India.
@@ -66,7 +66,7 @@ const Faq1 = () => {
       <p className="mt-2 mb-1">
         <strong>6 How do I cancel my order?</strong>
       </p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>
           Tap on “My Orders” section under the main menu of your App/Website and
           then select the order you want to cancel. The 'Cancel' option will
@@ -81,7 +81,7 @@ const Faq1 = () => {
           7 Can i modify the address /Phone number for the delivery ?
         </strong>
       </p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>
           Sorry, that is not possible at the moment as the system would have
           already passed the mobile number and address to our warehouse to pack
@@ -94,7 +94,7 @@ const Faq1 = () => {
       <p className="mt-2 mb-1">
         <strong>8 Where can I view my past orders?</strong>
       </p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>
           You can view all your orders under MY ACCOUNT section of your SHEIN
           STYLE STORE account. Please note if you guest checkout while placing
@@ -108,7 +108,7 @@ const Faq1 = () => {
           9 What is the cancellation policy at SHEIN STYLE STORE ?
         </strong>
       </p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>
           Please note you can only cancel your order till it hasn’t been
           dispatched by us. Refund for Debit card/Credit Card, UPI and Net
@@ -123,7 +123,7 @@ const Faq1 = () => {
       <p className="mt-2 mb-1">
         <strong>10 How i can track my order?</strong>
       </p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>
           You can track your order once it has been dispatched from our
           warehouse. An email, SMS, and Whatsapp notification will be sent with
@@ -136,7 +136,7 @@ const Faq1 = () => {
       <p className="mt-2 mb-1">
         <strong>11 What is the estimated delivery time ?</strong>
       </p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>
           The delivery time varies from cities to cities. Typically it take 2 –
           3 days for all metros & Tier 1 cities. Tier 2 & 3 cities may take 7 to
@@ -149,7 +149,7 @@ const Faq1 = () => {
       <p className="mt-2 mb-1">
         <strong>12 What are the shipping charges i have to pay ?</strong>
       </p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>
           We offer free shipping within India on all products purchased on its
           website for all prepaid orders - (You have to pay shipping charges Rs
@@ -160,7 +160,7 @@ const Faq1 = () => {
       <p className="mt-2 mb-1">
         <strong>13 What are the shipping charges i have to pay ?</strong>
       </p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>
           We understand that you can’t wait at your delivery address all the
           time, and that is exactly why we will try to 3 attempt delivering your
@@ -173,7 +173,7 @@ const Faq1 = () => {
       <p className="mt-2 mb-1">
         <strong>14 Do you deliver internationally ?</strong>
       </p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>
           Yes, we do deliver internationally. We offer shipping to many
           countries around the world. Shipping rates and delivery times may vary
@@ -192,7 +192,7 @@ const Faq1 = () => {
           ,but i haven’t received any delivery. What should i do ?
         </strong>
       </p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>
           Sometimes, the delivery partner hands over the order to the neigh-bour
           or the entry security guard of your society in case you’re not
@@ -208,7 +208,7 @@ const Faq1 = () => {
           attached as it is a gift for someone. Is it possible?
         </strong>
       </p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>
           We have to leave the tags intact in case the person you’re gifting
           faces any issues and would like to return the product. We will blacken
@@ -223,7 +223,7 @@ const Faq1 = () => {
       <p className="mt-2 mb-1">
         <strong>17 How can I get my order delivered faster?</strong>
       </p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>
           Sorry, currently we do not have any service available to expedite the
           order delivery. In future, if we start offering such a service and
@@ -235,7 +235,7 @@ const Faq1 = () => {
       <p className="mt-2 mb-1">
         <strong>18 Why can’t I see the Cash On Delivery (COD) option?</strong>
       </p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>
           If the Cash On Delivery (COD) option is not showing, it’s because this
           facility is unavailable for your postal code. You can either pay by
@@ -249,7 +249,7 @@ const Faq1 = () => {
           19 Is there any additional charge for Cash On Delivery (COD) orders?
         </strong>
       </p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>
           Yes, we charge a flat fee of ₹99 for Cash On Delivery (COD) orders.
         </li>
@@ -258,7 +258,7 @@ const Faq1 = () => {
       <p className="mt-2 mb-1">
         <strong>20 Are there any additional shipping charges?</strong>
       </p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>
           SHEIN STYLE STORE provides FREE shipping for all orders above ₹2999 in
           India. A shipping charge of ₹99 is payable only on orders below ₹999.
@@ -269,7 +269,7 @@ const Faq1 = () => {
       <p className="mt-2 mb-1">
         <strong>21 What if my order is undelivered?</strong>
       </p>
-      <ul>
+      <ul className="list-disc ml-5">
         <li>
           For prepaid orders, if our courier partners are unable to deliver the
           product and they send it back to us, we will initiate a refund as SSS
