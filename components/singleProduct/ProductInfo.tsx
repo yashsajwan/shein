@@ -40,6 +40,9 @@ import Link from "next/link";
 import { CircularProgress } from "@mui/material";
 import { useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-toastify";
+
+import Slider from "react-slick";
+
 const features = [
   " 10 in stock",
   " Easy Return Policy",
@@ -198,6 +201,82 @@ const ProductInfo = ({ params }: any) => {
   }
 
   const [selectedTab, setSelectedTab] = useState("description");
+
+  const similarProductData = [
+    "Free Standard Shipping On Orders Over Rs.5040",
+    "Free Express Shipping On Orders Rs.13330",
+  ];
+
+  const slider = useRef<any>(null);
+
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    arrows: true,
+    slidesToShow: 1.5,
+    slidesToScroll: 1.5,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1242,
+        settings: {
+          slidesToShow: 1.5,
+          slidesToScroll: 1.5,
+          infinite: false,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 1515,
+        settings: {
+          slidesToShow: 1.5,
+          slidesToScroll: 1.5,
+          infinite: false,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 1.5,
+          slidesToScroll: 1.5,
+          infinite: false,
+          dots: false,
+          arrows: false,
+        },
+      },
+      {
+        breakpoint: 833,
+        settings: {
+          slidesToShow: 1.5,
+          slidesToScroll: 1.5,
+          initialSlide: 1,
+          dots: false,
+          arrows: false,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1.5,
+          slidesToScroll: 1.5,
+          initialSlide: 1,
+          dots: false,
+          arrows: false,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1.5,
+          slidesToScroll: 1.5,
+          dots: false,
+          arrows: false,
+        },
+      },
+    ],
+  };
 
   return (
     <>
@@ -717,6 +796,80 @@ const ProductInfo = ({ params }: any) => {
                       dangerouslySetInnerHTML={{ __html: product?.prodDesc }}
                       className="sm:text-sm text-xs  mb-7 mt-4" />
                   </div> */}
+
+                  <Disclosure>
+                    {({ open }) => (
+                      <>
+                        <Disclosure.Button
+                          className={`flex border-t border-b border-[#CCCCCC] py-4 items-center sm:text-base font-medium text-xs  justify-between text-gray-400 ${
+                            open ? "font-semibold" : ""
+                          } `}
+                        >
+                          <h2 className="font-medium sm:text-base  text-sm ">
+                            Return Policy
+                          </h2>
+                          <FlatIcon
+                            icon={"flaticon-plus text-[#999999] text-xs"}
+                          />
+                        </Disclosure.Button>
+                        <Disclosure.Panel className="  pt-0 pb-2 text-base text-gray-500">
+                          <div className="bg-[#f7f7f7]">
+                            <div className="flex justify-between">
+                              <div className="text-black text-xl p-2">Shipping to India</div>
+                              <div className="flex">
+                                <div className="p-2">
+                                  <button
+                                    onClick={() => slider.current?.slickPrev()}
+                                  >
+                                    <FlatIcon className="flaticon-left-arrow text-black sm:text-xl text-lg font-bold" />
+                                  </button>
+                                </div>
+                                <div className="p-2">
+                                  <button
+                                    onClick={() => slider.current?.slickNext()}
+                                  >
+                                    <FlatIcon className="flaticon-left-arrow -rotate-180 text-black sm:text-xl text-lg font-bold" />
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                            <Slider
+                              ref={slider}
+                              {...settings}
+                              className=""
+                              dotsClass={`slick-dots `}
+                              nextArrow={<></>}
+                              prevArrow={<></>}
+                              draggable={true}
+                            >
+                              {similarProductData &&
+                                similarProductData.length > 0 &&
+                                similarProductData.map(
+                                  (item: any, idx: number) => {
+                                    return <div key={idx} className=" p-2 m-2  ">
+                                      <div className="m-2 bg-white p-2">
+                                      {item}
+                                      </div>
+                                    </div>;
+                                  }
+                                )}
+                            </Slider>
+
+                            <div>
+                              <div className="text-black text-xl p-2">14 Days Return</div>
+                              <div className="p-2">
+                                Items Can Be Returned To Us In 14 Days.The
+                                Following Items Cannot Be Returned Or Exchanged:
+                                Beauty, Bodysuits, Lingerie, Swimwear,
+                                Jewelry,Mask And Accessories.
+                              </div>
+                            </div>
+                          </div>
+                        </Disclosure.Panel>
+                      </>
+                    )}
+                  </Disclosure>
+
                   <Disclosure>
                     {({ open }) => (
                       <>
