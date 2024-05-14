@@ -21,7 +21,7 @@ import whatsappImg from "../../images/whatsapp.svg";
 import instagram from "../../images/instagram (3) 1.svg";
 import pinterest from "../../images/pinterest (1) 1.svg";
 import twitter from "../../images/twitter.svg";
-import youtube from "../../images/youtube.svg";
+import youtube from "../../images/yt.png";
 import snapchat from "../../images/snapchat.svg";
 import quora from "../../images/quora.svg";
 import { getStoreDetails } from "../../utils/databaseService";
@@ -372,9 +372,9 @@ const Footer = () => {
                         }
                         target="_blank"
                       >
-                        <div>
+                        <div className="bg-[#ff0000] rounded-md">
                           <Image
-                            className=" bg-white rounded-md"
+                            className="rounded-md  p-0 w-8 h-8"
                             src={youtube}
                             alt=""
                             width={30}

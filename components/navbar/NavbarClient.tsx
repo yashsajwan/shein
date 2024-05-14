@@ -519,7 +519,7 @@ const NavbarClient = ({ cookie }: any) => {
                               leaveFrom="transform opacity-100 scale-100"
                               leaveTo="transform opacity-0 scale-95"
                             >
-                              <div className="z-50 absolute right-0 mt-2 top-full w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                              <div className="z-50 absolute  mt-2 top-full w-56  divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                                 <div className="px-1 py-1">
                                   <Link href={"/profilepage"} className="">
                                     <button className="group flex w-full items-center rounded-md px-2 py-2 text-sm  hover:text-primary  hover:bg-[#F2F7FF]">
