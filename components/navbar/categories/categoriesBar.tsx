@@ -32,12 +32,12 @@ const CategoriesBar: FC<Props> = ({
   return (
     <div className="absolute left-0 w-[98.75vw]  right-0  flex justify-center rounded-b-lg min-w-[100%]  mx-auto   z-30 ">
       <div
-        className="flex justify-center gap-x-12 px-[4%] w-[100%]  bg-white z-30  shadow-lg rounded-b-lg "
+        className={`flex justify-center px-[4%] w-[100%]  bg-white z-30  shadow-lg rounded-b-lg xl:gap-x-8 ${categories[hoveredCategory]?.subcategories?.length > 4 ? "gap-x-1" : " gap-x-4 "}`}
         onMouseLeave={() => {
           setHoveredCategory(null);
         }}
       >
-        <div className=" py-4 rounded-bl-lg  max-h-[400px] flex flex-row gap-12  ">
+        <div className={` py-4 rounded-bl-lg  max-h-[400px] flex flex-row ${categories[hoveredCategory]?.subcategories?.length > 4 ? "gap-1" : "gap-8"} ` }>
           {categories[hoveredCategory]?.subcategories?.map((subCat) => {
             return (
               <div className="flex flex-col ">
@@ -54,7 +54,7 @@ const CategoriesBar: FC<Props> = ({
                   <div
                     className={` w-auto flex items-center justify-between px-2 gap-6   hover:bg-white`}
                   >
-                    <h2 className="whitespace-nowrap font-semibold text-lg hover:text-primary">
+                    <h2 className="whitespace-nowrap font-semibold text-md hover:text-primary">
                       {subCat?.name}
                     </h2>
                   </div>
@@ -76,7 +76,7 @@ const CategoriesBar: FC<Props> = ({
                         <div
                           className={`mt-1 w-auto flex items-center justify-between px-2   hover:bg-white`}
                         >
-                          <h2 className="whitespace-nowrap text-sm hover:text-primary">
+                          <h2 className="whitespace-nowrap text-xs xl:text-sm hover:text-primary">
                             {subSubCat?.name}
                           </h2>
                         </div>
@@ -91,15 +91,15 @@ const CategoriesBar: FC<Props> = ({
         {categories[hoveredCategory]?.category?.banner &&
           categories[hoveredCategory]?.category?.banner?.url && (
             // <div className="bg-yellow-400  w-[25%] max-h-[400px] rounded-br-lg flex flex-col items-center justify-center p-8 mr-6  ">
-              <div className=" h-[350px] w-[350px]  flex items-center justify-center object-contain my-4">
-                <Image
-                  src={categories[hoveredCategory]?.category?.banner?.url}
-                  alt={categories[hoveredCategory]?.category?.name}
-                  width={500}
-                  height={500}
-                  className="w-[100%] h-[100%] object-cover "
-                />
-              </div>
+            <div className={` h-[350px] w-[250px]  flex items-center justify-center object-contain my-4 xl:h-[350px] xl:w-[350px]` }>
+              <Image
+                src={categories[hoveredCategory]?.category?.banner?.url}
+                alt={categories[hoveredCategory]?.category?.name}
+                width={500}
+                height={500}
+                className="w-full h-full object-cover "
+              />
+            </div>
             // </div>
           )}
       </div>

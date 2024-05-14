@@ -158,7 +158,7 @@ const Footer = () => {
               {DUMMY_DATA.map((item: any, idx: number) => {
                 return (
                   <div className="lg:w-[20%]  flex flex-col gap-4   " key={idx}>
-                    <h3 className=" relative font-bold md:text-xl text-base text-white ">
+                    <h3 className=" relative font-bold md:text-sm text-base text-white ">
                       {item.heading}
                       {/* <div className="bg-primary   absolute bottom-[-12px] p-[1px] w-[55px] h-[2px]"></div> */}
                     </h3>
@@ -166,7 +166,7 @@ const Footer = () => {
                       {item.subLinks.map((item: any, idx: number) => {
                         return (
                           <Link key={idx} href={`${item.href}`}>
-                            <p className="text-sm text-[#858484] hover:text-white font-medium">
+                            <p className="text-md text-[#858484] hover:text-white font-medium">
                               {/* <p className="text-sm text-[#fff] font-medium"> */}
                               {item.name}
                             </p>
@@ -226,7 +226,7 @@ const Footer = () => {
                       />
                     </div>
                   </div>
-                  <div className="flex flex-col text-white  gap-6 sm:gap-8 lg:gap-10">
+                  <div className="flex flex-col text-white  gap-6 sm:gap-8 lg:gap-8">
                     <p className="  font-semibold sm:text-xl text-lg md:mx-5 lg:text-center sm:text-center">
                       Signup now & get 10 % discount your first order**{" "}
                     </p>

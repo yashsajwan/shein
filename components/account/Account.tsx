@@ -5,6 +5,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import Image from "next/image";
 
 import { constant } from "../../utils/constants";
+import Link from "next/link";
 
 const Account = ({ cookie }) => {
   const { data: userData } = useQuery({
@@ -50,6 +51,19 @@ const Account = ({ cookie }) => {
           </div>
         </div>
       )}
+
+      <div className="w-full md:w-3/4 my-5">
+       <div className="flex justify-between items-center">
+       <div className="text-3xl">My Orders</div>
+       <Link href="">View All</Link>
+       </div>
+        <div className="flex justify-around my-5">
+          <div className="p-3 text-xl">Unpaid</div>
+          <div className="p-3 text-xl">Processing</div>
+          <div className="p-3 text-xl">Shipped</div>
+          <div className="p-3 text-xl">Review</div>
+        </div>
+      </div>
     </div>
   );
 };
