@@ -1,6 +1,10 @@
-import React from "react";
 import Image from "next/image";
 import banner from "../../images/points.png";
+import point1 from "../../images/point1.png";
+import point2 from '../../images/point2.png'
+import point3 from '../../images/point3.png'
+import point4 from '../../images/point4.png'
+import point5 from '../../images/point5.png'
 
 const BonusPoints = async () => {
   return (
@@ -9,7 +13,7 @@ const BonusPoints = async () => {
       <div className="bg-[#fea4f9] text-[#eb079d]">
         <div className="mx-body bg-white rounded-2xl py-5 px-10">
           <p className="p-2">
-            <strong className=" text-3xl" >1.What's the points?</strong>
+            <strong className=" text-3xl">1.What's the points?</strong>
           </p>
           <p className="p-2">
             Points are a kind of virtual currency on the SHEIN STYLE STORE
@@ -31,87 +35,130 @@ const BonusPoints = async () => {
               expired before being used, they will be deleted from your account.
             </p>
           </p>
-          <p className="p-2">
-            <strong className="  text-3xl">How to earn the points ?</strong>
-          </p>
-          <p className="p-2">
-            <p className="p-2">
-              <strong className=" text-xl">Register with SHEIN STYLE STORE</strong>
-            </p>
-            <p className="p-2">New User complete the registration will receive 100 points.</p>
+        </div>
+
+        <div className="mx-body bg-white rounded-2xl py-5 px-10 mt-10">
+          <p className="p-2 flex justify-center items-center">
+            <strong className="  text-3xl ">How to earn the points ?</strong>
           </p>
 
-          <p className="p-2">
-            <p className="p-2">
-              <strong className=" text-xl">Verify your email</strong>
-            </p>
-            <p className="p-2">
-              You may verify your email on your profile page to receive 100
-              points.
-            </p>
-          </p>
+          <div className="p-2 flex">
+            <div>
+              <Image alt="" src={point1} height={100} width={100} className="h-auto w-28"></Image>
+            </div>
+            <div className="w-full">
+              <p className="p-2">
+                <strong className=" text-xl">
+                  Register with SHEIN STYLE STORE
+                </strong>
+              </p>
+              <p className="p-2">
+                New User complete the registration will receive 100 points.
+              </p>
+            </div>
+          </div>
 
-          <p className="p-2">
-            <p className="p-2">
-              <strong className=" text-xl">Buy and earn</strong>
-            </p>
-            <p className="p-2">You’ll earn 1 point for every Rs. spent on your purchase.</p>
-            <p className="p-2">
-              1.Points will be credited to your account once you confirm
-              delivery of your order.
-            </p>
-            <p className="p-2">2.Log into your SHEIN STYLE STORE account</p>
-            <p className="p-2">3.Click on "My Orders"</p>
-            <p className="p-2">
-              4.Select orders you have received and click on "Confirm order "
-            </p>
-          </p>
+          <div className="p-2 flex">
+            <div>
+              <Image alt="" src={point2} height={100} width={100} className="h-auto w-28"></Image>
+            </div>
+            <div className="w-full">
+              <p className="p-2">
+                <strong className=" text-xl">Verify your email</strong>
+              </p>
+              <p className="p-2">
+                You may verify your email on your profile page to receive 100
+                points.
+              </p>
+            </div>
+          </div>
 
-          <p className="p-2">
-            <strong className=" text-xl">
-              Follow us on social media (Instagram , Facebook , YouTube ,
-              Snapchat , Printrest)
-            </strong>
-          </p>
-          <p className="p-2">
-            You may follow us on Social media you will receive the 1000 points
-          </p>
+          <div className="p-2 flex">
+            <div>
+              <Image alt="" src={point3} height={100} width={100} className="h-auto w-28" />
+            </div>
+            <div className="w-full">
+              <p className="p-2">
+                <strong className=" text-xl">Buy and earn</strong>
+              </p>
+              <p className="p-2">
+                You’ll earn 1 point for every Rs. spent on your purchase.
+              </p>
+              <p className="p-2">
+                1.Points will be credited to your account once you confirm
+                delivery of your order.
+              </p>
+              <p className="p-2">2.Log into your SHEIN STYLE STORE account</p>
+              <p className="p-2">3.Click on "My Orders"</p>
+              <p className="p-2">
+                4.Select orders you have received and click on "Confirm order "
+              </p>
+            </div>
+          </div>
 
-          <p className="p-2">
-            <strong className=" text-xl">Refer a Friend</strong>
-          </p>
-          <p className="p-2">
-            1. If customers want to earn mentioned Points Reward, the referred
-            person must be a new customer.
-          </p>
-          <p className="p-2">
-            2. Complete registration on https://www.sheinindias.com by referral
-            link ,referring customers will earn 500 points, and your friend will
-            get 500 points.
-          </p>
-          <p className="p-2">
-            3. Complete registration in APP with the referral invitation code,
-            referring customers will earn 500 points, and your friend will get
-            1000 points.
-          </p>
-          <p className="p-2">
-            <strong className=" text-xl">About returning SHEINXY GIRL points</strong>
-          </p>
-          <p className="p-2">
-            1. If an unpaid order is cancelled, the points applied to the
-            original order will be immediately returned to your points account.
-          </p>
-          <p className="p-2">
-            2. If you request a return/a full refund for a product, the points
-            for returned item will reverted to your account along with your
-            refund. If it's a partial return, points will be returned based on a
-            percentage of the product's price.
-          </p>
-          <p className="p-2">
-            3. The validity period of the points is calculated from the date
-            when the points are first obtained, and will not be re-timed due to
-            the points being returned.
-          </p>
+          <div className="p-2 flex">
+            <div>
+              <Image alt="" src={point4} height={100} width={100} className="h-auto w-28"/>
+            </div>
+            <div className="w-full">
+              <p className="p-2">
+                <strong className=" text-xl">
+                  Follow us on social media (Instagram , Facebook , YouTube ,
+                  Snapchat , Printrest)
+                </strong>
+              </p>
+              <p className="p-2">
+                You may follow us on Social media you will receive the 1000
+                points
+              </p>
+            </div>
+          </div>
+
+          <div className="p-2 flex">
+            <div className="">
+              <Image alt="" src={point5} height={100} width={100} className="h-auto w-28"/>
+            </div>
+            <div className="w-full">
+              <p className="p-2">
+                <strong className=" text-xl">Refer a Friend</strong>
+              </p>
+              <p className="p-2">
+                1. If customers want to earn mentioned Points Reward, the
+                referred person must be a new customer.
+              </p>
+              <p className="p-2">
+                2. Complete registration on https://www.sheinindias.com by
+                referral link ,referring customers will earn 500 points, and
+                your friend will get 500 points.
+              </p>
+              <p className="p-2">
+                3. Complete registration in APP with the referral invitation
+                code, referring customers will earn 500 points, and your friend
+                will get 1000 points.
+              </p>
+              <p className="p-2">
+                <strong className=" text-xl">
+                  About returning SHEINXY GIRL points
+                </strong>
+              </p>
+              <p className="p-2">
+                1. If an unpaid order is cancelled, the points applied to the
+                original order will be immediately returned to your points
+                account.
+              </p>
+              <p className="p-2">
+                2. If you request a return/a full refund for a product, the
+                points for returned item will reverted to your account along
+                with your refund. If it's a partial return, points will be
+                returned based on a percentage of the product's price.
+              </p>
+              <p className="p-2">
+                3. The validity period of the points is calculated from the date
+                when the points are first obtained, and will not be re-timed due
+                to the points being returned.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </>
