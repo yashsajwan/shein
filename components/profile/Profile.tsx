@@ -14,11 +14,18 @@ import EditProfile from "./EditProfile";
 import OrderPage from "../orderPage/OrderPage";
 import HelpAndSupport from "../helpAndSupport/HelpAndSupport";
 import Addresses from "../addresses/Addresses";
-import Account from '../account/Account';
+import Account from "../account/Account";
 import OrderDetailsPage from "../orderPage/OrderDetailsPage";
 import Points from "./Points";
 
 const Profile = ({ cookie }) => {
+  useEffect(() => {
+    const tab_number = JSON.parse(localStorage.getItem("tab"));
+    const tab = tab_number ? tab_number : 1;
+
+    setSelectedTab(tab);
+  }, []);
+
   const [isClient, setIsClient] = useState(false);
   const [selectedTab, setSelectedTab] = useState(1);
   const matches = useMediaQuery("(min-width:1024px)");
@@ -118,11 +125,11 @@ const Profile = ({ cookie }) => {
             />
           )}
           {selectedTab === 3 && <Addresses userId={userData?.id} />}
-          {selectedTab === 4 && <Points  cookie={cookie}/>}
+          {selectedTab === 4 && <Points cookie={cookie} />}
 
           {selectedTab === 5 && <HelpAndSupport />}
 
-          {selectedTab === 6 && <Account cookie={cookie}/>}
+          {selectedTab === 6 && <Account cookie={cookie} />}
         </div>
       </div>
     </div>

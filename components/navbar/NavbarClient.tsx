@@ -23,10 +23,22 @@ import { useAppSelector } from "../../redux/hooks";
 import SideMenuLogin from "../sideMenuLogin/SideMenuLogin";
 import { useRouter } from "next/navigation";
 import { signOut } from "firebase/auth";
-import { checkIfItemExistInCart, getProductIndexFromCart, getProductFromCart, checkIfPriceDiscounted, } from "../../utils/utilities";
+import {
+  checkIfItemExistInCart,
+  getProductIndexFromCart,
+  getProductFromCart,
+  checkIfPriceDiscounted,
+} from "../../utils/utilities";
 import { updateCartItemQuantity } from "../../redux/slices/cartSlice";
-import { addToCart, getCartObj, getPriceListCartObj } from "../../redux/slices/cartSlice";
-import { closeLoginModal, openLoginModal, } from "../../redux/slices/loginModalSlice";
+import {
+  addToCart,
+  getCartObj,
+  getPriceListCartObj,
+} from "../../redux/slices/cartSlice";
+import {
+  closeLoginModal,
+  openLoginModal,
+} from "../../redux/slices/loginModalSlice";
 import { constant } from "../../utils/constants";
 import OutsideClickHandler from "../../utils/OutsideClickHandler";
 import PopUp from "../popUp/PopUp";
@@ -37,9 +49,8 @@ import { IoIosHeartEmpty } from "react-icons/io";
 import NewNavMobile from "../navMobile/NewNavMobile";
 import { useScrollDirection } from "../../utils/useScroll";
 
-
 const NavbarClient = ({ cookie }: any) => {
-  const cookies = { value: getCookie("uid") };;
+  const cookies = { value: getCookie("uid") };
   const cart = useAppSelector((state) => state.cartReducer.cart);
   const isLoginOpen = useAppSelector(
     (state: any) => state.loginReducer.isLoginOpen
@@ -141,15 +152,15 @@ const NavbarClient = ({ cookie }: any) => {
     };
     const cartObject = product?.isPriceList
       ? getPriceListCartObj({
-        product: product,
-        quantity: 1,
-        index: data.index,
-      })
+          product: product,
+          quantity: 1,
+          index: data.index,
+        })
       : getCartObj({
-        product: product,
-        productID: product?.id,
-        quantity: 1,
-      });
+          product: product,
+          productID: product?.id,
+          quantity: 1,
+        });
     if (auth.currentUser) {
       const docId = await addCartObjToUser(cartObject);
       cartObject["id"] = docId;
@@ -192,14 +203,16 @@ const NavbarClient = ({ cookie }: any) => {
           cookie={cookie}
           isClient={isClient}
           handleLogout={handleLogout}
-
         />
       ) : (
         <div className="">
-          {!isScrolled ?
+          {!isScrolled ? (
             <div className="bg-primary text-white py-2 text-sm font-semibold w-full px-body z-10  ">
               <div className="flex items-center   w-full  justify-between lg:gap-5  ">
-                <Link href={`/view-all?type=product-carousel&id=H6ZyHPlP74sOsbcsA8Cj&name=${encodeURIComponent("BESTSELLER")}`}
+                <Link
+                  href={`/view-all?type=product-carousel&id=H6ZyHPlP74sOsbcsA8Cj&name=${encodeURIComponent(
+                    "BESTSELLER"
+                  )}`}
                   className="flex justify-center items-center gap-2   w-full  xl:text-sm text-xs "
                 >
                   <p className=" text-base lg:text-lg text-secondary font-bold">
@@ -215,11 +228,12 @@ const NavbarClient = ({ cookie }: any) => {
                 </Link>
               </div>
             </div>
-            : <></>
-          }
+          ) : (
+            <></>
+          )}
           <div className="z-10  ">
             {/* nav header section  */}
-            {!isScrolled &&
+            {!isScrolled && (
               <div className="flex text-sm  font-semibold   bg-white  w-full px-body ">
                 <div className=" w-full   ">
                   <div className="  flex items-center w-full  justify-between   ">
@@ -227,7 +241,9 @@ const NavbarClient = ({ cookie }: any) => {
                       <div className=" relative w-full h-full flex items-center border border-[#999999] px-4 justify-between gap-3 search-container z-20 ">
                         <div>
                           <FlatIcon
-                            className={"flaticon-camera  text-xl text-[#999999]"}
+                            className={
+                              "flaticon-camera  text-xl text-[#999999]"
+                            }
                           />
                         </div>
                         <input
@@ -239,12 +255,13 @@ const NavbarClient = ({ cookie }: any) => {
                           className="py-3 px-4  w-full outline-none focus:border-none  bg-transparent "
                           onChange={(e) => {
                             setSearchQuery(e.target.value);
-
                           }}
                         />
                         <div>
                           <FlatIcon
-                            className={"flaticon-search  text-xl text-[#999999]"}
+                            className={
+                              "flaticon-search  text-xl text-[#999999]"
+                            }
                           />
                         </div>
                         {searchedProducts.length !== 0 &&
@@ -299,18 +316,22 @@ const NavbarClient = ({ cookie }: any) => {
                                                 discountedPrice:
                                                   prod?.discountedPrice,
                                               }) && (
-                                                  <h3 className="text-xs text-gray-500 font-medium line-through ">
-                                                    {constant.currency}{" "}
-                                                    {prod?.prodPrice}
-                                                  </h3>
-                                                )}
+                                                <h3 className="text-xs text-gray-500 font-medium line-through ">
+                                                  {constant.currency}{" "}
+                                                  {prod?.prodPrice}
+                                                </h3>
+                                              )}
                                             </div>
                                           </div>
                                         </div>
                                       </Link>
                                       <div className="w-[20%] flex justify-end z-30 ">
                                         {/* new start  */}
-                                        {checkIfItemExistInCart(cart, prod, 0) ? (
+                                        {checkIfItemExistInCart(
+                                          cart,
+                                          prod,
+                                          0
+                                        ) ? (
                                           <div
                                             className=" my-auto flex justify-center  items-center right-2 "
                                             onClick={(e) => {
@@ -391,7 +412,7 @@ const NavbarClient = ({ cookie }: any) => {
                                                     if (prod.isPriceList) {
                                                       if (
                                                         currQty +
-                                                        (prod?.minQty || 1) >
+                                                          (prod?.minQty || 1) >
                                                         parseFloat(
                                                           prod?.priceList[0]
                                                             ?.totalQuantity
@@ -402,23 +423,25 @@ const NavbarClient = ({ cookie }: any) => {
                                                         );
                                                       } else {
                                                         dispatch(
-                                                          updateCartItemQuantity({
-                                                            type: "inc",
-                                                            addedQty: addqty,
-                                                            // prod?.minQty ||
-                                                            // 1,
-                                                            index:
-                                                              getProductIndexFromCart(
-                                                                cart,
-                                                                prod
-                                                              ),
-                                                          })
+                                                          updateCartItemQuantity(
+                                                            {
+                                                              type: "inc",
+                                                              addedQty: addqty,
+                                                              // prod?.minQty ||
+                                                              // 1,
+                                                              index:
+                                                                getProductIndexFromCart(
+                                                                  cart,
+                                                                  prod
+                                                                ),
+                                                            }
+                                                          )
                                                         );
                                                       }
                                                     } else {
                                                       if (
                                                         currQty +
-                                                        (prod?.minQty || 1) >
+                                                          (prod?.minQty || 1) >
                                                         parseFloat(
                                                           prod?.productQty
                                                         )
@@ -428,17 +451,19 @@ const NavbarClient = ({ cookie }: any) => {
                                                         );
                                                       } else {
                                                         dispatch(
-                                                          updateCartItemQuantity({
-                                                            type: "inc",
-                                                            addedQty: addqty,
-                                                            // prod?.minQty ||
-                                                            // 1,
-                                                            index:
-                                                              getProductIndexFromCart(
-                                                                cart,
-                                                                prod
-                                                              ),
-                                                          })
+                                                          updateCartItemQuantity(
+                                                            {
+                                                              type: "inc",
+                                                              addedQty: addqty,
+                                                              // prod?.minQty ||
+                                                              // 1,
+                                                              index:
+                                                                getProductIndexFromCart(
+                                                                  cart,
+                                                                  prod
+                                                                ),
+                                                            }
+                                                          )
                                                         );
                                                         // setQuantity((val) => val + (product?.minQty || 1));
                                                       }
@@ -464,8 +489,6 @@ const NavbarClient = ({ cookie }: any) => {
                                             />
                                           </div>
                                         )}
-
-
                                       </div>
                                     </div>
                                     // </Link>
@@ -522,10 +545,29 @@ const NavbarClient = ({ cookie }: any) => {
                               <div className="z-50 absolute  mt-2 top-full w-56  divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                                 <div className="px-1 py-1">
                                   <Link href={"/profilepage"} className="">
-                                    <button className="group flex w-full items-center rounded-md px-2 py-2 text-sm  hover:text-primary  hover:bg-[#F2F7FF]">
+                                    <button onClick={() => localStorage.setItem("tab", JSON.stringify(1))} className="group flex w-full items-center rounded-md px-2 py-2 text-sm  hover:text-primary  hover:bg-[#F2F7FF]">
                                       Profile
                                     </button>
                                   </Link>
+
+                                  <Link href={"/profilepage"} className="">
+                                    <button onClick={() => localStorage.setItem("tab", JSON.stringify(6))} className="group flex w-full items-center rounded-md px-2 py-2 text-sm  hover:text-primary  hover:bg-[#F2F7FF]">
+                                      My Account
+                                    </button>
+                                  </Link>
+
+                                  <Link href={"/wishlist"} className="">
+                                    <button  className="group flex w-full items-center rounded-md px-2 py-2 text-sm  hover:text-primary  hover:bg-[#F2F7FF]">
+                                      My Wishlist
+                                    </button>
+                                  </Link>
+
+                                  <Link href={"/profilepage"} className="">
+                                    <button onClick={() => localStorage.setItem("tab", JSON.stringify(2))} className="group flex w-full items-center rounded-md px-2 py-2 text-sm  hover:text-primary  hover:bg-[#F2F7FF]">
+                                      My Order
+                                    </button>
+                                  </Link>
+
                                   <button
                                     onClick={handleLogout}
                                     className="group flex w-full items-center rounded-md px-2 py-2 text-sm  hover:text-primary  hover:bg-[#F2F7FF]"
@@ -569,7 +611,7 @@ const NavbarClient = ({ cookie }: any) => {
                   </div>
                 </div>
               </div>
-            }
+            )}
             <Categories />
           </div>
         </div>
@@ -586,13 +628,3 @@ const NavbarClient = ({ cookie }: any) => {
 };
 
 export default NavbarClient;
-
-
-
-
-
-
-
-
-
-
