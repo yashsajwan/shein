@@ -28,7 +28,7 @@
 //   console.log("hii");
 
 //   // console.log(homeData,"home data");
-  
+
 //   function SampleNextArrow(props) {
 //     const { className, style, onClick } = props;
 //     return <div className={`${className}`} onClick={onClick} />;
@@ -38,7 +38,7 @@
 //     const { className, style, onClick } = props;
 //     return <div className={`${className}`} onClick={onClick} />;
 //   }
-  
+
 //   return (
 //     <div className="relative">
 //       {homeData &&
@@ -178,8 +178,6 @@
 
 // export default BannerSlider;
 
-
-
 "use client";
 import React, { useRef } from "react";
 import { useQuery } from "@tanstack/react-query";
@@ -230,14 +228,14 @@ const BannerSlider = ({ section, myKey }) => {
         homeData?.data?.filter((val: any) => val?.id === section?.widgetID)[0]
           ?.arr?.length !== 0 && (
           <div className="w-full  relative  ">
-             <div className="">
+            {/* <div className="">
                 <button
                   className={`${arrowButtonClass} left-0 lg:-left-0 flex items-center justify-center`}
                   onClick={() => slider.current?.slickPrev()}
                 >
                   <FlatIcon className="flaticon-left-arrow text-white sm:text-xl text-lg font-bold"/>
                 </button>
-              </div>
+              </div> */}
             <Slider
               ref={slider}
               {...settings}
@@ -259,18 +257,18 @@ const BannerSlider = ({ section, myKey }) => {
                   ?.filter((val: any) => val?.id === section?.widgetID)[0]
                   ?.arr?.map((banner: any, idx: any) => (
                     <Link
-                    target="_blank"
-                    href={`${bannerLink(banner)}`}
-                    onClick={(e) => {
-                      if (
-                        !bannerLink(banner) ||
-                        bannerLink(banner)?.includes("undefined")
-                      ) {
-                        // console.log("inside preventDefault");
-                        
-                        e.preventDefault();
-                      }
-                    }}
+                      target="_blank"
+                      href={`${bannerLink(banner)}`}
+                      onClick={(e) => {
+                        if (
+                          !bannerLink(banner) ||
+                          bannerLink(banner)?.includes("undefined")
+                        ) {
+                          // console.log("inside preventDefault");
+
+                          e.preventDefault();
+                        }
+                      }}
                       className="sm:h-auto h-[235px] w-full  "
                       key={idx + 100}
                       // onClick={async () => {
@@ -294,14 +292,14 @@ const BannerSlider = ({ section, myKey }) => {
                     </Link>
                   ))}
             </Slider>
-            <div className="">
+            {/* <div className="">
                 <button
                   className={`${arrowButtonClass} right-0 lg:-right-0 text-center flex items-center justify-center   `}
                   onClick={() => slider.current?.slickNext()}
                 >
                   <FlatIcon className="flaticon-left-arrow -rotate-180 text-white sm:text-xl text-lg font-bold"/>
                 </button>
-              </div>
+              </div> */}
           </div>
         )}
     </>
@@ -309,4 +307,3 @@ const BannerSlider = ({ section, myKey }) => {
   );
 };
 export default BannerSlider;
-

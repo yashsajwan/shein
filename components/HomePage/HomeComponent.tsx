@@ -74,23 +74,34 @@ const HomeComponent = ({ cookie }) => {
         return <WatchShopSlider />;
       case "instagram-family":
         return <InstaFamilySlider />;
-        case "playStore":
-          return <StoreLinks/>;
+      case "playStore":
+        return <StoreLinks />;
       default:
     }
   }
 
   return (
     <div className="w-full">
-      <div className="w-full flex flex-col gap-10 lg:gap-16 mb-4">
+      <div className="w-full flex flex-col gap-10 lg:gap-16 ">
         {homeData &&
           homeData?.homeSections?.sections?.map((section: any, idx: any) => {
-            // console.log(section,"section");
+            // console.log(section,"section", "idx" , idx);
+
             if (section?.location == "all" || section?.location === "web") {
-              return renderWidgets(section, idx);
+              return (
+                <div
+                  className={`   ${
+                    section?.widgetType == "image-banner" && idx == 1
+                      ? "my-[-2.5rem]"
+                      : ""
+                  }`}
+                >
+                  {renderWidgets(section, idx)}
+                </div>
+              );
             }
           })}
-          {/* <StoreLinks/> */}
+        {/* <StoreLinks/> */}
       </div>
     </div>
   );
