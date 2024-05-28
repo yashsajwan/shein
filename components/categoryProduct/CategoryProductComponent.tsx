@@ -126,7 +126,7 @@ const CategoryProductComponent = ({ params, queryKey = [] }: any) => {
               <h2 className="font-semibold md:text-xl text-base">No Products Found !</h2>
             </div>
           ) :
-            (<div className="w-full  grid-cols-2 sm:grid-cols-3 md:grid-cols-2 xl:grid-cols-3 grid sm:gap-y-8 gap-y-4  md:mb-10   ">
+            (<div className="w-full  grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 grid sm:gap-y-8 gap-y-4  md:mb-10   ">
               {categoryProducts &&
                 filteredProducts.map((product: any) => {
                   return <ProductCard product={product} key={product?.id} />;

@@ -312,18 +312,18 @@ const ProductInfo = ({ params }: any) => {
                 })}
               </div>
               <div className="flex md:flex-row flex-col w-full sm:gap-8 md:gap-12 lg:gap-16 gap-6 ">
-                <div className=" h-fit lg:w-[50%] w-[100%] flex lg:flex-col sm:flex-row flex-col sm:gap-7 gap-7  justify-center">
+                <div className=" h-fit lg:w-[40%] w-[100%] flex lg:flex-col sm:flex-row flex-col sm:gap-7 gap-7  justify-center">
                   <div className=" md:w-[100%]  sm:w-[50%] w-[100%] lg:h-[595px] md:h-[400px] sm:h-[300px] h-auto ">
                     <Image
                       src={tabImage}
                       alt={product?.prodName || ""}
                       width={1000}
                       height={1000}
-                      className="w-[100%]   object-fit lg:h-[595px] h-[300px] "
+                      className="w-full   object-cover lg:h-[595px] h-[300px] "
                     />
                   </div>
                 </div>
-                <div className="flex flex-col md:w-[50%] w-[100%]   ">
+                <div className="flex flex-col md:w-[60%] w-[100%]   ">
                   <div className="flex items-center  sm:mb-2 md:mb-3 mb-1">
                     <h2 className="md:text-xl text-lg   font-semibold  text-[#555555] ">
                       {product?.prodName}
