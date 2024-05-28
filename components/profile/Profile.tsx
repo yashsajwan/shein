@@ -17,6 +17,9 @@ import Addresses from "../addresses/Addresses";
 import Account from "../account/Account";
 import OrderDetailsPage from "../orderPage/OrderDetailsPage";
 import Points from "./Points";
+import ComingSoon from "./ComingSoon";
+import ChangeEmail from "./ChangeEmail";
+
 
 const Profile = ({ cookie }) => {
   useEffect(() => {
@@ -126,6 +129,20 @@ const Profile = ({ cookie }) => {
           )}
           {selectedTab === 3 && <Addresses userId={userData?.id} />}
           {selectedTab === 4 && <Points cookie={cookie} />}
+         
+          {selectedTab === 7 && <ChangeEmail />}  {/* Change Email */}
+          {selectedTab === 8 && <ComingSoon />}  {/* My coupons */}
+          {selectedTab === 9 && <ComingSoon />}  {/* wallet*/}
+
+          {selectedTab === 10 && <ComingSoon />}  {/* unpaid*/}
+          {selectedTab === 11 && <ComingSoon />}  {/* processing*/}
+          {selectedTab === 12 && <ComingSoon />}  {/* Shipped*/}
+          {selectedTab === 13 && <ComingSoon />}  {/* review*/}
+          {selectedTab === 14 && <ComingSoon />}  {/* cancelled*/}
+          {selectedTab === 15 && <ComingSoon />}  {/* returns*/}
+         
+
+
 
           {selectedTab === 5 && <HelpAndSupport />}
 

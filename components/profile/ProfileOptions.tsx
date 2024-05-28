@@ -20,6 +20,7 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { constant } from "../../utils/constants";
+import { Disclosure } from "@headlessui/react";
 
 const ProfileOptions = ({ cookie, setSelectedTab, selectedTab }) => {
   const queryClient = useQueryClient();
@@ -102,6 +103,29 @@ const ProfileOptions = ({ cookie, setSelectedTab, selectedTab }) => {
     // console.log(userData,"DATA AFTER RELOAD");
   }, []);
 
+  const my_account = [
+    { name: "My Profile", tab: 1 },
+    { name: "My Account", tab: 6 },
+    { name: "Addresses", tab: 3 },
+    { name: "Change Email", tab: 7 },
+  ];
+
+  const my_assets = [
+    { name: "Points", tab: 4 },
+    { name: "My Coupons", tab: 8 },
+    { name: "Wallet", tab: 9 },
+  ];
+
+  const my_orders = [
+    { name: "All", tab: 2 },
+    { name: "Unpaid", tab: 10 },
+    { name: "Processing", tab: 11 },
+    { name: "Shipped", tab: 12 },
+    { name: "Review", tab: 13 },
+    { name: "Cancelled", tab: 14 },
+    { name: "Returns", tab: 15 },
+  ];
+
   // const dummyDATA=[{icon:}]
   return (
     <>
@@ -150,7 +174,178 @@ const ProfileOptions = ({ cookie, setSelectedTab, selectedTab }) => {
           </h6>
         </div>
         {/* <Link href={"/profilePage"}> */}
-        <div
+
+        <div className="">
+          <Disclosure>
+            {({ open }) => (
+              <>
+                <Disclosure.Button
+                  onClick={() => setSelectedTab(1)}
+                  className={`flex border-b border-[#CCCCCC] items-center sm:text-base font-semibold text-xs justify-between w-full ${
+                    open ? "font-semibold" : ""
+                  } `}
+                >
+                  <div
+                    className={`flex gap-3 items-center border-b border-b-[#EEF0F5]  py-4 px-6 cursor-pointer  hover:text-primary ${
+                      selectedTab === 1 ||
+                      selectedTab === 6 ||
+                      selectedTab === 3 ||
+                      selectedTab === 7
+                        ? "text-primary"
+                        : "text-secondary"
+                    }`}
+                  >
+                    <div>
+                      <FlatIcon
+                        icon={
+                          "flaticon-user-fill  font-normal text-2xl hover:text-primary "
+                        }
+                      />
+                    </div>
+                    <h4 className=" font-semibold text-sm ">My Account</h4>
+                  </div>
+                  <FlatIcon
+                    className="mr-2"
+                    icon={"flaticon-plus text-[#999999] text-xs"}
+                  />
+                </Disclosure.Button>
+                <Disclosure.Panel className=" pt-0 pb-2 text-base text-gray-500 w-full">
+                  <ul className="list-disc">
+                    {my_account.map((ele, idx) => (
+                      <div
+                        key={idx}
+                        onClick={() => setSelectedTab(ele.tab)}
+                        className={`gap-3 py-2 px-6 hover:text-primary ${
+                          selectedTab === ele.tab
+                            ? "text-primary"
+                            : "text-gray-500"
+                        } cursor-pointer`}
+                      >
+                        {ele.name}
+                      </div>
+                    ))}
+                  </ul>
+                </Disclosure.Panel>
+              </>
+            )}
+          </Disclosure>
+        </div>
+
+        <div className="">
+          <Disclosure>
+            {({ open }) => (
+              <>
+                <Disclosure.Button
+                 onClick={() => setSelectedTab(4)}
+                  className={`flex border-b border-[#CCCCCC] items-center sm:text-base font-semibold text-xs justify-between w-full ${
+                    open ? "font-semibold" : ""
+                  } `}
+                >
+                  <div  
+                    className={`flex gap-3 items-center border-b border-b-[#EEF0F5]  py-4 px-6 cursor-pointer  hover:text-primary ${
+                      selectedTab === 4 ||
+                      selectedTab === 8 ||
+                      selectedTab === 9
+                        ? "text-primary"
+                        : "text-secondary"
+                    }`}
+                  >
+                    <div>
+                      <FlatIcon
+                        icon={
+                          "flaticon-location  font-normal text-2xl hover:text-primary "
+                        }
+                      />
+                    </div>
+                    <h4 className=" font-semibold text-sm ">My Assets</h4>
+                  </div>
+                  <FlatIcon
+                    className="mr-2"
+                    icon={"flaticon-plus text-[#999999] text-xs"}
+                  />
+                </Disclosure.Button>
+                <Disclosure.Panel className=" pt-0 pb-2 text-base text-gray-500 w-full">
+                  <ul className="list-disc">
+                    {my_assets.map((ele, idx) => (
+                      <div
+                        key={idx}
+                        onClick={() => setSelectedTab(ele.tab)}
+                        className={`gap-3 py-2 px-6 hover:text-primary ${
+                          selectedTab === ele.tab
+                            ? "text-primary"
+                            : "text-gray-500"
+                        } cursor-pointer`}
+                      >
+                        {ele.name}
+                      </div>
+                    ))}
+                  </ul>
+                </Disclosure.Panel>
+              </>
+            )}
+          </Disclosure>
+        </div>
+
+        <div className="">
+          <Disclosure>
+            {({ open }) => (
+              <>
+                <Disclosure.Button
+                 onClick={() => setSelectedTab(2)}
+                  className={`flex border-b border-[#CCCCCC] items-center sm:text-base font-semibold text-xs justify-between w-full ${
+                    open ? "font-semibold" : ""
+                  } `}
+                >
+                  <div
+                    className={`flex gap-3 items-center border-b border-b-[#EEF0F5]  py-4 px-6 cursor-pointer  hover:text-primary ${
+                      selectedTab === 2 ||
+                      selectedTab === 10 ||
+                      selectedTab === 11 ||
+                      selectedTab === 12 ||
+                      selectedTab === 13 ||
+                      selectedTab === 14 ||
+                      selectedTab === 15
+                        ? "text-primary"
+                        : "text-secondary"
+                    }`}
+                  >
+                    <div>
+                      <FlatIcon
+                        icon={
+                          "flaticon-bag  font-normal text-2xl hover:text-primary "
+                        }
+                      />
+                    </div>
+                    <h4 className=" font-semibold text-sm ">My Orders</h4>
+                  </div>
+                  <FlatIcon
+                    className="mr-2"
+                    icon={"flaticon-plus text-[#999999] text-xs"}
+                  />
+                </Disclosure.Button>
+                <Disclosure.Panel className=" pt-0 pb-2 text-base text-gray-500 w-full">
+                  <ul className="list-disc">
+                    {my_orders.map((ele, idx) => (
+                      <div
+                        key={idx}
+                        onClick={() => setSelectedTab(ele.tab)}
+                        className={`gap-3 py-2 px-6 hover:text-primary ${
+                          selectedTab === ele.tab
+                            ? "text-primary"
+                            : "text-gray-500"
+                        } cursor-pointer`}
+                      >
+                        {ele.name}
+                      </div>
+                    ))}
+                  </ul>
+                </Disclosure.Panel>
+              </>
+            )}
+          </Disclosure>
+        </div>
+
+        {/* <div
           onClick={() => setSelectedTab(1)}
           className={`flex gap-3 items-center border-t border-t-[#EEF0F5] border-b border-b-[#EEF0F5] py-4 px-6 hover:text-primary ${
             selectedTab === 1 ? "text-primary" : "text-secondary"
@@ -162,10 +357,9 @@ const ProfileOptions = ({ cookie, setSelectedTab, selectedTab }) => {
             />
           </div>
           <h4 className={` font-semibold text-sm `}>Profile Info</h4>
-        </div>
+        </div> */}
 
-
-        <div
+        {/* <div
           onClick={() => setSelectedTab(6)}
           className={`flex gap-3 items-center border-b border-b-[#EEF0F5]  py-4 px-6 cursor-pointer hover:text-primary  ${
             selectedTab === 6 ? "text-primary" : "text-secondary"
@@ -177,8 +371,7 @@ const ProfileOptions = ({ cookie, setSelectedTab, selectedTab }) => {
             />
           </div>
           <h4 className=" font-semibold text-sm ">My Account</h4>
-        </div>
-
+        </div> */}
 
         {/* </Link> */}
         <Link href={"/wishlist"}>
@@ -196,7 +389,7 @@ const ProfileOptions = ({ cookie, setSelectedTab, selectedTab }) => {
           </div>
         </Link>
         {/* <Link href={"/orders"}> */}
-        <div
+        {/* <div
           onClick={() => setSelectedTab(2)}
           className={`flex gap-3 items-center border-b border-b-[#EEF0F5]  py-4 px-6 cursor-pointer hover:text-primary  ${
             selectedTab === 2 ? "text-primary" : "text-secondary"
@@ -208,11 +401,10 @@ const ProfileOptions = ({ cookie, setSelectedTab, selectedTab }) => {
             />
           </div>
           <h4 className=" font-semibold text-sm ">My Order</h4>
-        </div>
-
+        </div> */}
 
         {/* </Link> */}
-        <div
+        {/* <div
           onClick={() => setSelectedTab(3)}
           className={`flex gap-3 items-center border-b border-b-[#EEF0F5]  py-4 px-6 cursor-pointer  hover:text-primary ${
             selectedTab === 3 ? "text-primary" : "text-secondary"
@@ -222,8 +414,8 @@ const ProfileOptions = ({ cookie, setSelectedTab, selectedTab }) => {
             <FlatIcon icon={"flaticon-location  font-normal text-2xl"} />
           </div>
           <h4 className=" font-semibold text-sm">Addresses</h4>
-        </div>
-        <div
+        </div> */}
+        {/* <div
           onClick={() => setSelectedTab(4)}
           className={`flex gap-3 items-center border-b border-b-[#EEF0F5]  py-4 px-6 cursor-pointer  hover:text-primary ${
             selectedTab === 4 ? "text-primary" : "text-secondary"
@@ -233,7 +425,7 @@ const ProfileOptions = ({ cookie, setSelectedTab, selectedTab }) => {
             <FlatIcon icon={"flaticon-location  font-normal text-2xl"} />
           </div>
           <h4 className=" font-semibold text-sm">Points</h4>
-        </div>
+        </div> */}
         {/* <div onClick={()=>setSelectedTab(4)} className='flex gap-3 items-center border-b border-b-[#EEF0F5]  py-4 px-6 cursor-pointer text-secondary hover:text-primary'>
           <div><FlatIcon icon={"flaticon-card  font-normal text-2xl"} /></div><h4 className=" font-semibold text-sm">Payment Method</h4>
         </div> */}
