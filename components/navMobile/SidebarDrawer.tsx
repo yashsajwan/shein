@@ -9,32 +9,33 @@ import { useState } from "react";
 import OutsideClickHandler from "../../utils/OutsideClickHandler";
 import { auth } from "../../config/firebase-config";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import { useQueryClient } from "@tanstack/react-query";
+import { signOut } from "firebase/auth";
 
-const browse = [
-  {
-    name: "My Account",
-    path: "/profilepage",
-  },
-];
+import { getUserData } from "../../utils/databaseService";
+import { getCookie } from "cookies-next";
 
 const social = [
   {
-    iconName:"flaticon-facebook",
+    iconName: "flaticon-facebook",
     name: "Facebook",
     key: "facebookUrl",
   },
   {
-    iconName:"flaticon-youtube",
+    iconName: "flaticon-youtube",
     name: "Youtube",
     key: "youtubeUrl",
   },
   {
-    iconName:"flaticon-instagram",
+    iconName: "flaticon-instagram",
     name: "Instagram",
     key: "instagramUrl",
   },
   {
-    iconName:"flaticon-twitter",
+    iconName: "flaticon-twitter",
     name: "Twitter",
     key: "twitterUrl",
   },
@@ -49,6 +50,59 @@ const social = [
 ];
 
 function SidebarDrawer(props) {
+  const browse2 = [
+    {
+      name: "Login",
+      path: "/profile",
+      tab: null,
+    },
+  ];
+  const browse = [
+    {
+      name: "Profile",
+      path: "/profilepage",
+      tab: 1,
+    },
+    {
+      name: "My Account",
+      path: "/profilepage",
+      tab: 6,
+    },
+    {
+      name: "Wishlist",
+      path: "/wishlist",
+      tab: null,
+    },
+    {
+      name: "My Orders",
+      path: "/profilepage",
+      tab: 2,
+    },
+    {
+      name: "Logout",
+      path: "/",
+      tab: null,
+    },
+  ];
+
+  async function handleLogout() {
+    signOut(auth)
+      .then(async () => {
+        toast.success("Logged out");
+        await axios.post(`${process.env.NEXT_PUBLIC_API_DOMAIN}/api/logout`);
+        // await axios.get(`/api/logout`);
+        await queryClient.invalidateQueries({ queryKey: ["userData"] });
+
+        // Sign-out successful.
+        router.replace("/");
+        await queryClient.refetchQueries({ queryKey: ["userData"] });
+      })
+      .catch((error) => {
+        // An error happened.
+        toast.error("cannot Logout at the moment");
+      });
+  }
+
   const { data: categories } = useQuery({
     queryKey: ["categories"],
     queryFn: () => fetchCategories(),
@@ -59,11 +113,21 @@ function SidebarDrawer(props) {
     keepPreviousData: true,
   });
   // console.log(storeData,"----------");
-  
+
+  const { data: userData } = useQuery({
+    queryKey: ["userData"],
+    queryFn: () => getUserData(cookies),
+  });
+
   const dispatch = useDispatch();
+  const router = useRouter();
+  const queryClient = useQueryClient();
   const [isShopByOpen, setIsShopByOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedSubCategory, setSelectedSubCategory] = useState(null);
+
+  const cookies = { value: getCookie("uid") };
+
   return (
     <div
       className={`h-[100vh]  w-[100vw] bg-[rgba(0,0,0,0.5)]  fixed top-0 left-0 z-30 ${
@@ -98,7 +162,7 @@ function SidebarDrawer(props) {
           <div
             className={`  bg-white overflow-y-auto h-full rounded-br-md  sm:w-[50%] w-[86%] absolute top-0 left-0  z-30  `}
           >
-            <div className="flex flex-col gap-2 relative " >
+            <div className="flex flex-col gap-2 relative ">
               <div className="flex flex-col gap-3 py-3">
                 {/* <div className="px-3 flex flex-col justify-start">
                   <div
@@ -347,9 +411,8 @@ function SidebarDrawer(props) {
                               <FlatIcon
                                 className={`flaticon-arrow-down text-sm font-bold text-black transition-all ease-in 
                                 ${
-                                  selectedCategory === category?.category?.id
-                                    && "rotate-180"
-                                   
+                                  selectedCategory === category?.category?.id &&
+                                  "rotate-180"
                                 }
                                 `}
                               />
@@ -409,9 +472,8 @@ function SidebarDrawer(props) {
                                       {subCat.isSubcategories && (
                                         <FlatIcon
                                           className={`flaticon-arrow-down text-sm font-bold text-black transition-all ease-in ${
-                                            selectedSubCategory === subCat?.id
-                                              && "rotate-180"
-                                             
+                                            selectedSubCategory ===
+                                              subCat?.id && "rotate-180"
                                           }`}
                                         />
                                       )}
@@ -449,7 +511,9 @@ function SidebarDrawer(props) {
                                                 className="flex justify-between w-full"
                                                 href={`/shop/category/${category?.category?.slug?.name}/${subCat?.slug?.name}/${subSubCat?.slug?.name}`}
                                               >
-                                                <p className="">{subSubCat?.name}</p>
+                                                <p className="">
+                                                  {subSubCat?.name}
+                                                </p>
                                                 {subSubCat.isSubcategories && (
                                                   <FlatIcon
                                                     className={`flaticon-arrow-down text-sm font-bold text-black transition-all ease-in`}
@@ -482,28 +546,58 @@ function SidebarDrawer(props) {
                 BROWSE
               </h1>
               <div className="flex flex-col gap-2 items-start mt-1">
-                {browse?.map((link) => {
-                  return (
-                    <Link
-                      href={link.path}
-                      key={link.name}
-                      onClick={(e) => {
-                        if (
-                          link?.path === "/profile" &&
-                          !auth.currentUser?.uid
-                        ) {
-                          e.preventDefault();
-                          props.setIsMobile(false);
-                          document.body.classList.remove("no-scroll");
-                          dispatch(openLoginModal());
-                          document.body.classList.add("no-scroll");
-                        }
-                      }}
-                    >
-                      {link.name}
-                    </Link>
-                  );
-                })}
+                {userData ? (
+                  <>
+                    {browse?.map((link, idx) => {
+                      return (
+                        <div
+                          key={idx}
+                          onClick={(e) => {
+                            if (link.name == "Logout") {
+                              handleLogout();
+                            } else {
+                              localStorage.setItem(
+                                "tab",
+                                JSON.stringify(link.tab)
+                              );
+                            }
+
+                            props.setIsMobile(false);
+                            document.body.classList.remove("no-scroll");
+
+                            router.push(link.path);
+                          }}
+                        >
+                          {link.name}
+                        </div>
+                      );
+                    })}
+                  </>
+                ) : (
+                  <>
+                    {browse2?.map((link, idx) => {
+                      return (
+                        <div
+                          key={idx}
+                          onClick={(e) => {
+                            if (
+                              link?.path === "/profile" &&
+                              !auth.currentUser?.uid
+                            ) {
+                              e.preventDefault();
+                              props.setIsMobile(false);
+                              document.body.classList.remove("no-scroll");
+                              dispatch(openLoginModal());
+                              document.body.classList.add("no-scroll");
+                            }
+                          }}
+                        >
+                          {link.name}
+                        </div>
+                      );
+                    })}
+                  </>
+                )}
               </div>
             </div>
             <div className="flex flex-col px-3 gap-2 items-start my-3">
@@ -535,10 +629,10 @@ function SidebarDrawer(props) {
                         key={media.key}
                         className="flex items-center gap-3"
                       >
-                        <FlatIcon className={`${media.iconName} text-2xl text-[#a9a9a9]`}/>
-                        <p>
-                        {media.name}
-                        </p>
+                        <FlatIcon
+                          className={`${media.iconName} text-2xl text-[#a9a9a9]`}
+                        />
+                        <p>{media.name}</p>
                       </Link>
                     );
                   } else {
@@ -555,5 +649,3 @@ function SidebarDrawer(props) {
 }
 
 export default SidebarDrawer;
-
-
