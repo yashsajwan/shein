@@ -216,14 +216,15 @@ const NavbarClient = ({ cookie }: any) => {
                   className="flex justify-center items-center gap-2   w-full  xl:text-sm text-xs "
                 >
                   <p className=" text-base lg:text-lg text-secondary font-bold">
-                    New Users Only{" "}
+                    {/* New Users Only{" "} */}
                   </p>
-                  <p className=" text-base lg:text-2xl font-bold">
-                    All India Free Delivery + 15% Extra Discount{" "}
+                  <p className=" text-base lg:text-2xl font-bold font-sans">
+                    Refer and Earn &#8377; 500 + Download the APP Get 10 % Off
+                    USE CODE - SHEINAPP10{" "}
                   </p>
                   <p className=" text-base lg:text-lg text-secondary font-bold">
                     {" "}
-                    Code: SHE15
+                    {/* Code: SHE15 */}
                   </p>
                 </Link>
               </div>
@@ -545,25 +546,49 @@ const NavbarClient = ({ cookie }: any) => {
                               <div className="z-50 absolute  mt-2 top-full w-56  divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                                 <div className="px-1 py-1">
                                   <Link href={"/profilepage"} className="">
-                                    <button onClick={() => localStorage.setItem("tab", JSON.stringify(1))} className="group flex w-full items-center rounded-md px-2 py-2 text-sm  hover:text-primary  hover:bg-[#F2F7FF]">
+                                    <button
+                                      onClick={() =>
+                                        localStorage.setItem(
+                                          "tab",
+                                          JSON.stringify(1)
+                                        )
+                                      }
+                                      className="group flex w-full items-center rounded-md px-2 py-2 text-sm  hover:text-primary  hover:bg-[#F2F7FF]"
+                                    >
                                       Profile
                                     </button>
                                   </Link>
 
                                   <Link href={"/profilepage"} className="">
-                                    <button onClick={() => localStorage.setItem("tab", JSON.stringify(6))} className="group flex w-full items-center rounded-md px-2 py-2 text-sm  hover:text-primary  hover:bg-[#F2F7FF]">
+                                    <button
+                                      onClick={() =>
+                                        localStorage.setItem(
+                                          "tab",
+                                          JSON.stringify(6)
+                                        )
+                                      }
+                                      className="group flex w-full items-center rounded-md px-2 py-2 text-sm  hover:text-primary  hover:bg-[#F2F7FF]"
+                                    >
                                       My Account
                                     </button>
                                   </Link>
 
                                   <Link href={"/wishlist"} className="">
-                                    <button  className="group flex w-full items-center rounded-md px-2 py-2 text-sm  hover:text-primary  hover:bg-[#F2F7FF]">
+                                    <button className="group flex w-full items-center rounded-md px-2 py-2 text-sm  hover:text-primary  hover:bg-[#F2F7FF]">
                                       My Wishlist
                                     </button>
                                   </Link>
 
                                   <Link href={"/profilepage"} className="">
-                                    <button onClick={() => localStorage.setItem("tab", JSON.stringify(2))} className="group flex w-full items-center rounded-md px-2 py-2 text-sm  hover:text-primary  hover:bg-[#F2F7FF]">
+                                    <button
+                                      onClick={() =>
+                                        localStorage.setItem(
+                                          "tab",
+                                          JSON.stringify(2)
+                                        )
+                                      }
+                                      className="group flex w-full items-center rounded-md px-2 py-2 text-sm  hover:text-primary  hover:bg-[#F2F7FF]"
+                                    >
                                       My Order
                                     </button>
                                   </Link>

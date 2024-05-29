@@ -22,7 +22,8 @@ import useOnScreen from "../../utils/visibleElement";
 import { PiShoppingCartLight } from "react-icons/pi";
 import { IoIosHeartEmpty } from "react-icons/io";
 
-const texts = ["New Users Only !", " All India Free Delivery + 15% Extra Discount", "Code : SHE15"];
+// const texts = ["New Users Only !", " All India Free Delivery + 15% Extra Discount", "Code : SHE15"];
+const texts = ["Refer and Earn ₹ 500", "Download the APP Get 10 % Off", "USE CODE - SHEINAPP10"];
 
 const NewNavMobile = ({ cookie, isClient, handleLogout, setShowLogin, closeLoginMenu, }: any) => {
   const ref = useRef<HTMLDivElement>(null);
