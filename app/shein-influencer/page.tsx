@@ -1,9 +1,9 @@
 import React from 'react'
-import BrandFeedback from '../../components/support/BrandFeedback'
+import SheinInfluencer from '../../components/support/SheinInfluencer'
 
 const BrandFeedbackPage = async() => {
   return (
-    <div><BrandFeedback/></div>
+    <div><SheinInfluencer/></div>
   )
 }
 

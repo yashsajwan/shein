@@ -50,9 +50,9 @@ const DUMMY_DATA = [
   {
     heading: "SHEIN STYLE INFO",
     subLinks: [
-      { name: "About Us", href: "about" },
-      { name: "Store Locater", href: "store-locator" },
-      { name: "Influencer Collab Hub", href: "brand-feedback" },
+      { name: "About Us", href: "/about" },
+      { name: "Store Locater", href: "/store-locator" },
+      { name: "Influencer Collab Hub", href: "/shein-influencer" },
     ],
   },
   {
