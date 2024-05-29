@@ -115,27 +115,19 @@ const InstaFamilySlider = () => {
               </div> */}
               {/* <FlatIcon className="flaticon-instagram  sm:text-5xl text-3xl" /> */}
               <h1 className="sm:text-3xl text-xl font-bold flex justify-center items-center">
-                <div className="sm:w-fit sm:h-full h-8 w-8 px-3 ">
+                {/* <div className="sm:w-fit sm:h-full h-8 w-8 px-3 ">
                   <Image src={instagram2} alt="" />
-                </div>
-                INSTAGRAM FAMILY
+                </div> */}
+                YOUR STYLE GALLERY
               </h1>
             </div>
-            <h5 className="text-center sm:text-xl sm font-semibold">
-              {/* Tag us @shienstylestores to get featured */}
+            {/* <h5 className="text-center sm:text-xl sm font-semibold">
+         
               Tag us @sheinstylestores and use #sheinstylestores to get
               feautured
-            </h5>
-            <div className="text-primary font-medium underline text-center cursor-pointer">
-              {/* <Link
-                    href={`/view-all?type=${section?.widgetType}&id=${section?.widgetID}&name=${encodeURIComponent(section?.sectionName)}`}
-                    className="text-primary font-medium underline"
-                  > */}
-              View All
-              {/* </Link> */}
-            </div>
+            </h5> */}
           </div>
-          <div className="  justify-center items-center    md:py-12 py-6">
+          <div className="  justify-center items-center    md:py-8 py-6">
             <div className="">
               <button
                 className={`${arrowButtonClass} left-0 lg:left-4 flex items-center justify-center`}
@@ -174,13 +166,36 @@ const InstaFamilySlider = () => {
               </button>
             </div>
           </div>
-          <div className="flex items-center sm:gap-3 gap-2 justify-center lg:text-2xl md:text-xl sm:text-base text-sm font-semibold ">
-            <h2>EXPLORE MORE ON</h2>
-            <div className="sm:w-fit sm:h-full h-8 w-8 ">
+          <div className="flex justify-center items-center gap-2 ">
+            {/* <div>
+                <Image src={instagram} alt="" />
+              </div> */}
+            {/* <FlatIcon className="flaticon-instagram  sm:text-5xl text-3xl" /> */}
+            <h1 className="sm:text-3xl text-xl font-bold flex justify-center items-center">
+              {/* <div className="sm:w-fit sm:h-full h-8 w-8 px-3 ">
+                  <Image src={instagram2} alt="" />
+                </div> */}
+              JOIN SHEINXY GANG
+            </h1>
+          </div>
+          <div className="my-3 flex items-center sm:gap-3 gap-2 justify-center lg:text-2xl md:text-xl sm:text-base text-sm font-semibold ">
+            <div className="sm:w-fit sm:h-full h-8 w-8  ">
               <Image src={instagram2} alt="" />
             </div>
             {/* <FlatIcon className="flaticon-instagram  sm:text-5xl text-3xl" /> */}
-            <h2>@sheinstylestores</h2>
+          </div>
+
+          <div className="flex justify-center items-center gap-2 ">
+            {/* <div>
+                <Image src={instagram} alt="" />
+              </div> */}
+            {/* <FlatIcon className="flaticon-instagram  sm:text-5xl text-3xl" /> */}
+            <h1 className="sm:text-2xl text-xl font-bold flex justify-center items-center">
+              {/* <div className="sm:w-fit sm:h-full h-8 w-8 px-3 ">
+                  <Image src={instagram2} alt="" />
+                </div> */}
+              @GENZOOTDINDIA
+            </h1>
           </div>
         </div>
       )}
