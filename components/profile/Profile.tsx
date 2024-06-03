@@ -138,8 +138,6 @@ const Profile = ({ cookie }) => {
           {selectedTab === 11 && <ComingSoon />}  {/* processing*/}
           {selectedTab === 12 && <ComingSoon />}  {/* Shipped*/}
           {selectedTab === 13 && <ComingSoon />}  {/* review*/}
-          {selectedTab === 14 && <ComingSoon />}  {/* cancelled*/}
-          {selectedTab === 15 && <ComingSoon />}  {/* returns*/}
          
 
 

@@ -118,12 +118,10 @@ const ProfileOptions = ({ cookie, setSelectedTab, selectedTab }) => {
 
   const my_orders = [
     { name: "All", tab: 2 },
-    { name: "Unpaid", tab: 10 },
-    { name: "Processing", tab: 11 },
-    { name: "Shipped", tab: 12 },
-    { name: "Review", tab: 13 },
-    { name: "Cancelled", tab: 14 },
-    { name: "Returns", tab: 15 },
+    { name: "Confimed", tab: 10 },
+    { name: "Accepted", tab: 11 },
+    { name: "Dispatch", tab: 12 },
+    { name: "Delivered", tab: 13 },
   ];
 
   // const dummyDATA=[{icon:}]
