@@ -22,6 +22,7 @@ import Loader from "../loader/Loader";
 
 function SideMenuLogin({ isOpen, onClose, setShowLogin }) {
   const [email, setEmail] = useState<any>("");
+  const [signUp, setSignUp] = useState(true);
   const dispatch = useDispatch();
   const [phoneNumber, setPhoneNumber] = useState<any>("");
   const queryClient = useQueryClient();
@@ -32,6 +33,7 @@ function SideMenuLogin({ isOpen, onClose, setShowLogin }) {
   const [loading, setLoading] = useState(false);
   const [verifying, setVerifying] = useState(false);
   const [showPhoneNumberInput, setShowPhoneNumberInput] = useState(true);
+  const [showOtp , setShowOtp] = useState(false);
   const pathName = usePathname();
   const matches = useMediaQuery("(max-width:767px)");
   const { data: userData } = useQuery({
@@ -129,7 +131,9 @@ function SideMenuLogin({ isOpen, onClose, setShowLogin }) {
 
             setLoading(false);
             startTimer();
-            setShowPhoneNumberInput(false);
+            setShowOtp(true);
+            // setShowPhoneNumberInput(false);
+            toast.success("OTP sent successfully.");
           })
           .catch((error) => {
             // if(error==="reCAPTCHA has already been rendered in this element"){
@@ -154,75 +158,81 @@ function SideMenuLogin({ isOpen, onClose, setShowLogin }) {
 
   const confirmOTP = () => {
     try {
-      console.log("inside try");
+      if (OTP === "") {
+        setOTP("");
+        setVerifying(false);
+        toast.error("Please Enter OTP First !");
+      } else {
+        console.log("inside try");
 
-      setTimerStarted(false);
-      setVerifying(true);
-      setLoading(true);
-      otpSent
-        .confirm(OTP)
-        .then(async (res: any) => {
-          // console.log(res, "User");
-          localStorage.setItem("auth", JSON.stringify(res.user.uid));
-          if (res._tokenResponse.isNewUser) {
-            // console.log("new user");
+        setTimerStarted(false);
+        setVerifying(true);
+        setLoading(true);
+        otpSent
+          .confirm(OTP)
+          .then(async (res: any) => {
+            // console.log(res, "User");
+            localStorage.setItem("auth", JSON.stringify(res.user.uid));
+            if (res._tokenResponse.isNewUser) {
+              // console.log("new user");
 
-            let newUser = {
-              phoneNo: dialcountry.dialCode + phoneNumber,
-              createdAt: new Date(),
-              active: true,
-              lastAccessAt: new Date(),
-              role: "user",
-              name: "",
-              email: email,
-              dP: "",
-              setFromUI: true,
-              wallet: { balance: 0, cashback: 0, lastTransactions: {} },
-            };
+              let newUser = {
+                phoneNo: dialcountry.dialCode + phoneNumber,
+                createdAt: new Date(),
+                active: true,
+                lastAccessAt: new Date(),
+                role: "user",
+                name: "",
+                email: email,
+                dP: "",
+                setFromUI: true,
+                wallet: { balance: 0, cashback: 0, lastTransactions: {} },
+              };
 
-            await setDoc(doc(db, `users/${res.user.uid}`), newUser, {
-              merge: true,
-            });
-            toast.success("Login successfully.");
-          } else {
-            await setDoc(
-              doc(db, `users/${res.user.uid}`),
-              { lastAccessAt: new Date() },
-              { merge: true }
+              await setDoc(doc(db, `users/${res.user.uid}`), newUser, {
+                merge: true,
+              });
+              toast.success("Login successfully.");
+            } else {
+              await setDoc(
+                doc(db, `users/${res.user.uid}`),
+                { lastAccessAt: new Date() },
+                { merge: true }
+              );
+              toast.success("Login successfully.");
+              // console.log("user already exist");
+            }
+            await axios.post(
+              `${process.env.NEXT_PUBLIC_API_DOMAIN}/api/login?uid=${res.user.uid}`
             );
-            toast.success("Login successfully.");
-            // console.log("user already exist");
-          }
-          await axios.post(
-            `${process.env.NEXT_PUBLIC_API_DOMAIN}/api/login?uid=${res.user.uid}`
-          )
-          // await axios.get(`/api/login?uid=${res.user.uid}`);
-          await queryClient.invalidateQueries({ queryKey: ["userData"] });
-          await queryClient.refetchQueries({ queryKey: ["userData"] });
-          dispatch(closeLoginModal());
-          setVerifying(false);
-          document.body.classList.remove("no-scroll");
-          router.replace(pathName);
-          setTime(60);
-          setOTP("");
-          setTimerStarted(false);
-          setOTPSent(null);
-          setLoading(false);
-        })
-        .catch((err: any) => {
-          if (OTP === "") {
-            setOTP("");
+            // await axios.get(`/api/login?uid=${res.user.uid}`);
+            await queryClient.invalidateQueries({ queryKey: ["userData"] });
+            await queryClient.refetchQueries({ queryKey: ["userData"] });
+            dispatch(closeLoginModal());
             setVerifying(false);
-            toast.error("Please Enter OTP First !");
-          } else {
+            document.body.classList.remove("no-scroll");
+            router.replace(pathName);
+            setTime(60);
             setOTP("");
-            setVerifying(false);
-            toast.error("Incorrect OTP! Sign In Failed!");
-          }
-          // console.log(err,"FROM CATCH");
+            setTimerStarted(false);
+            setOTPSent(null);
+            setLoading(false);
+          })
+          .catch((err: any) => {
+            if (OTP === "") {
+              setOTP("");
+              setVerifying(false);
+              toast.error("Please Enter OTP First !");
+            } else {
+              setOTP("");
+              setVerifying(false);
+              toast.error("Incorrect OTP! Sign In Failed!");
+            }
+            // console.log(err,"FROM CATCH");
 
-          // console.log("Incorrect OTP! Sign in failed!");
-        });
+            // console.log("Incorrect OTP! Sign in failed!");
+          });
+      }
     } catch (err) {
       console.log("error ", err);
     }
@@ -257,14 +267,24 @@ function SideMenuLogin({ isOpen, onClose, setShowLogin }) {
             }}
             className="md:w-[200px] sm:w-[175px] w-[150px] h-auto"
           />
+
+          <div className="w-[90%] mobile-container tracking-widest text-center bg-primary md:py-[15px] py-2 md:text-base text-sm  text-[white] my-3 rounded-xl">
+            Join us to get on EXTRA 10% OFF & more
+          </div>
+
+          <div className="text-xl font-semibold tracking-widest mb-4">
+            LOGIN/SIGNUP
+          </div>
+
           {/* <div className="font-bold sm:text-3xl text-xl mb-[30px]">Log In</div> */}
-          <div className="text-[#777777] text-center md:text-lg sm:text-base text-sm my-[30px]">
-            Login with your Phone Number.
+          <div></div>
+          <div className="text-[#777777] w-[90%]  md:text-md lg:text-lg sm:text-base text-sm my-2">
+            *{signUp ? "Sign up" : "Login"} using Mobile Number
           </div>
 
           {/* code for login with phone number start  */}
           {showPhoneNumberInput && ( // Conditionally render phone number input and login button
-            <div className="mb-[20px] w-[90%] mobile-container">
+            <div className="mb-[40px] w-[90%] mobile-container">
               <div className="flex w-full items-center ">
                 <Menu
                   as="div"
@@ -338,6 +358,7 @@ function SideMenuLogin({ isOpen, onClose, setShowLogin }) {
                     </Menu.Items>
                   </Transition>
                 </Menu>
+
                 <input
                   type="text"
                   placeholder="Enter phone number"
@@ -349,21 +370,82 @@ function SideMenuLogin({ isOpen, onClose, setShowLogin }) {
                   }}
                 />
               </div>
-              <div
-                onClick={async () => {
-                  await signInUserWithPhoneNumber();
-                  // setPhoneNumber("");
-                  // Hide phone number input and login button
-                }}
-                className="text-center bg-primary w-full md:py-[15px] py-2 md:text-base text-sm  text-[white] cursor-pointer "
-              >
-                {loading ? "Sending Otp..." : "Log in"}
+
+              <div className="text-[#777777]  md:text-md lg:text-lg sm:text-base text-sm my-2">
+                *Enter OTP
               </div>
-              <div id="recaptcha-container"></div>
+
+              <div className=" w-full  flex justify-between">
+                {showOtp ? <input
+                  type="text"
+                  placeholder="Enter OTP"
+                  className="rounded-xl w-[60%] px-[10px] md:px-[20px] md:py-[15px] py-2 md:text-base text-sm mb-[8px] md:mb-[15px] outline-0 border border-gray-300 "
+                  id="otp"
+                  value={OTP}
+                  onChange={(e) => {
+                    const inputValue = e.target.value;
+                    setOTP(inputValue);
+                  }}
+                  
+                /> : <input
+                type="text"
+                placeholder="Enter OTP"
+                className="rounded-xl w-[60%] px-[10px] md:px-[20px] md:py-[15px] py-2 md:text-base text-sm mb-[8px] md:mb-[15px] outline-0 border border-gray-300 "
+                id="otp"
+                value={OTP}
+                onChange={(e) => {
+                  const inputValue = e.target.value;
+                  setOTP(inputValue);
+                }}
+                disabled
+                
+              />}
+                
+
+                <div
+                  onClick={async () => {
+                    await signInUserWithPhoneNumber();
+                    // setPhoneNumber("");
+                    // Hide phone number input and login button
+                  }}
+                  className="cursor-pointer rounded-xl md:w-[35%]  lg:w-[30%] px-[10px] md:px-[10px] md:py-[15px] py-2 lg:text-base text-sm mb-[8px] md:mb-[15px] outline-0 border border-gray-300 bg-black text-white text-center"
+                >
+                  GET OTP
+                </div>
+                <div id="recaptcha-container"></div>
+              </div>
+              <div className="flex items-center">
+                <input
+                  style={{ accentColor: "black" }}
+                  type="checkbox"
+                  className=" mr-3 h-5 w-5 bg-black text-white text-xl"
+                  value="1"
+                />
+                <div className="text-sm">
+                  Agree to receive communication related to order and
+                  promotional offers.
+                </div>
+              </div>
+
+              <div
+                onClick={() => confirmOTP()}
+                className="text-center bg-black my-2 mb-4 rounded-xl w-full md:py-[15px] py-2 md:text-base text-sm  text-[white] cursor-pointer"
+              >
+                {verifying ? "Verifying Otp" : signUp ? "SIGN UP" : "LOGIN"}
+              </div>
+
+              <div
+                onClick={() => setSignUp(!signUp)}
+                className="text-center bg-primary rounded-xl w-full md:py-[15px] py-2 md:text-base text-sm  text-[white] cursor-pointer"
+              >
+                {signUp
+                  ? "Login with SHEIN STYLE STORE"
+                  : "Sign Up with SHEIN STYLE STORE"}
+              </div>
             </div>
           )}
 
-          {!showPhoneNumberInput && ( // Conditionally render OTP input and verify OTP button
+          {/* {!showPhoneNumberInput && ( // Conditionally render OTP input and verify OTP button
             <div className="mb-[20px] w-[90%] otp-container">
               <input
                 type="text"
@@ -376,6 +458,7 @@ function SideMenuLogin({ isOpen, onClose, setShowLogin }) {
                   setOTP(inputValue);
                 }}
               />
+
               <div
                 onClick={() => confirmOTP()}
                 className="text-center bg-primary w-full md:py-[15px] py-2 md:text-base text-sm  text-[white] cursor-pointer"
@@ -383,7 +466,7 @@ function SideMenuLogin({ isOpen, onClose, setShowLogin }) {
                 {verifying ? "Verifying Otp" : "Proceed"}
               </div>
             </div>
-          )}
+          )} */}
         </div>
       </div>
     </div>
