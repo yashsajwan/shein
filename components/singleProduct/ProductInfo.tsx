@@ -12,6 +12,9 @@ import discoverImg from "../../images/discover 1.svg";
 import paypalImg from "../../images/paypal 1.svg";
 import americanExpImg from "../../images/pngwing 1.svg";
 import visaImg from "../../images/visa 3.svg";
+import cod from "../../images/cod2.png";
+import prepaid from "../../images/prepaid.png";
+import delivery from "../../images/standard.png";
 import { useAppSelector } from "../../redux/hooks";
 import {
   addToCart,
@@ -31,10 +34,13 @@ import {
 import useOnScreen from "../../utils/visibleElement";
 import SimilarProducts from "../SimilarProducts/SimilarProducts";
 import FlatIcon from "../flatIcon/flatIcon";
+import { IoIosHeartEmpty } from "react-icons/io";
+import { IoIosHeart } from "react-icons/io";
 import {
   checkIfItemExistInCart,
   checkIfPriceDiscounted,
   getProductPriceDetails,
+  getDiscountedPercentage,
 } from "../../utils/utilities";
 import Link from "next/link";
 import { CircularProgress } from "@mui/material";
@@ -329,36 +335,56 @@ const ProductInfo = ({ params }: any) => {
                       {product?.prodName}
                     </h2>
                   </div>
-                  <div className="flex sm:flex-row flex-col gap-y-2  gap-x-4 sm:items-center ">
-                    <h2 className=" lg:text-2xl md:text-xl sm:text-lg text-base sm:text-center text-start text-secondary font-bold  ">
-                      {constant?.currency}{" "}
-                      {isClient &&
-                        getProductPriceDetails({
-                          isDiscounted: true,
-                          product: product,
-                          index: variant,
-                        })}
-                    </h2>
-                    {checkIfPriceDiscounted({
-                      discountedPrice: product?.isPriceList
-                        ? product?.priceList[variant]?.discountedPrice
-                        : product?.discountedPrice,
-                      price: product?.isPriceList
-                        ? product?.priceList[variant]?.price
-                        : product?.prodPrice,
-                    }) && (
-                      <div className="text-ellipsis overflow-hidden ... truncate  ">
-                        <p className="text-ellipsis overflow-hidden ... truncate   line-through text-xs md:text-sm text-[#ADADAD]">
-                          {isClient && constant?.currency}{" "}
-                          {isClient &&
-                            getProductPriceDetails({
-                              isDiscounted: false,
-                              product: product,
-                              index: variant,
-                            })}
-                        </p>
-                      </div>
-                    )}
+                  <div className="flex md:flex-col md:items-start md:justify-start lg:items-center lg:flex-row sm:flex-row flex-col gap-y-2  gap-x-4 sm:items-center ">
+                    <div className="flex">
+                      <h2 className=" lg:text-2xl md:text-xl sm:text-lg text-base sm:text-center text-start text-[#eb4897] font-bold  ">
+                        {constant?.currency}{" "}
+                        {isClient &&
+                          getProductPriceDetails({
+                            isDiscounted: true,
+                            product: product,
+                            index: variant,
+                          })}
+                      </h2>
+                      {checkIfPriceDiscounted({
+                        discountedPrice: product?.isPriceList
+                          ? product?.priceList[variant]?.discountedPrice
+                          : product?.discountedPrice,
+                        price: product?.isPriceList
+                          ? product?.priceList[variant]?.price
+                          : product?.prodPrice,
+                      }) && (
+                        <div className="text-ellipsis overflow-hidden ... truncate flex items-center px-2">
+                          <p className="text-ellipsis overflow-hidden ... truncate   line-through text-xs md:text-sm text-[#ADADAD]">
+                            {isClient && constant?.currency}{" "}
+                            {isClient &&
+                              getProductPriceDetails({
+                                isDiscounted: false,
+                                product: product,
+                                index: variant,
+                              })}
+                          </p>
+                          {isClient && (
+                            <div className="bg-[#eb4897] text-white py-1 px-3 mx-2">
+                              -
+                              {getDiscountedPercentage({
+                                price: getProductPriceDetails({
+                                  isDiscounted: false,
+                                  product: product,
+                                  index: variant,
+                                }),
+                                discountedPrice: getProductPriceDetails({
+                                  isDiscounted: true,
+                                  product: product,
+                                  index: variant,
+                                }),
+                              })}
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                    <div className="font-semibold ">Inclusive of all taxes</div>
 
                     {/* reviews code start  */}
                     {/* <div className="flex items-center gap-2 text-start ">
@@ -384,6 +410,7 @@ const ProductInfo = ({ params }: any) => {
                     </div> */}
                     {/* reviews code end  */}
                   </div>
+
                   {/* <div className="text-xs text-[#777777] font-semibold  sm:my-6 my-4 ">
                    
                     Strapless bustier. Front pocket. Frayed trims. Asymmetric
@@ -414,7 +441,7 @@ const ProductInfo = ({ params }: any) => {
                                         setOption2(item);
                                       }}
                                       key={idx}
-                                      className={`border border-[#E6DBD7] sm:px-3 px-4 sm:py-2 py-2 text-[#555555]  text-sm font-semibold rounded-md flex justify-center items-center cursor-pointer ${
+                                      className={`border border-[#E6DBD7] sm:px-3 px-4 sm:py-2 py-2 text-white bg-black  text-sm font-semibold rounded-md flex justify-center items-center cursor-pointer ${
                                         item === colorTab &&
                                         "bg-primary text-white"
                                       }`}
@@ -474,7 +501,7 @@ const ProductInfo = ({ params }: any) => {
                                       setOption1(item);
                                       setProdTab(item);
                                     }}
-                                    className={`sm:px-3 px-4 sm:py-2 py-2 border rounded-md  cursor-pointer
+                                    className={`sm:px-3  text-white bg-black px-4 sm:py-2 py-2 border rounded-md  cursor-pointer
                                 
                                 ${
                                   prodTab === item
@@ -493,6 +520,46 @@ const ProductInfo = ({ params }: any) => {
                       )}
 
                     <h3 className="text-secondary sm:text-sm text-xs font-semibold mb-3 mt-6 ">
+                      DELIVERY TO DELHI ?
+                    </h3>
+
+                    <div className="rounded-2xl relative flex border-2 border-black w-[50%] justify-between">
+                      <input
+                        className="py-1 px-3 rounded-2xl w-full"
+                        type="number"
+                        placeholder="Enter a pincode to check"
+                      />
+
+                      <button className="absolute right-0 text-white bg-black rounded-xl py-1 px-3">
+                        Check
+                      </button>
+                    </div>
+
+                    <div className="py-3">
+                      <div className="flex items-center">
+                        <Image src={cod} alt="cod" height={100} width={100} />
+                        <div className="mx-2 text-base text-gray-400">
+                          Cash on delivery available
+                        </div>
+                      </div>
+                      <div className="flex items-center">
+                        <Image src={prepaid} alt="prepaid" height={100} width={100} />
+                        <div className="mx-2 text-base text-gray-400">
+                          Prepaid Delivery Only ?
+                        </div>
+                      </div>
+                      <div className="flex items-center">
+                        <Image src={delivery} alt="delivery" height={100} width={100} />
+                        <div className="mx-2 text-base text-gray-400 flex flex-col">
+                          <div>Standard Delivery: <span className="text-[#eb4897]">15 Days</span></div>
+                          <div>Make prepaid payment get <span className="text-[#eb4897]">5 %</span></div>
+                          <div>Instant Discounts</div>
+                          <div>Estimated Delivery: <span className="text-[#eb4897]">7 to 15 Days</span></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <h3 className="text-secondary sm:text-sm text-xs font-semibold mb-3 mt-3 ">
                       QUANTITY :
                     </h3>
                     <div className="flex sm:items-center sm:flex-row   flex-col gap-y-4 justify-between   sm:mb-10 mb-5 ">
@@ -526,59 +593,6 @@ const ProductInfo = ({ params }: any) => {
                           +
                         </button>
                       </div>
-
-                      {isClient &&
-                      wishlistData &&
-                      wishlistData.length > 0 &&
-                      wishlistData.includes(`${product?.id}`) ? (
-                        <div
-                          onClick={async () => {
-                            await removeFromWishListHandler({
-                              userId: userData?.id,
-                              productId: product?.id,
-                            });
-                            await queryClient.invalidateQueries({
-                              queryKey: ["wishlistData"],
-                            });
-                            await queryClient.refetchQueries({
-                              queryKey: ["wishlistData"],
-                            });
-                            toast.success("Product removed from wishlist.");
-                          }}
-                          className="flex items-center gap-2 cursor-pointer"
-                        >
-                          <p>
-                            <FlatIcon icon={"flaticon-heart-fill text-2xl"} />
-                          </p>
-                          <h3 className="text-secondary font-semibold sm:text-sm text-xs">
-                            Remove from Wishlist
-                          </h3>
-                        </div>
-                      ) : (
-                        <div
-                          onClick={async () => {
-                            await moveToWishListHandler({
-                              userId: userData?.id,
-                              productId: product?.id,
-                            });
-                            await queryClient.invalidateQueries({
-                              queryKey: ["wishlistData"],
-                            });
-                            await queryClient.refetchQueries({
-                              queryKey: ["wishlistData"],
-                            });
-                            toast.success("Product added to wishlist.");
-                          }}
-                          className="flex items-center gap-2 cursor-pointer"
-                        >
-                          <p>
-                            <FlatIcon icon={"flaticon-heart text-2xl"} />
-                          </p>
-                          <h3 className="text-secondary font-semibold sm:text-sm text-xs">
-                            Add to Wishlist
-                          </h3>
-                        </div>
-                      )}
                     </div>
                     {/* <div className="flex items-center gap-2 text-sm font-bold  mb-3">
                       <div className="">
@@ -662,7 +676,7 @@ const ProductInfo = ({ params }: any) => {
                   >
                     <div className="w-full flex gap-3 ">
                       <div
-                        className="flex-1 lg:flex-none w-[48%]  lg:h-14 md:h-12 sm:h-10 bg-[#EBEDF1] h-8  flex justify-center items-center py-2  cursor-pointer"
+                        className="flex-1 lg:flex-none w-[30%]  lg:h-10 md:h-12 sm:h-10 bg-black h-8  flex justify-center items-center py-1  cursor-pointer"
                         onClick={
                           checkIfItemExistInCart(cart, product, variant)
                             ? () => {
@@ -671,10 +685,10 @@ const ProductInfo = ({ params }: any) => {
                             : addItemToCart
                         }
                       >
-                        <button className=" text-secondary font-semibold sm:text-sm md:text-base text-xs">
+                        <button className=" text-white font-semibold sm:text-sm md:text-base text-xs">
                           {checkIfItemExistInCart(cart, product, variant)
-                            ? "REMOVE FROM BAG"
-                            : "ADD TO BAG"}
+                            ? "REMOVE FROM CART"
+                            : "ADD TO CART"}
                         </button>
                       </div>
 
@@ -712,7 +726,8 @@ const ProductInfo = ({ params }: any) => {
                           //   router.push("/checkout");
                           // }
                         }}
-                        className=" lg:flex w-[48%] flex-1  h-14 bg-black  hidden justify-center items-center py-2 cursor-pointer  "
+                        className="flex-1 lg:flex-none w-[30%]  lg:h-10 md:h-12 sm:h-10 bg-[#eb4897] h-8  flex justify-center items-center py-1  cursor-pointer"
+
                         // onClick={handleRemoveFromCart}
                       >
                         <Link
@@ -728,15 +743,72 @@ const ProductInfo = ({ params }: any) => {
                                 size={25}
                               ></CircularProgress>
                             ) : (
-                              "BUY NOW"
+                              "SHOP NOW"
                             )}
                           </button>
                         </Link>
                       </div>
+
+                      {isClient &&
+                      wishlistData &&
+                      wishlistData.length > 0 &&
+                      wishlistData.includes(`${product?.id}`) ? (
+                        <div
+                          onClick={async () => {
+                            await removeFromWishListHandler({
+                              userId: userData?.id,
+                              productId: product?.id,
+                            });
+                            await queryClient.invalidateQueries({
+                              queryKey: ["wishlistData"],
+                            });
+                            await queryClient.refetchQueries({
+                              queryKey: ["wishlistData"],
+                            });
+                            toast.success("Product removed from wishlist.");
+                          }}
+                          className="flex items-center gap-2 cursor-pointer"
+                        >
+                          <div className="cursor-pointer">
+                            <IoIosHeart className=" text-3xl " />
+                          </div>
+                          {/* <h3 className="text-secondary font-semibold sm:text-sm text-xs">
+                            Remove from Wishlist
+                          </h3> */}
+                        </div>
+                      ) : (
+                        <div
+                          onClick={async () => {
+                            await moveToWishListHandler({
+                              userId: userData?.id,
+                              productId: product?.id,
+                            });
+                            await queryClient.invalidateQueries({
+                              queryKey: ["wishlistData"],
+                            });
+                            await queryClient.refetchQueries({
+                              queryKey: ["wishlistData"],
+                            });
+                            toast.success("Product added to wishlist.");
+                          }}
+                          className="flex items-center gap-2 cursor-pointer"
+                        >
+                          <div className="cursor-pointer">
+                            <IoIosHeartEmpty className=" text-3xl " />
+                          </div>
+                          {/* <h3 className="text-secondary font-semibold sm:text-sm text-xs">
+                            Add to Wishlist
+                          </h3> */}
+                        </div>
+                      )}
                     </div>
                     {/* previous button with functionality end*/}
                   </div>
-                  <h3 className="font-semibold sm:text-sm text-xs my-5">
+
+                  <h3 className="text-secondary sm:text-sm md:text-lg text-sm font-semibold mt-6 ">
+                    EARN <span className="text-[#eb4897]">50</span> Points ?
+                  </h3>
+                  {/* <h3 className="font-semibold sm:text-sm text-xs my-5">
                     GUARANTEED SAFE CHECKOUT:
                   </h3>
                   <div className="flex items-center sm:flex-nowrap flex-wrap gap-2 md:gap-4 lg:gap-6">
@@ -761,7 +833,7 @@ const ProductInfo = ({ params }: any) => {
                         </div>
                       );
                     })}
-                  </div>
+                  </div> */}
                   <div className="flex items-center gap-3 my-5">
                     <div className="flex items-center gap-2">
                       <div>
@@ -783,6 +855,7 @@ const ProductInfo = ({ params }: any) => {
                         <FlatIcon icon={"flaticon-pinterest text-xl"} />
                       </div>
                     </div>
+                    <div className="font-semibold">REFER A FRIEND EARN</div>
                   </div>
                   {/* <div className="w-full bg-[#CCCCCC] h-[1px]"></div> */}
                   {/* <div className=" ">
@@ -801,21 +874,21 @@ const ProductInfo = ({ params }: any) => {
                     {({ open }) => (
                       <>
                         <Disclosure.Button
-                          className={`flex border-t border-b border-[#CCCCCC] py-4 items-center sm:text-base font-medium text-xs  justify-between text-gray-400 ${
+                          className={` flex py-4 items-center sm:text-base font-semibold text-xs  justify-between text-black ${
                             open ? "font-semibold" : ""
                           } `}
                         >
-                          <h2 className="font-medium sm:text-base  text-sm ">
+                          <h2 className=" sm:text-base  text-sm ">
                             Return Policy
                           </h2>
-                          <FlatIcon
-                            icon={"flaticon-plus text-[#999999] text-xs"}
-                          />
+                          <FlatIcon icon={"flaticon-plus text-black text-xs"} />
                         </Disclosure.Button>
                         <Disclosure.Panel className="  pt-0 pb-2 text-base text-gray-500">
                           <div className="bg-[#f7f7f7]">
                             <div className="flex justify-between">
-                              <div className="text-black text-xl p-2">Shipping to India</div>
+                              <div className="text-black text-xl p-2">
+                                Shipping to India
+                              </div>
                               <div className="flex">
                                 <div className="p-2">
                                   <button
@@ -846,17 +919,21 @@ const ProductInfo = ({ params }: any) => {
                                 similarProductData.length > 0 &&
                                 similarProductData.map(
                                   (item: any, idx: number) => {
-                                    return <div key={idx} className=" p-2 m-2  ">
-                                      <div className="m-2 bg-white p-2">
-                                      {item}
+                                    return (
+                                      <div key={idx} className=" p-2 m-2  ">
+                                        <div className="m-2 bg-white p-2">
+                                          {item}
+                                        </div>
                                       </div>
-                                    </div>;
+                                    );
                                   }
                                 )}
                             </Slider>
 
                             <div>
-                              <div className="text-black text-xl p-2">14 Days Return</div>
+                              <div className="text-black text-xl p-2">
+                                14 Days Return
+                              </div>
                               <div className="p-2">
                                 Items Can Be Returned To Us In 14 Days.The
                                 Following Items Cannot Be Returned Or Exchanged:
@@ -874,16 +951,14 @@ const ProductInfo = ({ params }: any) => {
                     {({ open }) => (
                       <>
                         <Disclosure.Button
-                          className={`flex border-t border-b border-[#CCCCCC] py-4 items-center sm:text-base font-medium text-xs  justify-between text-gray-400 ${
+                          className={`flex border-t border-b border-[#CCCCCC] py-4 items-center sm:text-base font-semibold text-xs  justify-between text-black ${
                             open ? "font-semibold" : ""
                           } `}
                         >
-                          <h2 className="font-medium sm:text-base  text-sm ">
+                          <h2 className="font-semibold sm:text-base  text-sm ">
                             Product Info
                           </h2>
-                          <FlatIcon
-                            icon={"flaticon-plus text-[#999999] text-xs"}
-                          />
+                          <FlatIcon icon={"flaticon-plus text-black text-xs"} />
                         </Disclosure.Button>
                         <Disclosure.Panel className="  pt-0 pb-2 text-base text-gray-500">
                           <div
@@ -906,14 +981,14 @@ const ProductInfo = ({ params }: any) => {
                     {({ open }) => (
                       <>
                         <Disclosure.Button
-                          className={`flex border-b border-[#CCCCCC] py-4 items-center sm:text-base font-medium text-xs justify-between text-gray-400 ${
+                          className={`flex border-b border-[#CCCCCC] py-4 items-center sm:text-base font-medium text-xs justify-between text-black ${
                             open ? "font-semibold" : ""
                           } `}
                         >
-                          <span>Reviews & Ratings</span>
-                          <FlatIcon
-                            icon={"flaticon-plus text-[#999999] text-xs"}
-                          />
+                          <span className="text-black font-semibold">
+                            Reviews & Ratings
+                          </span>
+                          <FlatIcon icon={"flaticon-plus text-black text-xs"} />
                         </Disclosure.Button>
                         <Disclosure.Panel className=" mt-3 pt-0 pb-2 text-base text-gray-500">
                           No Reviews Yet
