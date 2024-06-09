@@ -104,8 +104,8 @@ const ProfileOptions = ({ cookie, setSelectedTab, selectedTab }) => {
   }, []);
 
   const my_account = [
-    { name: "My Profile", tab: 1 },
     { name: "My Account", tab: 6 },
+    { name: "My Profile", tab: 1 },
     { name: "Addresses", tab: 3 },
     { name: "Change Email", tab: 7 },
   ];
@@ -178,7 +178,7 @@ const ProfileOptions = ({ cookie, setSelectedTab, selectedTab }) => {
             {({ open }) => (
               <>
                 <Disclosure.Button
-                  onClick={() => setSelectedTab(1)}
+                  onClick={() => setSelectedTab(6)}
                   className={`flex border-b border-[#CCCCCC] items-center sm:text-base font-semibold text-xs justify-between w-full ${
                     open ? "font-semibold" : ""
                   } `}
@@ -234,12 +234,12 @@ const ProfileOptions = ({ cookie, setSelectedTab, selectedTab }) => {
             {({ open }) => (
               <>
                 <Disclosure.Button
-                 onClick={() => setSelectedTab(4)}
+                  onClick={() => setSelectedTab(4)}
                   className={`flex border-b border-[#CCCCCC] items-center sm:text-base font-semibold text-xs justify-between w-full ${
                     open ? "font-semibold" : ""
                   } `}
                 >
-                  <div  
+                  <div
                     className={`flex gap-3 items-center border-b border-b-[#EEF0F5]  py-4 px-6 cursor-pointer  hover:text-primary ${
                       selectedTab === 4 ||
                       selectedTab === 8 ||
@@ -289,7 +289,7 @@ const ProfileOptions = ({ cookie, setSelectedTab, selectedTab }) => {
             {({ open }) => (
               <>
                 <Disclosure.Button
-                 onClick={() => setSelectedTab(2)}
+                  onClick={() => setSelectedTab(2)}
                   className={`flex border-b border-[#CCCCCC] items-center sm:text-base font-semibold text-xs justify-between w-full ${
                     open ? "font-semibold" : ""
                   } `}

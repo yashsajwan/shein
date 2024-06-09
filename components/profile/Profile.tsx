@@ -24,13 +24,13 @@ import ChangeEmail from "./ChangeEmail";
 const Profile = ({ cookie }) => {
   useEffect(() => {
     const tab_number = JSON.parse(localStorage.getItem("tab"));
-    const tab = tab_number ? tab_number : 1;
+    const tab = tab_number ? tab_number : 6;
 
     setSelectedTab(tab);
   }, []);
 
   const [isClient, setIsClient] = useState(false);
-  const [selectedTab, setSelectedTab] = useState(1);
+  const [selectedTab, setSelectedTab] = useState(6);
   const matches = useMediaQuery("(min-width:1024px)");
   const { data: userData } = useQuery({
     queryKey: ["userData"],

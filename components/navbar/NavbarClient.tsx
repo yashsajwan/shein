@@ -36,8 +36,8 @@ import {
   getPriceListCartObj,
 } from "../../redux/slices/cartSlice";
 import {
-  closeLoginModal,
   openLoginModal,
+  closeLoginModal,
 } from "../../redux/slices/loginModalSlice";
 import { constant } from "../../utils/constants";
 import OutsideClickHandler from "../../utils/OutsideClickHandler";
@@ -545,21 +545,8 @@ const NavbarClient = ({ cookie }: any) => {
                             >
                               <div className="z-50 absolute  mt-2 top-full w-56  divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                                 <div className="px-1 py-1">
-                                  <Link href={"/profilepage"} className="">
-                                    <button
-                                      onClick={() =>
-                                        localStorage.setItem(
-                                          "tab",
-                                          JSON.stringify(1)
-                                        )
-                                      }
-                                      className="group flex w-full items-center rounded-md px-2 py-2 text-sm  hover:text-primary  hover:bg-[#F2F7FF]"
-                                    >
-                                      Profile
-                                    </button>
-                                  </Link>
 
-                                  <Link href={"/profilepage"} className="">
+                                <Link href={"/profilepage"} className="">
                                     <button
                                       onClick={() =>
                                         localStorage.setItem(
@@ -572,6 +559,22 @@ const NavbarClient = ({ cookie }: any) => {
                                       My Account
                                     </button>
                                   </Link>
+
+                                  <Link href={"/profilepage"} className="">
+                                    <button
+                                      onClick={() =>
+                                        localStorage.setItem(
+                                          "tab",
+                                          JSON.stringify(1)
+                                        )
+                                      }
+                                      className="group flex w-full items-center rounded-md px-2 py-2 text-sm  hover:text-primary  hover:bg-[#F2F7FF]"
+                                    >
+                                      My Profile
+                                    </button>
+                                  </Link>
+
+                                  
 
                                   <Link href={"/wishlist"} className="">
                                     <button className="group flex w-full items-center rounded-md px-2 py-2 text-sm  hover:text-primary  hover:bg-[#F2F7FF]">
