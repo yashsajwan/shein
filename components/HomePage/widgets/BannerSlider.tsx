@@ -269,7 +269,7 @@ const BannerSlider = ({ section, myKey }) => {
                           e.preventDefault();
                         }
                       }}
-                      className="sm:h-auto h-[235px] w-full  "
+                      className="sm:[25rem] md:h-[30rem] lg:[40rem] xl:h-[50rem] h-[20rem] w-full  "
                       key={idx + 100}
                       // onClick={async () => {
                       //   let res = await bannerLink(banner);

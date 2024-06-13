@@ -80,7 +80,7 @@ const slider = useRef<any>(null);
   const arrowButtonClass =
     "absolute top-0 bottom-0 my-auto bg-[#fef8fb] w-10 h-10 block text-white cursor-pointer z-20";
   return (
-    <div className='flex  md:flex-row flex-col gap-y-8 items-center  justify-between px-body  md:py-16 py-8 gap-x-4 bg-[#fef8fb]'>
+    <div className='flex  md:flex-row flex-col gap-y-8 items-center  justify-between px-body  md:py-16 py-8 gap-x-4 bg-[#fef8fb] my-[2.5rem]'>
         <div className='md:w-[40%]  w-[90%] '>
             <div className='  w-[100%]  flex flex-col  gap-y-2'>
             <h1 className='sm:text-3xl text-xl  font-bold '>WHAT THEY&apos;RE SAYING</h1>

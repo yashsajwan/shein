@@ -107,7 +107,7 @@ const CategoriesSlider = ({ section, myKey }) => {
         homeData?.data?.filter((val) => val?.id === section?.widgetID) &&
         homeData?.data?.filter((val: any) => val?.id === section?.widgetID)[0]
           ?.arr?.length !== 0 && (
-          <div className=" px-body ">
+          <div className=" px-body my-[2.5rem]">
             {section?.sectionName && (
               <div
                 //     onClick={()=>{

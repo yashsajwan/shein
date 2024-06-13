@@ -115,7 +115,7 @@ return product?.id
         homeData?.data?.filter((val) => val?.id === section?.widgetID) &&
         homeData?.data?.filter((val: any) => val?.id === section?.widgetID)[0]
           ?.arr?.length !== 0 && (
-          <div className="">
+          <div className="my-[2.5rem]">
             {section?.sectionName && (
               <div className="flex  flex-col items-center gap-2 justify-center w-auto  mb-2 px-body">
                 <h3 className=" text-secondary  sm:text-3xl text-xl font-bold">

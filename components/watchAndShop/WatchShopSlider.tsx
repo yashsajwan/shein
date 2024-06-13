@@ -101,8 +101,8 @@ const WatchShopSlider = () => {
   return (
     <>
       {videoProducts && videoProducts.length > 0 && (
-        <div className="px-body bg-[#fef8fb] relative">
-          <div className="md:pt-12 pt-6 ">
+        <div className="px-body bg-[#fef8fb] relative my-[2.5rem]">
+          <div className="md:pt-6  ">
             <div className="text-center ">
               <h1 className="sm:text-3xl text-xl font-bold">WATCH AND SHOP</h1>
               {/* <div className="">

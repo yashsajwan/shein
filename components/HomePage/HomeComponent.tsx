@@ -32,19 +32,19 @@ const HomeComponent = ({ cookie }) => {
     switch (section?.widgetType) {
       case "banner-slider":
         return <BannerSlider myKey={idx} section={section} />;
-      case "image-banner":
+      case "image-banner":  //new arrivals 30% off
         return <ImageBanner myKey={idx} section={section} />;
-      case "product-carousel":
+      case "product-carousel": //bestseller
         return (
           <ProductCarousel myKey={idx} section={section} cookie={cookie} />
         );
       // fetchProductCarousel(section, regionId);
       case "categories":
         if (section?.designType === "combo") {
-          return <CategoryGrid section={section}></CategoryGrid>;
+          return <CategoryGrid section={section}></CategoryGrid>; //shein style combo sale
         }
 
-        return <CategoriesSlider myKey={idx} section={section} />;
+        return <CategoriesSlider myKey={idx} section={section} />; //shop by category
       // fetchCategories(section, regionId);
       case "vendors":
         return <Vendors myKey={idx} section={section} />;
@@ -67,11 +67,11 @@ const HomeComponent = ({ cookie }) => {
       case "services":
         return <Services section={section} myKey={idx} />;
       case "testimonials":
-        return <ReviewSlider />;
+        return <ReviewSlider />; //what they are saying
       case "advertise":
-        return <Advertisement />;
+        return <Advertisement />; //refer and earn
       case "video-products":
-        return <WatchShopSlider />;
+        return <WatchShopSlider />; //watch and shop
       case "instagram-family":
         return <InstaFamilySlider />;
       case "playStore":
@@ -82,7 +82,7 @@ const HomeComponent = ({ cookie }) => {
 
   return (
     <div className="w-full">
-      <div className="w-full flex flex-col gap-10 lg:gap-16 ">
+      <div className="w-full flex flex-col">
         {homeData &&
           homeData?.homeSections?.sections?.map((section: any, idx: any) => {
             // console.log(section,"section", "idx" , idx);
@@ -92,7 +92,7 @@ const HomeComponent = ({ cookie }) => {
                 <div
                   className={`   ${
                     section?.widgetType == "image-banner" && idx == 1
-                      ? "my-[-2.5rem]"
+                      ? ""
                       : ""
                   }`}
                 >

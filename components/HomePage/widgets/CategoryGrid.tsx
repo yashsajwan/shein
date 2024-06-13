@@ -75,7 +75,7 @@ const CategoryGrid = ({ section }) => {
   return (
     <>
       {endDate > now && (
-        <div className="px-body">
+        <div className="px-body my-[2.5rem]">
           <div className="text-3xl  text-center font-bold mb-5 ">
             {/* <div><span className='text-primary'>#SHIEN </span><span>STYLE STORES</span></div>
         <h1>COMBO SALE</h1> */}

@@ -110,13 +110,11 @@ const ImageBanner = ({ section, myKey = `` }) => {
 
   if (imagesArr.length === 0) return <div className="hidden"></div>;
 
-  
-
   // new start
   if (imagesArr.length === 7) {
     return (
       <div
-        className={` only-carousel `}
+        className={` only-carousel my-[2.5rem]`}
         // onMouseEnter={() => {
         //   setHoveredProduct(true);
         // }}
@@ -124,7 +122,7 @@ const ImageBanner = ({ section, myKey = `` }) => {
         //   setHoveredProduct(false);
         // }}
       >
-        <div className="grid md:grid-cols-2 md:grid-cols-1  gap-x-5 gap-y-5">
+        <div className="grid md:grid-cols-2 md:grid-cols-1  gap-x-5 gap-y-5 ">
           <div className="md:h-[450px] h-[200px]">
             <Image
               src={imagesArr[0].image?.org}
@@ -202,33 +200,46 @@ const ImageBanner = ({ section, myKey = `` }) => {
       ?.image?.url;
 
   return (
+    // <div
+    //   className={` w-full ${imagesArr.length === 3? "mt-0":  "mt-0"} ${imagesArr.length === 3? "px-body": imagesArr.length === 2 ? "px-[1.5%]": "px-0"}    z-30`}
+    // >
     <div
-      className={` w-full ${imagesArr.length === 3? "-mt-5":  "mt-0"} ${imagesArr.length === 3? "px-body": imagesArr.length === 2 ? "px-[1.5%]": "px-0"}    z-30`}
+      className={` w-full ${imagesArr.length === 3 ? "mt-0" : "mt-0"} ${
+        imagesArr.length === 3
+          ? "px-0"
+          : imagesArr.length === 2
+          ? "px-0"
+          : "px-0"
+      }    z-30`}
     >
       {/* <div className="flex justify-center items-center mb-8"><h1 className="sm:text-3xl text-xl font-bold">#SHEINSTYLESTORES CAMPAIGN</h1></div> */}
 
       <div
-        className={` w-full  flex  items-center ${
-          imagesArr.length === 3 ? "sm:gap-7" : "sm:gap-2"
+        className={` w-full  flex flex-col md:flex-row items-center  ${
+          imagesArr.length === 2 ? "xl:px-body" : ""
+        }  ${
+          imagesArr.length === 3 ? "sm:gap-0" : "sm:gap-0"
         } `}
+
+        
         key={myKey}
       >
-        {newImagesArr.map((imageData:any, index:number) => (
+        {newImagesArr.map((imageData: any, index: number) => (
           // console.log("imageData",imageData)
-          
+
           <Link
-          target="_blank"
-          href={`${bannerLink(imageData)}`}
-          onClick={(e) => {
-            if (
-              !bannerLink(imageData) ||
-              bannerLink(imageData)?.includes("undefined")
-            ) {
-              // console.log("inside preventDefault");
-              
-              e.preventDefault();
-            }
-          }}
+            target="_blank"
+            href={`${bannerLink(imageData)}`}
+            onClick={(e) => {
+              if (
+                !bannerLink(imageData) ||
+                bannerLink(imageData)?.includes("undefined")
+              ) {
+                // console.log("inside preventDefault");
+
+                e.preventDefault();
+              }
+            }}
             key={imageData.image.org || imageData.image.url}
             className={` ${
               newImagesArr.length === 1
@@ -244,11 +255,10 @@ const ImageBanner = ({ section, myKey = `` }) => {
               // layout="responsive"
               style={{ aspectRatio: "auto" }}
               className={`flex-1 ${
-                imagesArr.length === 2 ? "sm:h-[25rem] h-[10rem]" : "h-auto"
-              } object-cover `}
+                imagesArr.length === 2 ? "sm:h-[20rem] lg:[25rem] h-[10rem]" : "h-auto"
+              } object-fill `}
             />
           </Link>
-          
         ))}
       </div>
     </div>
@@ -257,7 +267,9 @@ const ImageBanner = ({ section, myKey = `` }) => {
 
 export default ImageBanner;
 
-
-
-{/* <div className={` w-full  ${imagesArr.length===3?"px-body":imagesArr.length===2?"px-[1.5%]":"px-0"}   ${imagesArr.length===3?"lg:-mt-36 -mt-16":"-mt-0"} z-30`}> */}
-{/*  */}
+{
+  /* <div className={` w-full  ${imagesArr.length===3?"px-body":imagesArr.length===2?"px-[1.5%]":"px-0"}   ${imagesArr.length===3?"lg:-mt-36 -mt-16":"-mt-0"} z-30`}> */
+}
+{
+  /*  */
+}

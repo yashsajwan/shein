@@ -106,7 +106,7 @@ const InstaFamilySlider = () => {
     <>
       {instagramData && instagramData.length > 0 && (
         // <div className="px-body bg-instagram-section-bg bg-cover bg-no-repeat  md:py-16 py-10  -mb-4">
-        <div className="px-body relative  bg-cover bg-no-repeat   ">
+        <div className="px-body relative  bg-cover bg-no-repeat  mb-[2.5rem] ">
           {/* <div className="text-white"> */}
           <div className="flex flex-col gap-4">
             <div className="flex justify-center items-center gap-2 ">
