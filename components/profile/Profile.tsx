@@ -20,7 +20,6 @@ import Points from "./Points";
 import ComingSoon from "./ComingSoon";
 import ChangeEmail from "./ChangeEmail";
 
-
 const Profile = ({ cookie }) => {
   useEffect(() => {
     const tab_number = JSON.parse(localStorage.getItem("tab"));
@@ -110,44 +109,49 @@ const Profile = ({ cookie }) => {
   }, []);
 
   return (
-    <div className="flex flex-col px-body gap-2 mt-2  h-full ">
-      <div className="w-full flex flex-col md:flex-row gap-4 mt-5 sm:mb-20 mb-10">
-        <ProfileOptions
-          cookie={cookie}
-          setSelectedTab={setSelectedTab}
-          selectedTab={selectedTab}
-        />
-        <hr />
-        <div className="w-full flex-1 ">
-          {selectedTab === 1 && <EditProfile />}
-          {selectedTab === 2 && (
-            <OrderPage
-              setSelectedTab={setSelectedTab}
-              selectedTab={selectedTab}
-              onView={onView}
-            />
-          )}
-          {selectedTab === 3 && <Addresses userId={userData?.id} />}
-          {selectedTab === 4 && <Points cookie={cookie} />}
-         
-          {selectedTab === 7 && <ChangeEmail />}  {/* Change Email */}
-          {selectedTab === 8 && <ComingSoon />}  {/* My coupons */}
-          {selectedTab === 9 && <ComingSoon />}  {/* wallet*/}
-
-          {selectedTab === 10 && <ComingSoon />}  {/* unpaid*/}
-          {selectedTab === 11 && <ComingSoon />}  {/* processing*/}
-          {selectedTab === 12 && <ComingSoon />}  {/* Shipped*/}
-          {selectedTab === 13 && <ComingSoon />}  {/* review*/}
-         
-
-
-
-          {selectedTab === 5 && <HelpAndSupport />}
-
-          {selectedTab === 6 && <Account cookie={cookie} />}
-        </div>
-      </div>
-    </div>
+    <>
+      {isClient ? (
+        <>
+          <div className="flex flex-col px-body gap-2 mt-2  h-full ">
+            <div className="w-full flex flex-col md:flex-row gap-4 mt-5 sm:mb-20 mb-10">
+              <ProfileOptions
+                cookie={cookie}
+                setSelectedTab={setSelectedTab}
+                selectedTab={selectedTab}
+              />
+              <hr />
+              <div className="w-full flex-1 ">
+                {selectedTab === 1 && <EditProfile />}
+                {selectedTab === 2 && (
+                  <OrderPage
+                    setSelectedTab={setSelectedTab}
+                    selectedTab={selectedTab}
+                    onView={onView}
+                  />
+                )}
+                {selectedTab === 3 && <Addresses userId={userData?.id} />}
+                {selectedTab === 4 && <Points cookie={cookie} />}
+                {selectedTab === 7 && <ChangeEmail />} {/* Change Email */}
+                {selectedTab === 8 && <ComingSoon />} {/* My coupons */}
+                {selectedTab === 9 && <ComingSoon />} {/* wallet*/}
+                {selectedTab === 10 && <ComingSoon />} {/* unpaid*/}
+                {selectedTab === 11 && <ComingSoon />} {/* processing*/}
+                {selectedTab === 12 && <ComingSoon />} {/* Shipped*/}
+                {selectedTab === 13 && <ComingSoon />} {/* review*/}
+                {selectedTab === 5 && <HelpAndSupport />}
+                {selectedTab === 6 && (
+                  <Account cookie={cookie}
+                  setSelectedTab={setSelectedTab}
+                  selectedTab={selectedTab} />
+                )}
+              </div>
+            </div>
+          </div>
+        </>
+      ) : (
+        ""
+      )}
+    </>
   );
 };
 

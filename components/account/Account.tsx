@@ -9,7 +9,12 @@ import { constant } from "../../utils/constants";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const Account = ({ cookie }) => {
+import unpaid from "../../images/unpaid.png";
+import processing from "../../images/processing.png";
+import shipped from "../../images/shipped.png";
+import wallet from "../../images/wallet.png";
+
+const Account = ({ cookie, setSelectedTab, selectedTab }) => {
   const { data: userData } = useQuery({
     queryKey: ["userData"],
     queryFn: () => getUserData(cookie),
@@ -32,7 +37,7 @@ const Account = ({ cookie }) => {
               </div>
             ) : (
               <div className="grid grid-cols-4">
-                <div className="grid col-span-3 bg-gradient-to-r from-white via-[#fa7bc1] to-[#fa7bc1]  rounded-3xl ">
+                <div className="grid col-span-4 md:col-span-3 bg-gradient-to-r from-white via-[#fa7bc1] to-[#fa7bc1]  rounded-3xl ">
                   <div className="lg:px-5 px-2 lg:py-5 py-3 relative">
                     <div className=" text-secondary text-lg font-semibold flex items-center mb-5">
                       <Image
@@ -72,16 +77,60 @@ const Account = ({ cookie }) => {
               </div>
             )}
 
-            <div className="w-full md:w-3/4 my-5">
+            <div className="w-full md:w-3/4 my-5 border-2 border-primary p-4">
+              <div className="flex justify-around my-2 items-center h-32">
+                <div className="p-3 text-xl text-center h-full flex items-center">
+                  <div>
+                    <div className="text-3xl font-bold">5</div>
+                    <div>Coupons</div>
+                  </div>
+                </div>
+                <div className="p-3 text-xl text-center h-full flex items-center">
+                  <div>
+                    <div className="text-3xl font-bold">200</div>
+                    <div>Points</div>
+                  </div>
+                </div>
+                <div className="p-3 text-xl text-center h-full flex items-center">
+                  <div>
+                    <Image src={wallet} alt="unpaid"></Image>
+                    <div>Wallets</div>
+                  </div>
+                </div>
+                {/* <div className="p-3 text-xl">Review</div> */}
+              </div>
+            </div>
+
+            <div className="w-full md:w-3/4 my-5 border-2 border-primary p-4">
               <div className="flex justify-between items-center">
                 <div className="text-3xl">My Orders</div>
-                <Link href="">View All</Link>
+                <div
+                  className="cursor-pointer"
+                  onClick={() => setSelectedTab(2)}
+                >
+                  View All
+                </div>
               </div>
-              <div className="flex justify-around my-5">
-                <div className="p-3 text-xl">Unpaid</div>
-                <div className="p-3 text-xl">Processing</div>
-                <div className="p-3 text-xl">Shipped</div>
-                <div className="p-3 text-xl">Review</div>
+              <div className="flex justify-around my-5 items-center h-32">
+                <div className="p-3 text-xl text-center h-full flex items-center">
+                  <div>
+                    <Image src={unpaid} alt="unpaid"></Image>
+                    <div>Unpaid</div>
+                  </div>
+                </div>
+                <div className="p-3 text-xl text-center h-full flex items-center">
+                  <div>
+                    <Image src={processing} alt="unpaid"></Image>
+                    <div>Processing</div>
+                  </div>
+                </div>
+                <div className="p-3 text-xl text-center h-full flex items-center">
+                  <div>
+                    <Image src={shipped} alt="unpaid"></Image>
+                    <div>Shipped</div>
+                  </div>
+                </div>
+                {/* <div className="p-3 text-xl">Review</div> */}
               </div>
             </div>
           </div>
