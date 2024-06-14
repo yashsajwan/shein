@@ -78,8 +78,8 @@ const ProductCarousel = ({ section, myKey,cookie }) => {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1.5,
-          slidesToScroll: 1.5,
+          slidesToShow: 2,
+          slidesToScroll: 2,
           dots: false,
           arrows: false,
         },

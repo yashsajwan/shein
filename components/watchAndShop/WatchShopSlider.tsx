@@ -78,8 +78,8 @@ const WatchShopSlider = () => {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1.5,
-          slidesToScroll: 2.5,
+          slidesToShow: 2,
+          slidesToScroll: 2,
           dots: false,
           arrows: false,
         },
@@ -102,7 +102,7 @@ const WatchShopSlider = () => {
     <>
       {videoProducts && videoProducts.length > 0 && (
         <div className="px-body bg-[#fef8fb] relative my-[2.5rem]">
-          <div className="md:pt-6  ">
+          <div className="pt-3 md:pt-6  ">
             <div className="text-center ">
               <h1 className="sm:text-3xl text-xl font-bold">WATCH AND SHOP</h1>
               {/* <div className="">
