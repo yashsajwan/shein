@@ -284,6 +284,32 @@ const ProductInfo = ({ params }: any) => {
     ],
   };
 
+  const [pinCode, setPinCode] = useState("");
+  const [deliveryStatus, setDeliveryStatus] = useState("initial");
+  const CheckPinCode = async () => {
+    try {
+      if (pinCode == "") {
+        toast.error("Enter Pin Code First!");
+        setDeliveryStatus("false");
+      } else {
+        const response = await fetch(
+          `https://api.postalpincode.in/pincode/${pinCode}`
+        );
+        const data = await response.json();
+        console.log(data[0].PostOffice.length);
+        if (data[0].PostOffice.length > 0) {
+          setDeliveryStatus("true");
+        } else {
+          setDeliveryStatus("false");
+        }
+      }
+    } catch (err) {
+      console.log(err);
+      toast.error("Some Error Occurred!");
+      setDeliveryStatus("false");
+    }
+  };
+
   return (
     <>
       {!product && (
@@ -318,24 +344,24 @@ const ProductInfo = ({ params }: any) => {
                 })}
               </div>
               <div className="flex md:flex-row flex-col w-full sm:gap-8 md:gap-12 lg:gap-16 gap-6 ">
-                <div className=" h-fit lg:w-[40%] w-[100%] flex lg:flex-col sm:flex-row flex-col sm:gap-7 gap-7  justify-center">
+                <div className=" h-fit lg:w-[60%] w-[100%] flex lg:flex-col sm:flex-row flex-col sm:gap-7 gap-7  justify-center">
                   <div className=" md:w-[100%]  sm:w-[50%] w-[100%] lg:h-[595px] md:h-[400px] sm:h-[300px] h-auto ">
                     <Image
                       src={tabImage}
                       alt={product?.prodName || ""}
                       width={1000}
                       height={1000}
-                      className="w-full   object-cover lg:h-[595px] h-[300px] "
+                      className="w-full   object-fill md:h-[500px] lg:h-[800px] h-[300px] "
                     />
                   </div>
                 </div>
-                <div className="flex flex-col md:w-[60%] w-[100%]   ">
+                <div className="flex flex-col md:w-[40%] w-[100%]   ">
                   <div className="flex items-center  sm:mb-2 md:mb-3 mb-1">
                     <h2 className="md:text-xl text-lg   font-semibold  text-[#555555] ">
                       {product?.prodName}
                     </h2>
                   </div>
-                  <div className="flex md:flex-col md:items-start md:justify-start lg:items-center lg:flex-row sm:flex-row flex-col gap-y-2  gap-x-4 sm:items-center ">
+                  <div className="flex md:flex-col md:items-start md:justify-start xl:items-center xl:flex-row sm:flex-row flex-col gap-y-2  gap-x-4 sm:items-center ">
                     <div className="flex">
                       <h2 className=" lg:text-2xl md:text-xl sm:text-lg text-base sm:text-center text-start text-[#eb4897] font-bold  ">
                         {constant?.currency}{" "}
@@ -523,16 +549,61 @@ const ProductInfo = ({ params }: any) => {
                       DELIVERY TO DELHI ?
                     </h3>
 
-                    <div className="rounded-2xl relative flex border-2 border-black w-[50%] justify-between">
-                      <input
-                        className="py-1 px-3 rounded-2xl w-full"
-                        type="number"
-                        placeholder="Enter a pincode to check"
-                      />
+                    <div className="flex flex-col">
+                      <div
+                        className={`rounded-3xl relative flex border-[3px] border-black w-[70%] justify-between  ${
+                          pinCode
+                            ? deliveryStatus == "initial"
+                              ? ""
+                              : deliveryStatus == "true"
+                              ? "border-green-700"
+                              : "border-red-700"
+                            : ""
+                        }`}
+                      >
+                        <input
+                          value={pinCode}
+                          onChange={(e) => {
+                            setPinCode(e.target.value);
+                            setDeliveryStatus("initial");
+                          }}
+                          className="py-1 px-3 rounded-2xl w-full"
+                          type="number"
+                          placeholder="Enter a pincode to check"
+                        />
 
-                      <button className="absolute right-0 text-white bg-black rounded-xl py-1 px-3">
-                        Check
-                      </button>
+                        <button
+                          onClick={CheckPinCode}
+                          className={`absolute top-0 right-0 bg-black text-white rounded-xl py-1 px-3 ${
+                            pinCode
+                              ? deliveryStatus == "initial"
+                                ? ""
+                                : deliveryStatus == "true"
+                                ? "bg-green-700"
+                                : "bg-red-700"
+                              : ""
+                          }`}
+                        >
+                          Check
+                        </button>
+                      </div>
+                      {pinCode ? (
+                        <>
+                          {deliveryStatus == "initial" ? (
+                            ""
+                          ) : deliveryStatus == "true" ? (
+                            <div className="my-2">
+                              Deliverable to Pin Code: {pinCode}✅
+                            </div>
+                          ) : (
+                            <div className="my-2">
+                              Undeliverable to Pin Code {pinCode}❌
+                            </div>
+                          )}
+                        </>
+                      ) : (
+                        <></>
+                      )}
                     </div>
 
                     <div className="py-3">
@@ -543,18 +614,37 @@ const ProductInfo = ({ params }: any) => {
                         </div>
                       </div>
                       <div className="flex items-center">
-                        <Image src={prepaid} alt="prepaid" height={100} width={100} />
+                        <Image
+                          src={prepaid}
+                          alt="prepaid"
+                          height={100}
+                          width={100}
+                        />
                         <div className="mx-2 text-base text-gray-400">
-                          Prepaid Delivery Only ?
+                          <div>Prepaid Delivery Only ?</div>
+                          <div>
+                            Make prepaid payment get{" "}
+                            <span className="text-[#eb4897]">5 %</span>
+                          </div>
+                          <div>Instant Discounts</div>
                         </div>
                       </div>
                       <div className="flex items-center">
-                        <Image src={delivery} alt="delivery" height={100} width={100} />
+                        <Image
+                          src={delivery}
+                          alt="delivery"
+                          height={100}
+                          width={100}
+                        />
                         <div className="mx-2 text-base text-gray-400 flex flex-col">
-                          <div>Standard Delivery: <span className="text-[#eb4897]">15 Days</span></div>
-                          <div>Make prepaid payment get <span className="text-[#eb4897]">5 %</span></div>
-                          <div>Instant Discounts</div>
-                          <div>Estimated Delivery: <span className="text-[#eb4897]">7 to 15 Days</span></div>
+                          <div>
+                            Standard Delivery:{" "}
+                            <span className="text-[#eb4897]">15 Days</span>
+                          </div>
+                          <div>
+                            Estimated Delivery:{" "}
+                            <span className="text-[#eb4897]">7 to 15 Days</span>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -674,9 +764,9 @@ const ProductInfo = ({ params }: any) => {
                     className="flex justify-between lg:flex w-full "
                     ref={ref}
                   >
-                    <div className="w-full flex gap-3 ">
+                    <div className="w-full flex gap-3">
                       <div
-                        className="flex-1 lg:flex-none w-[30%]  lg:h-10 md:h-12 sm:h-10 bg-black h-8  flex justify-center items-center py-1  cursor-pointer"
+                        className="flex-1 lg:flex-none w-[40%]  lg:h-10 md:h-12 sm:h-10 bg-black h-8  flex justify-center items-center py-1  cursor-pointer"
                         onClick={
                           checkIfItemExistInCart(cart, product, variant)
                             ? () => {
@@ -726,7 +816,7 @@ const ProductInfo = ({ params }: any) => {
                           //   router.push("/checkout");
                           // }
                         }}
-                        className="flex-1 lg:flex-none w-[30%]  lg:h-10 md:h-12 sm:h-10 bg-[#eb4897] h-8  flex justify-center items-center py-1  cursor-pointer"
+                        className="flex-1 lg:flex-none w-[40%]  lg:h-10 md:h-12 sm:h-10 bg-[#eb4897] h-8  flex justify-center items-center py-1  cursor-pointer"
 
                         // onClick={handleRemoveFromCart}
                       >
