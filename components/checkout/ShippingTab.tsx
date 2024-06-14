@@ -1,3 +1,4 @@
+"use client";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import CheckoutNewAddress from "./CheckoutNewAddress";
 import {
@@ -9,6 +10,7 @@ import { initialAddress } from "../../utils/utilities";
 import React, { useState, useEffect } from "react";
 import Modal from "../Modal/modal";
 import { CircularProgress } from "@mui/material";
+import CartComponent from "../cart/CartComponent";
 
 function ShippingTab(props) {
   const queryClient = useQueryClient();
@@ -38,7 +40,6 @@ function ShippingTab(props) {
     setIsClient(true);
   }, []);
 
-  
   return (
     <div className="flex flex-col md:mt-2 mt-4 w-full  ">
       <h6 className="font-medium  xl:text-base md:text-base text-sm  ">
@@ -192,6 +193,8 @@ function ShippingTab(props) {
           handleChange={props.handleChange}
           setIsNewAddress={props.setIsNewAddress}
         /> */}
+
+      <CartComponent getPaymentSummary={props.getPaymentSummary} type="secondary" cookie={props.cookie} />
     </div>
   );
 }

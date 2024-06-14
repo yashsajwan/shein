@@ -4,7 +4,7 @@ import { cookies } from "next/dist/client/components/headers";
 
 const CartPage = async () => {
   const cookie = cookies().get("uid");
-  return <CartComponent cookie={cookie} />;
+  return <CartComponent getPaymentSummary={null} type="main" cookie={cookie} />;
 };
 
 export default CartPage;

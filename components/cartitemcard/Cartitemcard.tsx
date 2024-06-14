@@ -18,7 +18,7 @@ import { removeFromWishListHandler, getUserWishlist, } from "../../utils/databas
 import { removeFromCart } from "../../redux/slices/cartSlice";
 
 
-const CartItemCard = ({ item, mykey, cookie }) => {
+const CartItemCard = ({ item, mykey, cookie ,getPaymentSummary}) => {
   const { data: userData } = useQuery({
     queryKey: ["userData"],
     queryFn: () => getUserData(cookie),
@@ -109,6 +109,7 @@ const CartItemCard = ({ item, mykey, cookie }) => {
         <div
           onClick={() => {
             handleRemoveFromCart(item);
+            getPaymentSummary();
           }}
           className="flex gap-2 items-center  mt-2 cursor-pointer"
         >
@@ -134,6 +135,7 @@ const CartItemCard = ({ item, mykey, cookie }) => {
                   index: mykey,
                 })
               );
+              getPaymentSummary();
             }}
           >
             <FlatIcon
@@ -153,6 +155,7 @@ const CartItemCard = ({ item, mykey, cookie }) => {
                   index: mykey,
                 })
               );
+              getPaymentSummary();
             }}
           >
             <FlatIcon
