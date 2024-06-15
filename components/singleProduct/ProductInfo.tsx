@@ -351,11 +351,11 @@ const ProductInfo = ({ params }: any) => {
                       alt={product?.prodName || ""}
                       width={1000}
                       height={1000}
-                      className="w-full   object-fill md:h-[500px] lg:h-[800px] h-[300px] "
+                      className="w-full   object-fill md:h-[500px] lg:h-[700px] h-[300px] "
                     />
                   </div>
                 </div>
-                <div className="flex flex-col md:w-[40%] w-[100%]   ">
+                <div className="flex flex-col md:w-[50%] w-[100%]   ">
                   <div className="flex items-center  sm:mb-2 md:mb-3 mb-1">
                     <h2 className="md:text-xl text-lg   font-semibold  text-[#555555] ">
                       {product?.prodName}

@@ -206,7 +206,7 @@ const ImageBanner = ({ section, myKey = `` }) => {
     <div
       className={` w-full ${imagesArr.length === 3 ? "mt-0" : "mt-0"} ${
         imagesArr.length === 3
-          ? "px-0"
+          ? "px-body"
           : imagesArr.length === 2
           ? "px-0"
           : "px-0"
@@ -216,9 +216,9 @@ const ImageBanner = ({ section, myKey = `` }) => {
 
       <div
         className={` w-full  flex flex-col md:flex-row items-center  ${
-          imagesArr.length === 2 ? "xl:px-body" : ""
+          imagesArr.length === 2 ? "px-body" : ""
         }  ${
-          imagesArr.length === 3 ? "sm:gap-0" : "sm:gap-0"
+          imagesArr.length === 3 ? "gap-7" : "gap-2"
         } `}
 
         
@@ -255,8 +255,8 @@ const ImageBanner = ({ section, myKey = `` }) => {
               // layout="responsive"
               style={{ aspectRatio: "auto" }}
               className={`flex-1 ${
-                imagesArr.length === 2 ? "sm:h-[20rem] lg:[25rem] h-[10rem]" : "h-auto"
-              } object-fill `}
+                 imagesArr.length === 2 ? "sm:h-[25rem] h-[10rem]" : "h-auto"
+              } object-cover `}
             />
           </Link>
         ))}
