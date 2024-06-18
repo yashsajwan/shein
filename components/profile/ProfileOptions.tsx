@@ -43,38 +43,38 @@ const ProfileOptions = ({ cookie, setSelectedTab, selectedTab }) => {
 
   // console.log(userData?.dP,"----------------------");
 
-  const uploadImage = async (userPic: any) => {
-    if (userPic) {
-      setLoading(true);
-      // console.log("inside if start")
-      // console.log(userPic,"FROM upload img");
-      let timeStamp = new Date().getMilliseconds();
-      const userId = await userData.id;
-      // console.log(userId,"user id from if");
-      const storage = getStorage();
-      const storageRef = ref(
-        storage,
-        `users/${userId}/images/${userPic.name}___${timeStamp}`
-      );
-      await uploadBytes(storageRef, userPic).then(async (snapshot) => {
-        await getDownloadURL(snapshot.ref).then(async (downloadURL) => {
-          await setDoc(
-            doc(db, "users", userId),
-            { dP: downloadURL },
-            { merge: true }
-          );
-          // console.log(downloadURL, "url");
-          await client.invalidateQueries({ queryKey: ["userData"] });
-          await client.refetchQueries({ queryKey: ["userData"] });
-          toast.success("Profile pic updated successfully.");
-        });
-      });
-      // console.log("inside if end")
-      setLoading(false);
-    } else {
-      console.log("insile else");
-    }
-  };
+  // const uploadImage = async (userPic: any) => {
+  //   if (userPic) {
+  //     setLoading(true);
+  //     // console.log("inside if start")
+  //     // console.log(userPic,"FROM upload img");
+  //     let timeStamp = new Date().getMilliseconds();
+  //     const userId = await userData.id;
+  //     // console.log(userId,"user id from if");
+  //     const storage = getStorage();
+  //     const storageRef = ref(
+  //       storage,
+  //       `users/${userId}/images/${userPic.name}___${timeStamp}`
+  //     );
+  //     await uploadBytes(storageRef, userPic).then(async (snapshot) => {
+  //       await getDownloadURL(snapshot.ref).then(async (downloadURL) => {
+  //         await setDoc(
+  //           doc(db, "users", userId),
+  //           { dP: downloadURL },
+  //           { merge: true }
+  //         );
+  //         // console.log(downloadURL, "url");
+  //         await client.invalidateQueries({ queryKey: ["userData"] });
+  //         await client.refetchQueries({ queryKey: ["userData"] });
+  //         toast.success("Profile pic updated successfully.");
+  //       });
+  //     });
+  //     // console.log("inside if end")
+  //     setLoading(false);
+  //   } else {
+  //     console.log("insile else");
+  //   }
+  // };
 
   async function handleLogout() {
     signOut(auth)
@@ -94,9 +94,9 @@ const ProfileOptions = ({ cookie, setSelectedTab, selectedTab }) => {
       });
   }
 
-  async function uploadTask(userPic: any) {
-    await uploadImage(userPic);
-  }
+  // async function uploadTask(userPic: any) {
+  //   await uploadImage(userPic);
+  // }
 
   useEffect(() => {
     setIsClient(true);
@@ -128,7 +128,7 @@ const ProfileOptions = ({ cookie, setSelectedTab, selectedTab }) => {
   return (
     <>
       <div className=" xl:flex-[0.25] md:flex-[0.45] filter-border  h-fit ">
-        <div className="flex flex-col items-center mt-5 mb-7">
+        {/* <div className="flex flex-col items-center mt-5 mb-7">
           <div className="border border-[#EEEEEE] rounded-full p-2 mb-2">
             <div className=" rounded-full  relative">
               <Image
@@ -151,7 +151,7 @@ const ProfileOptions = ({ cookie, setSelectedTab, selectedTab }) => {
                   id="Destination-Image"
                   className="w-full hover:cursor-pointer   outline-none px-[10px] py-[7px] hidden rounded-md "
                 />
-                {/* <label htmlFor='Destination-Image' className='hover:cursor-pointer '>v</label> */}
+
                 <label
                   htmlFor="Destination-Image"
                   className="hover:cursor-pointer h-[30px] w-[30px] rounded-full border border-[#EEEEEE] bg-white flex justify-center items-center"
@@ -164,14 +164,11 @@ const ProfileOptions = ({ cookie, setSelectedTab, selectedTab }) => {
           <h5 className="text-secondary font-semibold text-sm mb-1">
             {isClient && userData?.name}{" "}
             {isClient && userData?.lastName && userData?.lastName}
-            {/* Arjun Rawat */}
           </h5>
           <h6 className="text-[#555555] font-medium text-sm">
             {isClient && userData?.email}
-            {/* rajun.rawat@gmail.com */}
           </h6>
-        </div>
-        {/* <Link href={"/profilePage"}> */}
+        </div> */}
 
         <div className="">
           <Disclosure>
