@@ -17,42 +17,50 @@ import { signOut } from "firebase/auth";
 
 import { getUserData } from "../../utils/databaseService";
 import { getCookie } from "cookies-next";
+import logo from "../../images/Group 34291 (2).svg";
+import img1 from "../../images/login_img.png";
+import img2 from "../../images/login_img2.png";
+
+import facebookImg from "../../images/facebook (2) 1.svg";
+import whatsappImg from "../../images/whatsapp.svg";
+import instagram from "../../images/instagram (3) 1.svg";
+import pinterest from "../../images/pinterest (1) 1.svg";
+import twitter from "../../images/twitter.svg";
+import youtube from "../../images/yt.png";
+import snapchat from "../../images/snapchat.svg";
+import download from "../../images/login_download.png";
 
 const social = [
   {
     iconName: "flaticon-facebook",
     name: "Facebook",
     key: "facebookUrl",
+    img: facebookImg,
   },
   {
     iconName: "flaticon-youtube",
     name: "Youtube",
     key: "youtubeUrl",
+    img: youtube,
   },
   {
     iconName: "flaticon-instagram",
     name: "Instagram",
     key: "instagramUrl",
+    img: instagram,
   },
   {
     iconName: "flaticon-twitter",
     name: "Twitter",
     key: "twitterUrl",
-  },
-  {
-    name: "Tiktok",
-    key: "tiktokUrl",
-  },
-  {
-    name: "Linkedin",
-    key: "linkedinUrl",
+    img: twitter,
   },
 ];
 
 function SidebarDrawer(props) {
   const browse2 = [
     {
-      name: "Login",
+      name: "LOGIN/SIGN UP",
       path: "/profile",
       tab: null,
     },
@@ -369,6 +377,23 @@ function SidebarDrawer(props) {
                   </Transition>
                 </div> */}
 
+                <Link href={"/"}>
+                  <Image
+                    src={logo}
+                    alt=""
+                    className="mx-auto"
+                    width={1000}
+                    height={1000}
+                    style={{
+                      aspectRatio: "auto",
+                      width: "200px",
+                      height: "auto",
+                    }}
+                  />
+                </Link>
+
+                <hr />
+
                 {/* Dynamic Categories */}
                 {categories &&
                   categories?.slice(0)?.map((category) => {
@@ -390,6 +415,8 @@ function SidebarDrawer(props) {
                             }
                           }}
                         >
+                          <div className="bg-primary rounded-[50%] h-5 w-5 mr-3"></div>
+
                           <Link
                             className="flex justify-between w-full"
                             onClick={(e) => {
@@ -542,15 +569,16 @@ function SidebarDrawer(props) {
             </div>
 
             <div className="flex flex-col px-3 gap-2 items-start">
-              <h1 className="text-3xl mt-3 text-[#a9a9a9] font-light">
-                BROWSE
-              </h1>
               <div className="flex flex-col gap-2 items-start mt-1">
                 {userData ? (
-                  <>
+                  <div className="font-semibold  text-left">
+                    <h1 className="text-3xl mt-3 text-[#a9a9a9] font-light">
+                      BROWSE
+                    </h1>
                     {browse?.map((link, idx) => {
                       return (
-                        <div
+                        <div 
+                        className="my-2"
                           key={idx}
                           onClick={(e) => {
                             if (link.name == "Logout") {
@@ -568,17 +596,21 @@ function SidebarDrawer(props) {
                             router.push(link.path);
                           }}
                         >
-                          {link.name}
+                          <div className="flex items-center">
+                            <div className="bg-primary rounded-[50%] h-5 w-5 mr-3"></div>
+                            {link.name}
+                          </div>
                         </div>
                       );
                     })}
-                  </>
+                  </div>
                 ) : (
                   <>
                     {browse2?.map((link, idx) => {
                       return (
                         <div
                           key={idx}
+                          className="text-white bg-black rounded-xl w-56 px-5 py-1 mt-9"
                           onClick={(e) => {
                             if (
                               link?.path === "/profile" &&
@@ -592,7 +624,15 @@ function SidebarDrawer(props) {
                             }
                           }}
                         >
-                          {link.name}
+                          <div className="flex items-center gap-2">
+                            <Image
+                              src={img1}
+                              height={40}
+                              width={40}
+                              alt=""
+                            ></Image>
+                            {link.name}
+                          </div>
                         </div>
                       );
                     })}
@@ -600,26 +640,31 @@ function SidebarDrawer(props) {
                 )}
               </div>
             </div>
-            <div className="flex flex-col px-3 gap-2 items-start my-3">
-              <h1 className="text-3xl mt-3 text-[#a9a9a9] font-light">
+            <div className="flex flex-col px-3 gap-2 items-start my-3 ">
+              {/* <h1 className="text-3xl mt-3 text-[#a9a9a9] font-light">
                 WANT TO CHAT?
-              </h1>
-              <div className="flex flex-col gap-2 items-start mt-1">
+              </h1> */}
+              <div className="flex flex-col gap-2 items-start mt-1 w-56  text-white bg-black rounded-xl py-1 px-5">
                 <Link
                   href={`tel:${
                     storeData && storeData?.storePhone?.split("+91")[1]
                   }`}
                 >
-                  Call us toll free{" "}
-                  {storeData && storeData?.storePhone?.split("+91")[1]}
+                  <div className="flex items-center gap-2">
+                    <Image src={img2} height={40} width={40} alt=""></Image>
+                    CHAT WITH US
+                  </div>
+                  {/* Call us toll free{" "} */}
+
+                  {/* {storeData && storeData?.storePhone?.split("+91")[1]} */}
                 </Link>
               </div>
             </div>
-            <div className="flex flex-col px-3 gap-2 items-start my-3">
-              <h1 className="text-3xl mt-3 text-[#a9a9a9] font-light">
+            {/* <div className="flex flex-col px-3 gap-2 items-start my-3"> */}
+            {/* <h1 className="text-3xl mt-3 text-[#a9a9a9] font-light">
                 SOCIAL
-              </h1>
-              <div className="flex flex-col gap-2 items-start mt-1">
+              </h1> */}
+            {/* <div className="flex flex-col gap-2 items-start mt-1">
                 {social?.map((media) => {
                   if (storeData && storeData[media.key]) {
                     return (
@@ -629,18 +674,115 @@ function SidebarDrawer(props) {
                         key={media.key}
                         className="flex items-center gap-3"
                       >
-                        <FlatIcon
-                          className={`${media.iconName} text-2xl text-[#a9a9a9]`}
-                        />
-                        <p>{media.name}</p>
+                        <div>
+                          <Image
+                            src={media.img}
+                            alt=""
+                            width={30}
+                            height={30}
+                          />
+                        </div>
                       </Link>
                     );
                   } else {
                     return <></>;
                   }
                 })}
-              </div>
+              </div> */}
+
+            <div className="flex items-start mt-9 mx-2 justify-around">
+              <Link
+                href={
+                  storeData
+                    ? storeData?.facebookUrl
+                    : "https://www.facebook.com/ootdsheinindias/"
+                }
+                target="_blank"
+              >
+                <div>
+                  <Image src={facebookImg} alt="" />
+                </div>
+              </Link>
+              <Link
+                href={
+                  storeData
+                    ? storeData?.instagramUrl
+                    : "https://www.instagram.com/ootdsheinindia?igsh=MTVzNnAyMjJ0aThpdw%3D%3D&utm_source=qr"
+                }
+                target="_blank"
+              >
+                <div>
+                  <Image src={instagram} alt="" />
+                </div>
+              </Link>
+
+              <Link
+                href={
+                  storeData
+                    ? storeData?.twitterUrl
+                    : "https://twitter.com/OOTDSHEININDIA"
+                }
+                target="_blank"
+              >
+                <div>
+                  <Image
+                    className="bg-white rounded-md"
+                    src={twitter}
+                    alt=""
+                    width={31}
+                    height={31}
+                  />
+                </div>
+              </Link>
+
+              <Link
+                href={
+                  storeData
+                    ? storeData?.youtubeUrl
+                    : "https://www.youtube.com/channel/UC-wwq3jrMDQ0mpz1LwCniNw"
+                }
+                target="_blank"
+              >
+                <div className="bg-[#ff0000] rounded-md">
+                  <Image
+                    className="rounded-md  p-0 w-8 h-8"
+                    src={youtube}
+                    alt=""
+                    width={30}
+                    height={30}
+                  />
+                </div>
+              </Link>
+
+              <Link
+                className=""
+                href={
+                  "https://www.snapchat.com/add/ootdsheinindias?share_id=-wTCfKde5nl&locale=en-GB"
+                }
+                target="_blank"
+              >
+                <div>
+                  <Image
+                    className="bg-white rounded-md"
+                    src={snapchat}
+                    alt=""
+                    width={31}
+                    height={31}
+                  />
+                </div>
+              </Link>
             </div>
+            <div className="text-center font-semibold text-xl my-2">
+              FOLLOW US
+            </div>
+
+            <hr />
+
+            <Image
+              src={download}
+              alt=""
+              className="w-full h-auto cursor-pointer"
+            ></Image>
           </div>
         </OutsideClickHandler>
       </Transition>
