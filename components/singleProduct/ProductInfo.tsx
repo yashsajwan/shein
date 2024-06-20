@@ -467,9 +467,14 @@ const ProductInfo = ({ params }: any) => {
                                         setOption2(item);
                                       }}
                                       key={idx}
-                                      className={`border border-[#E6DBD7] sm:px-3 px-4 sm:py-2 py-2 text-white bg-black  text-sm font-semibold rounded-md flex justify-center items-center cursor-pointer ${
+                                      style={{
+                                        backgroundColor: `${item
+                                          .trim()
+                                          .toLowerCase()}`,
+                                      }}
+                                      className={`w-10 h-10 rounded-full border border-[#E6DBD7] sm:px-3 px-4 sm:py-2 py-2 text-white  text-sm font-semibold flex justify-center items-center cursor-pointer ${
                                         item === colorTab &&
-                                        "bg-primary text-white"
+                                        " border-2 border-primary text-white"
                                       }`}
                                     >
                                       <div
@@ -478,7 +483,7 @@ const ProductInfo = ({ params }: any) => {
                                       //   backgroundColor: `${item}`,
                                       // }}
                                       >
-                                        {item}
+                                        {/* {item} */}
                                       </div>
                                     </div>
                                   );
