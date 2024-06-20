@@ -67,14 +67,14 @@ function SidebarDrawer(props) {
   ];
   const browse = [
     {
-      name: "Profile",
-      path: "/profilepage",
-      tab: 1,
-    },
-    {
       name: "My Account",
       path: "/profilepage",
       tab: 6,
+    },
+    {
+      name: "Profile",
+      path: "/profilepage",
+      tab: 1,
     },
     {
       name: "Wishlist",
@@ -415,8 +415,6 @@ function SidebarDrawer(props) {
                             }
                           }}
                         >
-                          <div className="bg-primary rounded-[50%] h-5 w-5 mr-3"></div>
-
                           <Link
                             className="flex justify-between w-full"
                             onClick={(e) => {
@@ -577,8 +575,8 @@ function SidebarDrawer(props) {
                     </h1>
                     {browse?.map((link, idx) => {
                       return (
-                        <div 
-                        className="my-2"
+                        <div
+                          className="my-2"
                           key={idx}
                           onClick={(e) => {
                             if (link.name == "Logout") {
@@ -596,10 +594,7 @@ function SidebarDrawer(props) {
                             router.push(link.path);
                           }}
                         >
-                          <div className="flex items-center">
-                            <div className="bg-primary rounded-[50%] h-5 w-5 mr-3"></div>
-                            {link.name}
-                          </div>
+                          {link.name}
                         </div>
                       );
                     })}
