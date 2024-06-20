@@ -175,7 +175,7 @@ const ProfileOptions = ({ cookie, setSelectedTab, selectedTab }) => {
             {({ open }) => (
               <>
                 <Disclosure.Button
-                  onClick={() => setSelectedTab(6)}
+                  
                   className={`flex border-b border-[#CCCCCC] items-center sm:text-base font-semibold text-xs justify-between w-full ${
                     open ? "font-semibold" : ""
                   } `}
@@ -231,7 +231,7 @@ const ProfileOptions = ({ cookie, setSelectedTab, selectedTab }) => {
             {({ open }) => (
               <>
                 <Disclosure.Button
-                  onClick={() => setSelectedTab(4)}
+                
                   className={`flex border-b border-[#CCCCCC] items-center sm:text-base font-semibold text-xs justify-between w-full ${
                     open ? "font-semibold" : ""
                   } `}
@@ -286,7 +286,7 @@ const ProfileOptions = ({ cookie, setSelectedTab, selectedTab }) => {
             {({ open }) => (
               <>
                 <Disclosure.Button
-                  onClick={() => setSelectedTab(2)}
+              
                   className={`flex border-b border-[#CCCCCC] items-center sm:text-base font-semibold text-xs justify-between w-full ${
                     open ? "font-semibold" : ""
                   } `}
