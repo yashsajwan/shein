@@ -320,7 +320,7 @@ const ProductInfo = ({ params }: any) => {
       {product && (
         <div className="sm:pb-10 ">
           {/* <Headersection heading={product?.prodName} /> */}
-          <div className="flex flex-col px-body  ">
+          <div className="flex flex-col px-body 2xl:px-[10%] ">
             <div className="flex flex-col md:flex-row gap-3 md:gap-6 sm:mt-10 mt-5">
               <div className=" md:flex md:flex-col flex-row   gap-4   hidden ">
                 {product.images.map((item: any, idx: number) => {
@@ -343,15 +343,15 @@ const ProductInfo = ({ params }: any) => {
                   );
                 })}
               </div>
-              <div className="flex md:flex-row flex-col w-full sm:gap-8 md:gap-12 lg:gap-16 gap-6 ">
+              <div className="flex md:flex-row flex-col w-full sm:gap-8 md:gap-6 lg:gap-6 xl:gap-6 2xl:gap-16 gap-6 ">
                 <div className=" h-fit lg:w-[60%] w-[100%] flex lg:flex-col sm:flex-row flex-col sm:gap-7 gap-7  justify-center">
-                  <div className=" md:w-[100%]  sm:w-[50%] w-[100%] lg:h-[595px] md:h-[400px] sm:h-[300px] h-auto ">
+                  <div className=" md:w-[100%] lg:w-[500px] xl:w-[600px] xl:h-[750px]  sm:w-[280px] w-[100%] lg:h-[650px] md:h-[400px] sm:h-[350px] h-auto ">
                     <Image
                       src={tabImage}
                       alt={product?.prodName || ""}
                       width={1000}
                       height={1000}
-                      className="w-full   object-fill md:h-[500px] lg:h-[700px] h-[300px] "
+                      className="w-full lg:w-[500px] xl:w-[600px] xl:h-[750px]  object-fill md:h-[500px] lg:h-[750px] h-[350px] "
                     />
                   </div>
                 </div>
@@ -976,7 +976,7 @@ const ProductInfo = ({ params }: any) => {
                         <Disclosure.Panel className="  pt-0 pb-2 text-base text-gray-500">
                           <div className="bg-[#f7f7f7]">
                             <div className="flex justify-between">
-                              <div className="text-black text-xl p-2">
+                              <div className="text-black text-lg p-2">
                                 Shipping to India
                               </div>
                               <div className="flex">
@@ -1021,7 +1021,7 @@ const ProductInfo = ({ params }: any) => {
                             </Slider>
 
                             <div>
-                              <div className="text-black text-xl p-2">
+                              <div className="text-black text-lg p-2">
                                 14 Days Return
                               </div>
                               <div className="p-2">

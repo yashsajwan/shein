@@ -72,7 +72,7 @@ function SidebarDrawer(props) {
       tab: 6,
     },
     {
-      name: "Profile",
+      name: "My Profile",
       path: "/profilepage",
       tab: 1,
     },
