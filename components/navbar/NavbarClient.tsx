@@ -290,6 +290,7 @@ const NavbarClient = ({ cookie }: any) => {
                                       >
                                         <div className=" flex  gap-x-3 z-10  w-full  ">
                                           <div className="w-[30%] h-auto aspect-[1/1]">
+                                          hey
                                             <Image
                                               src={
                                                 prod.coverPic?.url
