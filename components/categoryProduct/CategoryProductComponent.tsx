@@ -11,7 +11,11 @@ import { useMediaQuery, Skeleton } from "@mui/material";
 import { constant } from "../../utils/constants";
 import {
   getFilteredProducts,
+  lowToHigh,
+  highToLow,
   getOtherFilteredProducts,
+  whatIsNew,
+  betterDiscount,
 } from "../../utils/utilities";
 
 import { Transition } from "@headlessui/react";
@@ -29,6 +33,8 @@ const CategoryProductComponent = ({ params, queryKey = [] }: any) => {
   const [filterSelected, setFilterSelected] = useState<{
     [key: string]: string[];
   }>({});
+
+  console.log("filters", filters);
 
   const { data: categoryProducts, isLoading } = useQuery({
     queryKey: ["shop", "category", params?.slug],
@@ -51,6 +57,7 @@ const CategoryProductComponent = ({ params, queryKey = [] }: any) => {
       products: categoryProducts?.products,
       otherFilters: data,
     });
+    console.log("result1", result);
     setFilteredProducts(result);
   };
 
@@ -80,6 +87,7 @@ const CategoryProductComponent = ({ params, queryKey = [] }: any) => {
           products: categoryProducts?.products,
           otherFilters: filterSelected,
         });
+        console.log("result2", filteredProducts);
         setFilteredProducts(result);
       } catch (error) {
         console.error("Error fetching filtered products", error);
@@ -98,14 +106,51 @@ const CategoryProductComponent = ({ params, queryKey = [] }: any) => {
         filters: filters,
         products: categoryProducts?.products,
       });
+      console.log("result3", result);
       setFilteredProducts(result);
       if (!filters.price) {
         setFiters({ ...filters, price: categoryProducts?.minMax });
       }
+      console.log("filter2", filters);
     }
   }, [categoryProducts, filters]);
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [sortingTab, setSortingTab] = useState("Recommended");
+  const [sortingTabValue, setSortingTabValue] = useState(0);
+
+  useEffect(() => {
+    if (!products) {
+      setProducts(categoryProducts?.products);
+    }
+    if (categoryProducts) {
+      if (sortingTabValue == 5) {
+        const result = lowToHigh({
+          products: categoryProducts?.products,
+        });
+
+        setFilteredProducts(result);
+      } else if (sortingTabValue == 5) {
+        const result = highToLow({
+          products: categoryProducts?.products,
+        });
+        console.log("result4", result);
+        setFilteredProducts(result);
+      } else if (sortingTabValue == 3) {
+        const result = betterDiscount({
+          products: categoryProducts?.products,
+        });
+        console.log("result4", result);
+        setFilteredProducts(result);
+      } else if (sortingTabValue == 1) {
+        const result = whatIsNew({
+          products: categoryProducts?.products,
+        });
+        console.log("result4", result);
+        setFilteredProducts(result);
+      }
+    }
+  }, [sortingTab]);
 
   const handleMouseEnter = () => {
     setIsMenuOpen(true);
@@ -179,6 +224,7 @@ const CategoryProductComponent = ({ params, queryKey = [] }: any) => {
                           <Link
                             onClick={() => {
                               setSortingTab("Recommended");
+                              setSortingTabValue(0);
                             }}
                             href={""}
                             className=""
@@ -190,6 +236,7 @@ const CategoryProductComponent = ({ params, queryKey = [] }: any) => {
                           <Link
                             onClick={() => {
                               setSortingTab("What's New");
+                              setSortingTabValue(1);
                             }}
                             href={""}
                             className=""
@@ -201,6 +248,7 @@ const CategoryProductComponent = ({ params, queryKey = [] }: any) => {
                           <Link
                             onClick={() => {
                               setSortingTab("Popularity");
+                              setSortingTabValue(2);
                             }}
                             href={""}
                             className=""
@@ -212,6 +260,7 @@ const CategoryProductComponent = ({ params, queryKey = [] }: any) => {
                           <Link
                             onClick={() => {
                               setSortingTab("Better Discount");
+                              setSortingTabValue(3);
                             }}
                             href={""}
                             className=""
@@ -223,6 +272,7 @@ const CategoryProductComponent = ({ params, queryKey = [] }: any) => {
                           <Link
                             onClick={() => {
                               setSortingTab("Price: High to Low");
+                              setSortingTabValue(4);
                             }}
                             href={""}
                             className=""
@@ -234,6 +284,7 @@ const CategoryProductComponent = ({ params, queryKey = [] }: any) => {
                           <Link
                             onClick={() => {
                               setSortingTab("Price: Low to High");
+                              setSortingTabValue(5);
                             }}
                             href={""}
                             className=""
@@ -245,6 +296,7 @@ const CategoryProductComponent = ({ params, queryKey = [] }: any) => {
                           <Link
                             onClick={() => {
                               setSortingTab("Customer Rating");
+                              setSortingTabValue(6);
                             }}
                             href={""}
                             className=""
