@@ -16,6 +16,7 @@ import {
   getOtherFilteredProducts,
   whatIsNew,
   betterDiscount,
+  Recommended,
 } from "../../utils/utilities";
 
 import { Transition } from "@headlessui/react";
@@ -33,8 +34,6 @@ const CategoryProductComponent = ({ params, queryKey = [] }: any) => {
   const [filterSelected, setFilterSelected] = useState<{
     [key: string]: string[];
   }>({});
-
-
 
   const { data: categoryProducts, isLoading } = useQuery({
     queryKey: ["shop", "category", params?.slug],
@@ -57,7 +56,7 @@ const CategoryProductComponent = ({ params, queryKey = [] }: any) => {
       products: categoryProducts?.products,
       otherFilters: data,
     });
-
+    console.log(result);
     setFilteredProducts(result);
   };
 
@@ -87,7 +86,7 @@ const CategoryProductComponent = ({ params, queryKey = [] }: any) => {
           products: categoryProducts?.products,
           otherFilters: filterSelected,
         });
-
+        console.log(result);
         setFilteredProducts(result);
       } catch (error) {
         console.error("Error fetching filtered products", error);
@@ -106,7 +105,7 @@ const CategoryProductComponent = ({ params, queryKey = [] }: any) => {
         filters: filters,
         products: categoryProducts?.products,
       });
-
+      console.log(result);
       setFilteredProducts(result);
       if (!filters.price) {
         setFiters({ ...filters, price: categoryProducts?.minMax });
@@ -142,6 +141,12 @@ const CategoryProductComponent = ({ params, queryKey = [] }: any) => {
         setFilteredProducts(result);
       } else if (sortingTabValue == 1) {
         const result = whatIsNew({
+          products: categoryProducts?.products,
+        });
+
+        setFilteredProducts(result);
+      } else if (sortingTabValue == 0 || sortingTabValue == 2) {
+        const result = Recommended({
           products: categoryProducts?.products,
         });
 

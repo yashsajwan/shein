@@ -154,6 +154,20 @@ export function whatIsNew({ products }) {
   return newArr;
 }
 
+export function Recommended({ products }) {
+  // console.log("filters",filters);
+
+  let newArr = products || [];
+  if (products && products?.length !== 0) {
+    // console.log("inside if");
+
+    newArr = products.sort((a, b) => b.deal.discount - a.deal.discount);
+  }
+  // console.log("newArr", newArr);
+
+  return newArr;
+}
+
 export const getOtherFilteredProducts = async ({
   filters,
   products,
