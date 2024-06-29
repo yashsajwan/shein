@@ -34,7 +34,7 @@ const CategoryProductComponent = ({ params, queryKey = [] }: any) => {
     [key: string]: string[];
   }>({});
 
-  console.log("filters", filters);
+
 
   const { data: categoryProducts, isLoading } = useQuery({
     queryKey: ["shop", "category", params?.slug],
@@ -57,7 +57,7 @@ const CategoryProductComponent = ({ params, queryKey = [] }: any) => {
       products: categoryProducts?.products,
       otherFilters: data,
     });
-    console.log("result1", result);
+
     setFilteredProducts(result);
   };
 
@@ -87,7 +87,7 @@ const CategoryProductComponent = ({ params, queryKey = [] }: any) => {
           products: categoryProducts?.products,
           otherFilters: filterSelected,
         });
-        console.log("result2", filteredProducts);
+
         setFilteredProducts(result);
       } catch (error) {
         console.error("Error fetching filtered products", error);
@@ -106,12 +106,11 @@ const CategoryProductComponent = ({ params, queryKey = [] }: any) => {
         filters: filters,
         products: categoryProducts?.products,
       });
-      console.log("result3", result);
+
       setFilteredProducts(result);
       if (!filters.price) {
         setFiters({ ...filters, price: categoryProducts?.minMax });
       }
-      console.log("filter2", filters);
     }
   }, [categoryProducts, filters]);
 
@@ -134,19 +133,18 @@ const CategoryProductComponent = ({ params, queryKey = [] }: any) => {
         const result = highToLow({
           products: categoryProducts?.products,
         });
-        console.log("result4", result);
         setFilteredProducts(result);
       } else if (sortingTabValue == 3) {
         const result = betterDiscount({
           products: categoryProducts?.products,
         });
-        console.log("result4", result);
+
         setFilteredProducts(result);
       } else if (sortingTabValue == 1) {
         const result = whatIsNew({
           products: categoryProducts?.products,
         });
-        console.log("result4", result);
+
         setFilteredProducts(result);
       }
     }
@@ -293,7 +291,7 @@ const CategoryProductComponent = ({ params, queryKey = [] }: any) => {
                               Price: Low to High
                             </button>
                           </Link>
-                          <Link
+                          {/* <Link
                             onClick={() => {
                               setSortingTab("Customer Rating");
                               setSortingTabValue(6);
@@ -304,7 +302,7 @@ const CategoryProductComponent = ({ params, queryKey = [] }: any) => {
                             <button className="group flex w-full items-center rounded-md px-2 py-2 text-sm  hover:text-primary  hover:bg-[#F2F7FF]">
                               Customer Rating
                             </button>
-                          </Link>
+                          </Link> */}
                         </div>
                       </div>
                     </Transition>

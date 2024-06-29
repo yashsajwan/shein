@@ -7,7 +7,6 @@ import FlatIcon from "../../flatIcon/flatIcon";
 import Link from "next/link";
 const CategoryGrid = ({ section }) => {
   // console.log("section",section);
-  
 
   const [countdown, setCountdown] = useState({
     days: 0,
@@ -74,7 +73,7 @@ const CategoryGrid = ({ section }) => {
 
   return (
     <>
-      {endDate > now && (
+      {endDate > now ? (
         <div className="px-body my-[2.5rem]">
           <div className="text-3xl  text-center font-bold mb-5 ">
             {/* <div><span className='text-primary'>#SHIEN </span><span>STYLE STORES</span></div>
@@ -157,6 +156,8 @@ const CategoryGrid = ({ section }) => {
                 })}
           </div>
         </div>
+      ) : (
+        <div className="px-body mb-[2.5rem]"></div>
       )}
       {/* <CategoryGridCard/> */}
     </>

@@ -193,19 +193,27 @@ const Account = ({ cookie, setSelectedTab, selectedTab }) => {
               </div>
               <div className="flex justify-around my-5 items-center h-32">
                 <div className="p-3 text-xl text-center h-full flex items-center">
-                  <div>
+                  <div
+                    className="cursor-pointer"
+                    onClick={() => setSelectedTab(10)}
+                  >
                     <Image src={unpaid} alt="unpaid"></Image>
                     <div>Unpaid</div>
                   </div>
                 </div>
                 <div className="p-3 text-xl text-center h-full flex items-center">
-                  <div>
+                  <div
+                  className="cursor-pointer"
+                  onClick={() => setSelectedTab(11)}>
                     <Image src={processing} alt="unpaid"></Image>
                     <div>Processing</div>
                   </div>
                 </div>
                 <div className="p-3 text-xl text-center h-full flex items-center">
-                  <div>
+                  <div
+                    className="cursor-pointer"
+                    onClick={() => setSelectedTab(13)}
+                  >
                     <Image src={shipped} alt="unpaid"></Image>
                     <div>Shipped</div>
                   </div>
